@@ -368,7 +368,20 @@ td[contenteditable]:focus{box-shadow:inset 0 0 0 2px var(--terra)}
   .pm{grid-template-columns:1fr}.pm .img{min-height:220px;font-size:100px;border-radius:20px 20px 0 0}
   footer.sf .wrap{grid-template-columns:1fr 1fr}
 }
+.dg>*,.wgrid>*,.two>*,.why>*,.ages>*,.trust>*,.cards5>*,.kgrid>*,.mgrid>*{min-width:0}
+.why b{overflow-wrap:anywhere}
+.ph h3{min-width:0;overflow-wrap:anywhere}
 @media (max-width:700px){
+  .demobar{padding:8px 10px;gap:6px}.demobar .tag{display:none}
+  .tabs{margin-left:0;width:100%;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;padding-bottom:2px}
+  .tabs::-webkit-scrollbar{display:none}
+  .tabs button{white-space:nowrap;flex-shrink:0}
+  .shead{position:static}
+  #notifs{top:auto;bottom:80px;left:12px;right:12px;max-width:none}
+  .lblwrap{padding:8px}
+  .pagehead h2{font-size:24px}
+  .why div,.age{padding:14px}.why b,.age b{font-size:16px}
+
   .hero-in{grid-template-columns:1fr;padding:30px 22px}.hero h1{font-size:34px}.hero-art{font-size:80px}
   .shead nav,.search{display:none}.shead{top:94px}.cards5{grid-template-columns:repeat(2,1fr)}
   .boxc form{grid-template-columns:1fr}.promo-form{grid-template-columns:1fr}.pnav b{min-width:0;font-size:16px}
