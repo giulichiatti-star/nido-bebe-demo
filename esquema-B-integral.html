@@ -1,0 +1,430 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nido Bebé · Esquema Integral</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f6f3ee; --panel:#fffdf9; --ink:#2f2926; --muted:#8a7f78; --line:#ebe3d8;
+  --side:#2b2523; --side-ink:#cfc6bf;
+  --sage:#7f9a7a; --sage-l:#e8efe4; --terra:#c98b6b; --terra-l:#f6e7de;
+  --red:#c75b4f; --red-l:#fbe6e3; --amber:#cf9a2f; --amber-l:#fbf1dc; --blue:#5b84b1; --blue-l:#e4edf6;
+  --wa:#25d366; --ig:#d6249f;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:"DM Sans",system-ui,sans-serif;background:var(--bg);color:var(--ink);font-size:14px}
+h1,h2,h3{font-family:"Fraunces",serif;font-weight:500}
+button{font-family:inherit;cursor:pointer}
+.app{display:grid;grid-template-columns:230px 1fr;min-height:100vh}
+
+/* sidebar */
+aside{background:var(--side);color:var(--side-ink);padding:20px 14px;display:flex;flex-direction:column;gap:4px;position:sticky;top:0;height:100vh}
+.brand{font-family:"Fraunces";font-size:22px;letter-spacing:5px;color:#fff;padding:0 8px}
+.brand-sub{font-size:11px;color:#8d837d;padding:0 8px 18px;letter-spacing:1px}
+aside button{background:none;border:0;color:var(--side-ink);text-align:left;padding:10px 12px;border-radius:10px;font-size:14px;display:flex;align-items:center;gap:10px}
+aside button:hover{background:#3a322f}
+aside button.on{background:#fff;color:var(--side)}
+aside .cnt{margin-left:auto;background:var(--terra);color:#fff;border-radius:99px;font-size:11px;padding:1px 7px}
+aside .foot{margin-top:auto;font-size:12px;color:#8d837d;padding:8px;border-top:1px solid #3a322f}
+aside .foot b{color:#fff;display:block}
+
+main{padding:22px 26px;min-width:0}
+.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px;gap:12px;flex-wrap:wrap}
+.top h1{font-size:28px}
+.top p{color:var(--muted)}
+.btn{background:var(--ink);color:#fff;border:0;border-radius:10px;padding:9px 14px;font-size:13px}
+.btn.t{background:var(--terra)}.btn.s{background:var(--sage)}.btn.o{background:none;border:1px solid var(--line);color:var(--ink)}
+.view{display:none}.view.on{display:block}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:16px}
+.card h3{font-size:17px;margin-bottom:12px;display:flex;justify-content:space-between;align-items:center}
+.card h3 small{font-family:"DM Sans";font-size:12px;color:var(--muted);font-weight:400}
+.pill{display:inline-block;font-size:11px;padding:2px 8px;border-radius:99px;font-weight:500}
+.p-red{background:var(--red-l);color:var(--red)}.p-amb{background:var(--amber-l);color:#9a6e12}.p-grn{background:var(--sage-l);color:#4d6a49}.p-blu{background:var(--blue-l);color:var(--blue)}.p-ter{background:var(--terra-l);color:#a2603f}
+.hint{background:#fff7e6;border:1px dashed var(--amber);color:#7a5a18;padding:10px 14px;border-radius:10px;font-size:13px;margin-bottom:16px}
+
+/* dashboard */
+.kpis{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-bottom:14px}
+.kpi{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:14px}
+.kpi span{font-size:12px;color:var(--muted)}
+.kpi b{display:block;font-size:24px;font-family:"Fraunces";font-weight:500;margin:4px 0}
+.kpi em{font-style:normal;font-size:12px;color:#4d6a49}.kpi em.dn{color:var(--red)}
+.dgrid{display:grid;grid-template-columns:1.5fr 1fr;gap:14px;margin-bottom:14px}
+.dgrid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px}
+.alert{display:flex;gap:10px;padding:10px;border-radius:12px;margin-bottom:8px;align-items:flex-start;font-size:13px}
+.alert .i{font-size:18px}
+.alert b{display:block}
+.alert.r{background:var(--red-l)}.alert.a{background:var(--amber-l)}.alert.g{background:var(--sage-l)}.alert.b{background:var(--blue-l)}
+.alert button{margin-left:auto;font-size:12px;border:0;background:#fff;border-radius:8px;padding:5px 9px;white-space:nowrap}
+svg text{font-family:"DM Sans";font-size:11px;fill:var(--muted)}
+.funnel div{display:flex;align-items:center;gap:10px;margin-bottom:8px;font-size:13px}
+.funnel span{width:90px;color:var(--muted)}
+.funnel i{height:26px;border-radius:6px;display:flex;align-items:center;padding-left:8px;color:#fff;font-style:normal;font-size:12px;font-weight:700}
+.rec{border-left:3px solid var(--sage);padding:8px 12px;margin-bottom:10px;font-size:13px;background:var(--sage-l);border-radius:0 10px 10px 0}
+table.t{width:100%;border-collapse:collapse;font-size:13px}
+.t th{font-weight:500;color:var(--muted);font-size:12px;text-align:left;padding:8px;border-bottom:1px solid var(--line)}
+.t td{padding:9px 8px;border-bottom:1px solid var(--line)}
+.t td.n{text-align:right}
+.mbar{height:8px;border-radius:9px;background:var(--line);overflow:hidden;width:90px;display:inline-block;vertical-align:middle}
+.mbar i{display:block;height:100%;background:var(--sage)}
+
+/* kanban */
+.kan{display:grid;grid-template-columns:repeat(6,minmax(200px,1fr));gap:12px;overflow-x:auto;padding-bottom:10px}
+.col{background:#efe9e1;border-radius:14px;padding:10px;min-height:420px}
+.col h4{font-size:13px;display:flex;justify-content:space-between;margin-bottom:10px;padding:2px 4px}
+.col h4 span{color:var(--muted)}
+.col.over{outline:2px dashed var(--terra)}
+.lead{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:10px;margin-bottom:8px;cursor:grab;font-size:13px}
+.lead b{display:block;margin-bottom:2px}
+.lead .meta{display:flex;justify-content:space-between;align-items:center;margin-top:8px;color:var(--muted);font-size:12px}
+.ch{font-size:10px;font-weight:700;padding:2px 6px;border-radius:5px;color:#fff}
+.ch.wa{background:var(--wa)}.ch.ig{background:var(--ig)}.ch.web{background:var(--blue)}
+.lead.hot{border-left:3px solid var(--red)}
+
+/* inbox */
+.inbox{display:grid;grid-template-columns:270px 1fr 260px;height:calc(100vh - 130px);min-height:520px;background:var(--panel);border:1px solid var(--line);border-radius:16px;overflow:hidden}
+.convs{border-right:1px solid var(--line);overflow:auto}
+.conv{padding:12px 14px;border-bottom:1px solid var(--line);cursor:pointer;display:flex;gap:10px}
+.conv.on{background:var(--terra-l)}
+.av{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;font-weight:700;color:#fff;flex-shrink:0}
+.conv .x{flex:1;min-width:0}
+.conv .x b{display:flex;justify-content:space-between;font-size:13px}
+.conv .x b small{font-weight:400;color:var(--muted)}
+.conv .x p{color:var(--muted);font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.chat{display:flex;flex-direction:column;background:#efe9e1;background-image:radial-gradient(#e2dbd1 1px,transparent 1px);background-size:16px 16px;min-width:0}
+.chat-h{background:var(--panel);padding:10px 16px;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:10px}
+.chat-h .ai{margin-left:auto;display:flex;align-items:center;gap:6px;font-size:12px}
+.sw{width:36px;height:20px;background:var(--sage);border-radius:99px;position:relative;cursor:pointer;border:0}
+.sw:after{content:"";position:absolute;top:2px;right:2px;width:16px;height:16px;border-radius:50%;background:#fff;transition:.2s}
+.sw.off{background:#ccc}.sw.off:after{right:18px}
+.msgs{flex:1;overflow:auto;padding:16px;display:flex;flex-direction:column;gap:6px}
+.m{max-width:72%;padding:8px 11px;border-radius:12px;font-size:13px;line-height:1.4;box-shadow:0 1px 1px rgba(0,0,0,.05)}
+.m.in{background:#fff;align-self:flex-start;border-top-left-radius:3px}
+.m.out{background:#dcf2d0;align-self:flex-end;border-top-right-radius:3px}
+.m.bot{background:#e8e2f6;align-self:flex-end;border-top-right-radius:3px}
+.m small{display:block;font-size:10px;color:var(--muted);margin-top:3px;text-align:right}
+.m.sys{align-self:center;background:var(--amber-l);color:#7a5a18;font-size:12px;max-width:90%}
+.compose{background:var(--panel);padding:10px;display:flex;gap:8px;border-top:1px solid var(--line);flex-wrap:wrap}
+.compose input{flex:1;border:1px solid var(--line);border-radius:10px;padding:9px 12px;font-family:inherit;min-width:140px}
+.quick{display:flex;gap:6px;padding:8px 10px 0;background:var(--panel);flex-wrap:wrap}
+.quick button{border:1px solid var(--line);background:#fff;border-radius:99px;padding:4px 10px;font-size:12px}
+.prof{border-left:1px solid var(--line);padding:16px;overflow:auto;font-size:13px}
+.prof h4{font-family:"Fraunces";font-weight:500;font-size:17px;margin:8px 0 2px}
+.prof .row{display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid var(--line)}
+.prof .row span{color:var(--muted)}
+.typing{font-size:12px;color:var(--muted);padding:0 16px 6px;height:18px}
+
+/* production */
+.prod{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.oc{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:12px;margin-bottom:10px;font-size:13px}
+.oc b{display:block}
+.oc .bar{height:6px;background:var(--line);border-radius:9px;margin:8px 0 6px;overflow:hidden}
+.oc .bar i{display:block;height:100%;background:var(--terra)}
+.oc .ft{display:flex;justify-content:space-between;align-items:center;color:var(--muted);font-size:12px}
+.oc .ft button{border:0;background:var(--sage-l);color:#4d6a49;border-radius:7px;padding:4px 8px;font-size:12px}
+
+/* modal */
+.modal{position:fixed;inset:0;background:rgba(43,37,35,.45);display:none;place-items:center;z-index:90;padding:16px}
+.modal.on{display:grid}
+.modal .card{max-width:560px;width:100%;max-height:85vh;overflow:auto}
+.toast{position:fixed;right:20px;bottom:20px;background:var(--side);color:#fff;padding:12px 16px;border-radius:12px;font-size:13px;z-index:99;transform:translateY(150px);transition:.3s;max-width:360px}
+.toast.on{transform:none}
+.flows{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:12px}
+.flow{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:14px;font-size:13px}
+.flow .h{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.flow .h b{font-size:14px}
+.steps{display:flex;gap:4px;flex-wrap:wrap;margin:8px 0}
+.steps span{background:#f1ece5;border-radius:6px;padding:3px 7px;font-size:11px}
+.steps span:not(:last-child):after{content:" →";color:var(--muted)}
+.flow .st{color:var(--muted);font-size:12px}
+
+@media (max-width:1100px){.kpis{grid-template-columns:repeat(3,1fr)}.dgrid,.dgrid3{grid-template-columns:1fr}.prod{grid-template-columns:1fr 1fr}.inbox{grid-template-columns:220px 1fr}.prof{display:none}}
+@media (max-width:760px){.app{grid-template-columns:1fr}aside{position:static;height:auto;flex-direction:row;overflow-x:auto;padding:10px}.brand-sub,aside .foot{display:none}.brand{font-size:16px;align-self:center}main{padding:16px}.kpis{grid-template-columns:1fr 1fr}.prod{grid-template-columns:1fr}.inbox{grid-template-columns:1fr}.convs{display:none}}
+</style>
+</head>
+<body>
+<div class="app">
+<aside>
+  <div class="brand">nidobebé</div>
+  <div class="brand-sub">PANEL DE GESTIÓN · ESQUEMA B</div>
+  <button class="on" data-v="dash">📊 Dashboard</button>
+  <button data-v="inbox">💬 Bandeja WhatsApp/IG <span class="cnt" id="c-inbox">3</span></button>
+  <button data-v="leads">🧲 Leads y pedidos</button>
+  <button data-v="prod">🔨 Producción <span class="cnt" id="c-prod">0</span></button>
+  <button data-v="stock">📦 Stock e insumos <span class="cnt" id="c-stock">0</span></button>
+  <button data-v="flows">⚙️ Automatizaciones</button>
+  <div class="foot"><b>Gianna · Admin</b>Conectado a Web NIDO · WhatsApp API · n8n · Supabase</div>
+</aside>
+
+<main>
+<!-- ===================== DASHBOARD ===================== -->
+<section class="view on" id="v-dash">
+  <div class="top"><div><h1>Buen día, Gianna ☀️</h1><p>Jueves 2 de octubre · esto es lo que necesita tu atención hoy</p></div>
+    <div style="display:flex;gap:8px"><button class="btn o">Últimos 30 días ▾</button><button class="btn t" onclick="go('inbox')">Abrir bandeja</button></div></div>
+  <div class="hint">💡 Esta demo está conectada por dentro. Escribile a la IA en la <b>Bandeja</b>, mové un lead a <b>“Seña pagada”</b> y vas a ver cómo se crea la orden de producción, se descuentan insumos y aparecen alertas acá.</div>
+  <div class="kpis" id="kpis"></div>
+  <div class="dgrid">
+    <div class="card"><h3>Ventas por semana <small>web · WhatsApp · Instagram</small></h3><div id="chart"></div></div>
+    <div class="card"><h3>🚨 Alertas <small id="alcount"></small></h3><div id="alerts"></div></div>
+  </div>
+  <div class="dgrid3">
+    <div class="card"><h3>Embudo de leads <small>este mes</small></h3><div class="funnel" id="funnel"></div></div>
+    <div class="card"><h3>🧠 Recomendaciones <small>generadas con tus datos</small></h3><div id="recs"></div></div>
+    <div class="card"><h3>Margen por línea</h3><table class="t" id="margins"></table></div>
+  </div>
+</section>
+
+<!-- ===================== INBOX ===================== -->
+<section class="view" id="v-inbox">
+  <div class="top"><div><h1>Bandeja unificada</h1><p>WhatsApp + Instagram en un solo lugar · la IA responde 24/7 y deriva a una persona cuando hace falta</p></div></div>
+  <div class="inbox">
+    <div class="convs" id="convs"></div>
+    <div class="chat">
+      <div class="chat-h"><div class="av" id="ch-av"></div><div><b id="ch-name"></b><br><small style="color:var(--muted)" id="ch-sub"></small></div>
+        <div class="ai">🤖 Agente IA <button class="sw" id="aisw" onclick="this.classList.toggle('off')"></button></div></div>
+      <div class="msgs" id="msgs"></div>
+      <div class="typing" id="typing"></div>
+      <div class="quick">
+        <button onclick="sim('Hola! cuánto sale la cocina?')">💬 “¿Cuánto sale la cocina?”</button>
+        <button onclick="sim('Hacen envíos a Córdoba?')">💬 “¿Envíos a Córdoba?”</button>
+        <button onclick="sim('Quiero una guirnalda con el nombre EMMA')">💬 “Guirnalda EMMA”</button>
+        <button onclick="sim('Necesito un regalo para un recién nacido')">💬 “Regalo recién nacido”</button>
+        <button onclick="sim('Ok, lo quiero! te paso la seña')">💬 “Lo quiero, paso seña”</button>
+      </div>
+      <div class="compose"><input id="inp" placeholder="Escribí como si fueras el cliente… (Enter)" onkeydown="if(event.key==='Enter'&&this.value){sim(this.value);this.value=''}"><button class="btn s" onclick="const i=document.getElementById('inp');if(i.value){sim(i.value);i.value=''}">Enviar como cliente</button></div>
+    </div>
+    <div class="prof" id="prof"></div>
+  </div>
+</section>
+
+<!-- ===================== LEADS ===================== -->
+<section class="view" id="v-leads">
+  <div class="top"><div><h1>Leads y pedidos</h1><p>Arrastrá las tarjetas entre columnas. Al pasar a <b>Seña pagada</b> se genera la orden de producción automáticamente.</p></div>
+    <button class="btn t" onclick="newLead()">+ Nuevo lead</button></div>
+  <div class="kan" id="kan"></div>
+</section>
+
+<!-- ===================== PRODUCCIÓN ===================== -->
+<section class="view" id="v-prod">
+  <div class="top"><div><h1>Producción del taller</h1><p>Órdenes generadas desde ventas web, WhatsApp e Instagram · ordenadas por fecha de entrega</p></div>
+    <button class="btn s" onclick="planStock()">⚡ Generar producción para stock</button></div>
+  <div class="prod" id="prod"></div>
+</section>
+
+<!-- ===================== STOCK ===================== -->
+<section class="view" id="v-stock">
+  <div class="top"><div><h1>Stock e insumos</h1><p>Consumo calculado con las recetas de cada producto y la demanda de los últimos 30 días</p></div>
+    <button class="btn t" onclick="purchaseList()">🧾 Generar lista de compra</button></div>
+  <div class="dgrid">
+    <div class="card"><h3>Insumos <small>días de cobertura = stock ÷ consumo diario</small></h3><table class="t" id="ins"></table></div>
+    <div class="card"><h3>Producto terminado <small>stock mínimo sugerido por la demanda</small></h3><table class="t" id="fg"></table></div>
+  </div>
+</section>
+
+<!-- ===================== FLOWS ===================== -->
+<section class="view" id="v-flows">
+  <div class="top"><div><h1>Automatizaciones</h1><p>Flujos en n8n conectados a la base central (Supabase)</p></div></div>
+  <div class="flows" id="flows"></div>
+</section>
+</main>
+</div>
+
+<div class="modal" id="modal" onclick="if(event.target===this)this.classList.remove('on')"><div class="card" id="mbody"></div></div>
+<div class="toast" id="toast"></div>
+
+<script>
+const fmt=n=>"$"+Math.round(n).toLocaleString("es-AR");
+const $=id=>document.getElementById(id);
+/* ---------- datos ---------- */
+const PROD={
+ COC:{n:"Super Cocina NIDO",p:289000,cost:118000,l:"Juegos",r:{F9:2,F3:.5,PI:.7,BA:.4},d:5,fg:1,dem:6},
+ TRE:{n:"Tren de encastre",p:119000,cost:41000,l:"Juegos",r:{F9:.6,PI:.3,BA:.15},d:3,fg:2,dem:5},
+ PPV:{n:"Pata Pata Vespa",p:129000,cost:52000,l:"Juegos",r:{F9:1.2,PI:.4,BA:.25},d:4,fg:0,dem:4},
+ CUB:{n:"Cubo encastrable",p:55000,cost:16500,l:"Juegos",r:{F9:.25,PI:.1,BA:.05},d:2,fg:4,dem:7},
+ HEL:{n:"Carrito de helados",p:109000,cost:44000,l:"Juegos",r:{F9:.9,PI:.35,BA:.2},d:4,fg:1,dem:3},
+ GUI:{n:"Guirnalda nombre (x letra)",p:9000,cost:2600,l:"Deco",r:{HI:.5},d:1,fg:0,dem:30},
+ VEL:{n:"Velador animalito",p:58500,cost:21000,l:"Deco",r:{F9:.3,PI:.1,BA:.06},d:2,fg:3,dem:4},
+ BPN:{n:"Box Primer Nido",p:79000,cost:31000,l:"Boxs",r:{TU:.6,HI:2,BR:2},d:2,fg:2,dem:8},
+ NID:{n:"Nido de contención",p:83900,cost:29500,l:"Baby",r:{TU:2,VE:1,GU:1},d:2,fg:1,dem:5},
+ TOA:{n:"Toallón personalizado",p:29000,cost:11500,l:"Baby",r:{TF:.8,TU:.3},d:1,fg:0,dem:9},
+ PCH:{n:"Portachupetes",p:7500,cost:1300,l:"Baby",r:{TU:.1,BR:1},d:1,fg:12,dem:20},
+ MUN:{n:"Muñeco de apego",p:36000,cost:9200,l:"Baby",r:{HI:3},d:3,fg:2,dem:6},
+};
+const INS={
+ F9:{n:"Fibrofácil 9 mm",u:"plancha",s:7,m:5,c:38000,lead:3},
+ F3:{n:"Fibrofácil 3 mm",u:"plancha",s:4,m:2,c:16000,lead:3},
+ PI:{n:"Pintura atóxica",u:"L",s:2.4,m:2,c:21000,lead:5},
+ BA:{n:"Barniz al agua",u:"L",s:1.6,m:1,c:18000,lead:5},
+ TU:{n:"Tusor de algodón",u:"m",s:14,m:10,c:7800,lead:2},
+ TF:{n:"Toalla doble felpa",u:"m",s:4.5,m:4,c:9500,lead:2},
+ GU:{n:"Guata",u:"m",s:8,m:5,c:3200,lead:2},
+ VE:{n:"Vellón siliconado",u:"kg",s:3,m:2,c:7400,lead:2},
+ HI:{n:"Hilo algodón crochet",u:"ovillo",s:18,m:15,c:2900,lead:4},
+ BR:{n:"Broche Madison",u:"u",s:34,m:30,c:450,lead:7},
+};
+const STAGES=[["nuevo","Nuevo"],["cotizado","Cotizado"],["sena","Seña pagada"],["produccion","En producción"],["listo","Listo / Enviado"],["entregado","Entregado"]];
+let leads=[
+ {id:1,n:"Martina G.",ch:"wa",prod:"COC",q:1,st:"nuevo",t:"hace 12 min",hot:true},
+ {id:2,n:"Carla R.",ch:"ig",prod:"BPN",q:2,st:"nuevo",t:"hace 1 h"},
+ {id:3,n:"Juan I.",ch:"wa",prod:"TRE",q:1,st:"cotizado",t:"hace 2 días",hot:true},
+ {id:4,n:"Belén S.",ch:"web",prod:"NID",q:1,st:"cotizado",t:"hace 5 h"},
+ {id:5,n:"Paula T.",ch:"ig",prod:"GUI",q:6,st:"sena",t:"ayer"},
+ {id:6,n:"Romina V.",ch:"wa",prod:"PPV",q:1,st:"produccion",t:"hace 3 días"},
+ {id:7,n:"Flor D.",ch:"web",prod:"TOA",q:2,st:"produccion",t:"hace 2 días"},
+ {id:8,n:"Agus M.",ch:"wa",prod:"VEL",q:1,st:"listo",t:"hoy"},
+ {id:9,n:"Caro B.",ch:"ig",prod:"MUN",q:1,st:"entregado",t:"hace 4 días"},
+ {id:10,n:"Vale N.",ch:"web",prod:"CUB",q:1,st:"entregado",t:"hace 6 días"},
+];
+let orders=[
+ {id:"OP-118",lead:6,prod:"PPV",q:1,due:2,pr:60,st:"pintura"},
+ {id:"OP-119",lead:7,prod:"TOA",q:2,due:4,pr:30,st:"corte"},
+ {id:"OP-120",lead:5,prod:"GUI",q:6,due:3,pr:0,st:"pendiente"},
+ {id:"OP-117",lead:8,prod:"VEL",q:1,due:0,pr:100,st:"terminado"},
+];
+let opN=121;
+const convs=[
+ {id:1,n:"Martina G.",ch:"wa",col:"#c98b6b",lead:1,msgs:[["in","Hola! vi la cocina en Instagram 😍","10:02"],["bot","¡Hola Martina! 🌿 Soy el asistente de NIDO. La Super Cocina mide 80×35×115 cm, tiene horno, microondas, bacha y perillas que giran. Cuesta <b>$289.000</b> por transferencia o 3 cuotas sin interés de $121.233. ¿Para qué edad la buscás?","10:02"]]},
+ {id:2,n:"Carla R.",ch:"ig",col:"#d6249f",lead:2,msgs:[["in","Hola, tienen boxs para regalar? son 2","09:40"]]},
+ {id:3,n:"Juan I.",ch:"wa",col:"#7f9a7a",lead:3,msgs:[["in","Cuánto tarda el tren?","lun"],["bot","¡Hola Juan! El Tren de encastre se hace a mano y está listo en 3 días hábiles. Cuesta $119.000 por transferencia. ¿Te lo reservo?","lun"],["sys","⏰ Sin respuesta hace 48 h · recordatorio automático programado para hoy a las 11:00","hoy"]]},
+];
+let cur=convs[0];
+
+/* ---------- nav ---------- */
+document.querySelectorAll("aside button").forEach(b=>b.onclick=()=>go(b.dataset.v));
+function go(v){document.querySelectorAll("aside button").forEach(x=>x.classList.toggle("on",x.dataset.v===v));document.querySelectorAll(".view").forEach(x=>x.classList.toggle("on",x.id==="v-"+v));render();window.scrollTo(0,0)}
+function toast(m){const t=$("toast");t.innerHTML=m;t.classList.add("on");clearTimeout(t._h);t._h=setTimeout(()=>t.classList.remove("on"),4000)}
+function modal(h){$("mbody").innerHTML=h;$("modal").classList.add("on")}
+
+/* ---------- lógica central ---------- */
+const insState=s=>s.s<s.m*.6?["Crítico","p-red"]:s.s<s.m?["Reponer","p-amb"]:["OK","p-grn"];
+function dailyUse(k){return Object.values(PROD).reduce((a,p)=>a+(p.r[k]||0)*p.dem,0)/30}
+function createOrder(lead){
+  const p=PROD[lead.prod];const id="OP-"+(opN++);
+  orders.push({id,lead:lead.id,prod:lead.prod,q:lead.q,due:p.d+1,pr:0,st:"pendiente"});
+  const al=[];Object.entries(p.r).forEach(([k,q])=>{const s=INS[k];const b=s.s;s.s=Math.max(0,+(s.s-q*lead.q).toFixed(2));if(s.s<s.m&&b>=s.m)al.push(s.n)});
+  toast(`🔨 <b>${id}</b> creada: ${lead.q}× ${p.n} para ${lead.n}.<br>Insumos reservados.${al.length?`<br>🚨 Bajo mínimo: ${al.join(", ")}`:""}`);
+}
+function alerts(){
+  const a=[];
+  Object.values(INS).forEach(s=>{const[st]=insState(s);if(st!="OK")a.push({c:st=="Crítico"?"r":"a",i:"📦",t:`${s.n}: ${s.s} ${s.u}`,d:`Mínimo ${s.m} · el proveedor tarda ${s.lead} días`,b:"Pedir",f:"purchaseList()"})});
+  orders.filter(o=>o.due<=2&&o.pr<100).forEach(o=>a.push({c:"r",i:"⏰",t:`${o.id} vence en ${o.due} día(s)`,d:`${o.q}× ${PROD[o.prod].n} · avance ${o.pr}%`,b:"Ver",f:"go('prod')"}));
+  leads.filter(l=>l.hot&&["nuevo","cotizado"].includes(l.st)).forEach(l=>a.push({c:"a",i:"💬",t:`${l.n} espera respuesta`,d:`${PROD[l.prod].n} · ${l.t}`,b:"Responder",f:"go('inbox')"}));
+  Object.entries(PROD).forEach(([k,p])=>{if(p.fg<p.dem/4&&p.d>=3)a.push({c:"b",i:"🧠",t:`Conviene fabricar ${p.n} por adelantado`,d:`Stock ${p.fg} · demanda ${p.dem}/mes · demora ${p.d} días`,b:"Planificar",f:"planStock()"})});
+  return a;
+}
+
+/* ---------- render ---------- */
+function render(){
+  const al=alerts();
+  $("c-prod").textContent=orders.filter(o=>o.pr<100).length;
+  $("c-stock").textContent=Object.values(INS).filter(s=>s.s<s.m).length;
+  // dashboard
+  const won=leads.filter(l=>["sena","produccion","listo","entregado"].includes(l.st));
+  const rev=4820000+won.reduce((a,l)=>a+PROD[l.prod].p*l.q,0);
+  $("kpis").innerHTML=[["Ventas del mes",fmt(rev),"▲ 22% vs septiembre"],["Leads nuevos",38+leads.filter(l=>l.st=="nuevo").length,"▲ 9 esta semana"],["Conversión","31%","▲ 4 pts"],["Resp. promedio","3 min","la IA responde el 78%"],["Órdenes activas",orders.filter(o=>o.pr<100).length,`${orders.filter(o=>o.due<=2&&o.pr<100).length} con fecha en riesgo`,1]]
+   .map(k=>`<div class="kpi"><span>${k[0]}</span><b>${k[1]}</b><em class="${k[3]?"dn":""}">${k[2]}</em></div>`).join("");
+  $("alcount").textContent=al.length+" activas";
+  $("alerts").innerHTML=al.slice(0,6).map(x=>`<div class="alert ${x.c}"><span class="i">${x.i}</span><div><b>${x.t}</b>${x.d}</div><button onclick="${x.f}">${x.b}</button></div>`).join("")||"<p>Todo en orden ✓</p>";
+  // chart
+  const W=[["S1",820,410,380],["S2",960,520,410],["S3",1100,610,520],["S4",1180,700,560],["S5",1320,760,610]];
+  const mx=2800,h=180,bw=46;
+  $("chart").innerHTML=`<svg viewBox="0 0 520 220" width="100%">${[0,1,2,3].map(i=>`<line x1="40" x2="510" y1="${20+i*h/3}" y2="${20+i*h/3}" stroke="#ebe3d8"/><text x="0" y="${24+i*h/3}">${Math.round((mx-i*mx/3)/100)/10}M</text>`).join("")}
+   ${W.map((w,i)=>{let y=200;const x=70+i*90;return[["#7f9a7a",w[1]],["#c98b6b",w[2]],["#d6249f",w[3]]].map(([c,v])=>{const hh=v/mx*h;y-=hh;return`<rect x="${x}" y="${y}" width="${bw}" height="${hh}" fill="${c}" rx="3"/>`}).join("")+`<text x="${x+12}" y="216">${w[0]}</text>`}).join("")}
+   <rect x="380" y="0" width="10" height="10" fill="#7f9a7a"/><text x="394" y="9">Web</text><rect x="425" y="0" width="10" height="10" fill="#c98b6b"/><text x="439" y="9">WA</text><rect x="462" y="0" width="10" height="10" fill="#d6249f"/><text x="476" y="9">IG</text></svg>`;
+  const cnt=k=>leads.filter(l=>STAGES.findIndex(s=>s[0]==l.st)>=k).length;
+  const F=[["Leads",120],["Cotizados",74],["Seña",41],["Entregados",37]];
+  $("funnel").innerHTML=F.map((f,i)=>`<div><span>${f[0]}</span><i style="width:${f[1]/120*100}%;background:${["#c98b6b","#d3a184","#7f9a7a","#5f7a5b"][i]}">${f[1]}</i></div>`).join("");
+  $("recs").innerHTML=`<div class="rec">📈 <b>Boxs</b> crecieron 40% → armá 5 Box “Primer Nido” antes del Día de la Madre.</div><div class="rec">💸 El 64% paga por transferencia: destacá ese precio en Instagram.</div><div class="rec">🔁 23 clientas con bebé de ~11 meses → campaña de Juegos para el primer año.</div>`;
+  const byL={};Object.values(PROD).forEach(p=>{byL[p.l]=byL[p.l]||{r:0,c:0};byL[p.l].r+=p.p*p.dem;byL[p.l].c+=p.cost*p.dem});
+  $("margins").innerHTML=`<tr><th>Línea</th><th>Margen</th><th></th></tr>`+Object.entries(byL).map(([k,v])=>{const m=Math.round((v.r-v.c)/v.r*100);return`<tr><td>${k}</td><td><span class="mbar"><i style="width:${m}%"></i></span></td><td class="n">${m}%</td></tr>`}).join("");
+  // kanban
+  $("kan").innerHTML=STAGES.map(([k,n])=>{const ls=leads.filter(l=>l.st==k);return`<div class="col" data-st="${k}"><h4>${n}<span>${ls.length}</span></h4>${ls.map(l=>`<div class="lead ${l.hot?"hot":""}" draggable="true" data-id="${l.id}"><b>${l.n}</b>${l.q}× ${PROD[l.prod].n}<div class="meta"><span class="ch ${l.ch}">${l.ch.toUpperCase()}</span><span>${fmt(PROD[l.prod].p*l.q)}</span><span>${l.t}</span></div></div>`).join("")}</div>`}).join("");
+  bindDnD();
+  // production
+  const PS=[["pendiente","Pendiente"],["corte","Corte / confección"],["pintura","Pintura / terminación"],["terminado","Terminado"]];
+  $("prod").innerHTML=PS.map(([k,n])=>`<div><h3 style="font-size:16px;margin-bottom:10px">${n} <span style="color:var(--muted);font-size:13px">${orders.filter(o=>o.st==k).length}</span></h3>${orders.filter(o=>o.st==k).sort((a,b)=>a.due-b.due).map(o=>{const l=leads.find(x=>x.id==o.lead);return`<div class="oc"><b>${o.id} · ${o.q}× ${PROD[o.prod].n}</b>${l?l.n:"Para stock"} ${o.due<=1&&o.pr<100?'<span class="pill p-red">urgente</span>':""}<div class="bar"><i style="width:${o.pr}%"></i></div><div class="ft"><span>Entrega: ${o.due==0?"hoy":"en "+o.due+" d"}</span>${k!="terminado"?`<button onclick="adv('${o.id}')">Avanzar →</button>`:"✓"}</div></div>`}).join("")}</div>`).join("");
+  // stock
+  $("ins").innerHTML=`<tr><th>Insumo</th><th>Stock</th><th>Mín.</th><th>Cobertura</th><th>Estado</th></tr>`+Object.values(INS).map(s=>{const[st,c]=insState(s);const d=s.s/(dailyUse(Object.keys(INS).find(k=>INS[k]==s))||.01);return`<tr><td>${s.n}</td><td>${s.s} ${s.u}</td><td>${s.m}</td><td>${Math.round(d)} días</td><td><span class="pill ${c}">${st}</span></td></tr>`}).join("");
+  $("fg").innerHTML=`<tr><th>Producto</th><th>Stock</th><th>Demanda/mes</th><th>Mín. sugerido</th><th></th></tr>`+Object.values(PROD).map(p=>{const mn=Math.ceil(p.dem*p.d/30)+1;return`<tr><td>${p.n}</td><td>${p.fg}</td><td>${p.dem}</td><td>${mn}</td><td>${p.fg<mn?'<span class="pill p-amb">fabricar '+(mn-p.fg)+"</span>":'<span class="pill p-grn">OK</span>'}</td></tr>`}).join("");
+  // flows
+  const FL=[
+   ["🛍️ Venta web → producción",["Pedido desde la web","Supabase: pedido","WhatsApp con alias","Comprobante OK","Reservar insumos","Crear OP"],"142 ejecuciones · última hace 2 h"],
+   ["💬 Agente IA WhatsApp/IG",["Mensaje entrante","Claude: entender intención","Consultar catálogo y stock","Responder","¿Compra? → crear lead"],"1.204 mensajes este mes · 78% resuelto sin humano"],
+   ["⏰ Seguimiento de cotizaciones",["Cada 1 h","Leads cotizados sin respuesta 48 h","Plantilla WhatsApp recordatorio","Si responde → aviso"],"31 recordatorios · 9 recuperados"],
+   ["📦 Alerta de insumos",["Cambio de stock","¿Bajo mínimo?","WhatsApp interno + email","Borrador de pedido a proveedor"],"6 alertas este mes"],
+   ["🎂 Recompra por edad del bebé",["Diario 9:00","Bebés que cumplen 6/12/24 meses","Email + WhatsApp con sugerencias"],"58 envíos · 12 compras"],
+   ["⭐ Postventa y reseñas",["Pedido entregado","Esperar 7 días","Pedir reseña + foto","Guardar en perfil del cliente"],"tasa de reseñas 34%"],
+   ["🧾 Factura electrónica ARCA",["Pago confirmado","Generar factura C","Enviar PDF al cliente"],"conectado vía API de facturación"],
+   ["📊 Resumen semanal",["Lunes 8:00","Calcular KPIs","Enviar resumen por WhatsApp a las dueñas"],"activo"],
+  ];
+  $("flows").innerHTML=FL.map(f=>`<div class="flow"><div class="h"><b>${f[0]}</b><span class="pill p-grn">● Activo</span></div><div class="steps">${f[1].map(s=>`<span>${s}</span>`).join("")}</div><div class="st">${f[2]}</div></div>`).join("");
+  renderInbox();
+}
+
+/* ---------- drag & drop ---------- */
+function bindDnD(){
+  document.querySelectorAll(".lead").forEach(c=>c.ondragstart=e=>e.dataTransfer.setData("id",c.dataset.id));
+  document.querySelectorAll(".col").forEach(col=>{
+    col.ondragover=e=>{e.preventDefault();col.classList.add("over")};
+    col.ondragleave=()=>col.classList.remove("over");
+    col.ondrop=e=>{e.preventDefault();col.classList.remove("over");moveLead(+e.dataTransfer.getData("id"),col.dataset.st)};
+  });
+}
+function moveLead(id,st){
+  const l=leads.find(x=>x.id==id);if(!l||l.st==st)return;
+  const was=l.st;l.st=st;l.hot=false;
+  if(st=="sena"&&!orders.some(o=>o.lead==id))createOrder(l);
+  else if(st=="listo")toast(`📲 WhatsApp automático a ${l.n}: “¡Tu pedido está listo! 🎉 Te pasamos el seguimiento del envío.”`);
+  else if(st=="cotizado")toast(`⏰ Seguimiento programado: si ${l.n} no responde en 48 h se le envía un recordatorio.`);
+  else if(st=="entregado")toast(`⭐ En 7 días se le pedirá una reseña a ${l.n}.`);
+  render();
+}
+function newLead(){const ks=Object.keys(PROD);const k=ks[Math.floor(Math.random()*ks.length)];leads.unshift({id:Date.now(),n:["Mica L.","Sole F.","Ana K.","Lu P."][Math.floor(Math.random()*4)],ch:["wa","ig","web"][Math.floor(Math.random()*3)],prod:k,q:1,st:"nuevo",t:"ahora",hot:true});render();toast("🧲 Nuevo lead creado")}
+function adv(id){const o=orders.find(x=>x.id==id);const seq=["pendiente","corte","pintura","terminado"];const i=seq.indexOf(o.st);o.st=seq[i+1];o.pr=[0,35,70,100][i+1];
+  if(o.st=="terminado"){const l=leads.find(x=>x.id==o.lead);if(l){l.st="listo";toast(`✅ ${o.id} terminada → ${l.n} pasa a “Listo” y recibe un WhatsApp automático.`)}else{PROD[o.prod].fg+=o.q;toast(`✅ ${o.id} terminada → +${o.q} en stock de ${PROD[o.prod].n}`)}}render()}
+function planStock(){
+  const sug=Object.entries(PROD).map(([k,p])=>({k,p,mn:Math.ceil(p.dem*p.d/30)+1})).filter(x=>x.p.fg<x.mn);
+  modal(`<h3>⚡ Producción sugerida para stock</h3><p style="color:var(--muted);margin-bottom:12px">Según demanda de 30 días, demora de fabricación y stock actual.</p><table class="t"><tr><th>Producto</th><th>Stock</th><th>Fabricar</th></tr>${sug.map(x=>`<tr><td>${x.p.n}</td><td>${x.p.fg}</td><td><b>${x.mn-x.p.fg}</b></td></tr>`).join("")}</table><div style="margin-top:14px;display:flex;gap:8px;justify-content:flex-end"><button class="btn o" onclick="$('modal').classList.remove('on')">Cancelar</button><button class="btn s" onclick="confirmPlan()">Crear ${sug.length} órdenes</button></div>`);
+}
+function confirmPlan(){Object.entries(PROD).forEach(([k,p])=>{const mn=Math.ceil(p.dem*p.d/30)+1;if(p.fg<mn){orders.push({id:"OP-"+(opN++),lead:null,prod:k,q:mn-p.fg,due:p.d+3,pr:0,st:"pendiente"});Object.entries(p.r).forEach(([i,q])=>INS[i].s=Math.max(0,+(INS[i].s-q*(mn-p.fg)).toFixed(2)))}});$("modal").classList.remove("on");toast("🔨 Órdenes para stock creadas e insumos reservados");go("prod")}
+function purchaseList(){
+  const L=Object.values(INS).map(s=>{const k=Object.keys(INS).find(x=>INS[x]==s);const need=Math.max(0,+(s.m*1.5+dailyUse(k)*s.lead-s.s).toFixed(1));return{s,need}}).filter(x=>x.need>0);
+  const tot=L.reduce((a,x)=>a+x.need*x.s.c,0);
+  modal(`<h3>🧾 Lista de compra sugerida</h3><p style="color:var(--muted);margin-bottom:12px">Cubre el mínimo + 50% de margen + el consumo durante la demora del proveedor.</p><table class="t"><tr><th>Insumo</th><th>Comprar</th><th>Costo est.</th></tr>${L.map(x=>`<tr><td>${x.s.n}</td><td>${Math.ceil(x.need)} ${x.s.u}</td><td class="n">${fmt(Math.ceil(x.need)*x.s.c)}</td></tr>`).join("")}<tr><td><b>Total</b></td><td></td><td class="n"><b>${fmt(tot)}</b></td></tr></table><div style="margin-top:14px;display:flex;gap:8px;justify-content:flex-end"><button class="btn o" onclick="$('modal').classList.remove('on')">Cerrar</button><button class="btn t" onclick="$('modal').classList.remove('on');toast('📲 Pedido enviado por WhatsApp a los proveedores (demo)')">Enviar a proveedores</button></div>`);
+}
+
+/* ---------- inbox + IA ---------- */
+function renderInbox(){
+  $("c-inbox").textContent=convs.length;
+  $("convs").innerHTML=convs.map(c=>{const last=c.msgs[c.msgs.length-1];return`<div class="conv ${c===cur?"on":""}" onclick="pick(${c.id})"><div class="av" style="background:${c.col}">${c.n[0]}</div><div class="x"><b>${c.n} <small>${last[2]}</small></b><p><span class="ch ${c.ch}">${c.ch.toUpperCase()}</span> ${last[1].replace(/<[^>]+>/g,"")}</p></div></div>`}).join("");
+  $("ch-av").style.background=cur.col;$("ch-av").textContent=cur.n[0];$("ch-name").textContent=cur.n;$("ch-sub").textContent=cur.ch=="wa"?"WhatsApp · +54 9 341 •••":"Instagram · @cliente";
+  $("msgs").innerHTML=cur.msgs.map(m=>`<div class="m ${m[0]}">${m[0]=="bot"?"🤖 ":""}${m[1]}<small>${m[2]}</small></div>`).join("");
+  $("msgs").scrollTop=1e5;
+  const l=leads.find(x=>x.id==cur.lead);
+  $("prof").innerHTML=`<div class="av" style="background:${cur.col};width:52px;height:52px;font-size:20px">${cur.n[0]}</div><h4>${cur.n}</h4><span class="ch ${cur.ch}">${cur.ch.toUpperCase()}</span>
+   <div style="margin-top:12px">${[["Etapa",l?STAGES.find(s=>s[0]==l.st)[1]:"–"],["Interés",l?PROD[l.prod].n:"–"],["Valor",l?fmt(PROD[l.prod].p*l.q):"–"],["Compras previas",cur.id==1?"0":"1 · $36.000"],["Bebé",cur.id==1?"2 años (estimado)":"recién nacido"],["Etiquetas","#juegos #regalo"]].map(r=>`<div class="row"><span>${r[0]}</span><b>${r[1]}</b></div>`).join("")}</div>
+   <button class="btn t" style="width:100%;margin-top:14px" onclick="go('leads')">Ver en embudo</button>`;
+}
+function pick(id){cur=convs.find(c=>c.id==id);renderInbox()}
+const now=()=>new Date().toTimeString().slice(0,5);
+function aiReply(t){
+  t=t.toLowerCase();const l=leads.find(x=>x.id==cur.lead);
+  if(/cocina/.test(t))return["La <b>Super Cocina NIDO</b> sale <b>$289.000</b> por transferencia o 3 cuotas sin interés de $121.233 🍳 Se fabrica en 5 días hábiles. ¿Te la reservo?",()=>{if(l){l.prod="COC";l.st="cotizado"}}];
+  if(/env[ií]o|córdoba|cordoba/.test(t))return["¡Sí! Enviamos a todo el país 📦 Coordinamos el envío por acá según tu dirección (Andreani o Correo Argentino) y te pasamos el costo. En Rosario podés retirar sin cargo.",null];
+  if(/guirnalda|nombre/.test(t)){const nm=(t.match(/nombre\s+(\w+)/)||[])[1]||"emma";return[`¡Qué lindo! La guirnalda <b>${nm.toUpperCase()}</b> tiene ${nm.length} letras × $9.000 = <b>${fmt(nm.length*9000)}</b> por transferencia 🧶 ¿Qué colores te gustan? Queda lista en 4 días.`,()=>{if(l){l.prod="GUI";l.q=nm.length;l.st="cotizado"}}]}
+  if(/regalo|reci[eé]n nacido|nacimiento/.test(t))return["Para un recién nacido te recomiendo:<br>🎁 <b>Box Primer Nido</b> $79.000 (ajuar pima, portachupetes, Nido Compis y sonajero)<br>💝 <b>Box Mimos Nido</b> $69.000<br>🎀 <b>Regalito Nido</b> $39.000<br>¿Te mando fotos?",()=>{if(l){l.prod="BPN";l.st="cotizado"}}];
+  if(/quiero|seña|sena|lo llevo|reserv/.test(t))return["¡Genial! 🎉 La seña es del 50%. Podés transferir al alias <b>nido.bebe.ros</b> y mandarme el comprobante por acá. Apenas se acredite arrancamos la producción y te aviso por acá. Te paso con Gianna para coordinar los detalles 💛",()=>{if(l){l.st="sena";if(!orders.some(o=>o.lead==l.id))createOrder(l)}cur.msgs.push(["sys","👤 Derivado a una persona · lead pasó a “Seña pagada” · orden de producción creada",now()])}];
+  return["¡Gracias por escribirnos! 🌿 Te puedo ayudar con precios, medidas, tiempos de entrega o personalizados. ¿Qué estás buscando?",null];
+}
+function sim(text){
+  cur.msgs.push(["in",text,now()]);renderInbox();
+  if($("aisw").classList.contains("off")){cur.msgs.push(["sys","IA pausada · esperando respuesta humana",now()]);renderInbox();return}
+  $("typing").textContent="🤖 El agente está escribiendo…";
+  setTimeout(()=>{$("typing").textContent="";const[r,fx]=aiReply(text);cur.msgs.push(["bot",r,now()]);if(fx)fx();render()},900);
+}
+render();
+</script>
+</body>
+</html>

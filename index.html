@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nido Bebé · Propuesta</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--cream:#faf6f0;--paper:#fffdf9;--ink:#3b3330;--ink2:#5d544f;--muted:#8a7f78;--line:#ebe3d8;--sage:#5f7a5b;--sage-l:#e8efe4;--terra:#c98b6b;--terra-d:#a86a4b;--terra-l:#f6e7de}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:"DM Sans",system-ui,sans-serif;background:var(--cream);color:var(--ink);line-height:1.5}
+h1,h2,h3{font-family:"Fraunces",serif;font-weight:500}
+.wrap{max-width:1040px;margin:0 auto;padding:0 16px}
+header{padding:56px 0 30px;text-align:center}
+.logo{font-family:"Fraunces";font-size:34px;letter-spacing:8px;color:var(--terra-d)}
+header h1{font-size:40px;margin:14px 0 10px;line-height:1.1}
+header p{color:var(--ink2);max-width:620px;margin:0 auto}
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:30px 0}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:22px;padding:28px;display:flex;flex-direction:column;gap:12px}
+.card .tag{align-self:flex-start;font-size:12px;font-weight:700;padding:4px 10px;border-radius:99px}
+.card h2{font-size:28px}
+.card ul{padding-left:18px;color:var(--ink2);font-size:15px}
+.card li{margin:4px 0}
+.card .price{font-family:"Fraunces";font-size:22px}
+.card .price small{font-family:"DM Sans";font-size:13px;color:var(--muted)}
+.btn{display:inline-block;text-align:center;background:var(--terra);color:#fff;text-decoration:none;border-radius:99px;padding:13px 20px;font-weight:500;margin-top:auto}
+.btn:hover{background:var(--terra-d)}
+.btn.dk{background:var(--ink)}
+.sec{background:var(--paper);border:1px solid var(--line);border-radius:22px;padding:28px;margin-bottom:18px}
+.sec h2{font-size:26px;margin-bottom:12px}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.steps div{background:var(--cream);border-radius:14px;padding:16px;font-size:14px;color:var(--ink2)}
+.steps b{display:block;color:var(--ink);margin-bottom:4px}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th,td{text-align:left;padding:10px;border-bottom:1px solid var(--line);vertical-align:top}
+th{color:var(--muted);font-weight:500;font-size:13px}
+.note{font-size:13px;color:var(--muted);margin-top:10px}
+.phases{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.phases div{border:1px solid var(--line);border-radius:14px;padding:14px;font-size:14px}
+.phases b{display:block;font-family:"Fraunces";font-weight:500;font-size:18px}
+.phases span{font-size:12px;color:var(--muted)}
+footer{text-align:center;color:var(--muted);font-size:13px;padding:30px 0 50px}
+@media (max-width:760px){.cards,.steps,.phases{grid-template-columns:1fr}header h1{font-size:30px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="logo">nidobebé</div>
+    <h1>Web propia + sistema de gestión</h1>
+    <p>Dos propuestas para ordenar pedidos, stock, producción y clientes en un solo lugar. Son demos para tocar y probar: los datos son de ejemplo y se reinician al recargar la página.</p>
+  </header>
+
+  <div class="cards">
+    <div class="card">
+      <span class="tag" style="background:var(--sage-l);color:var(--sage)">ESQUEMA A · PARA EMPEZAR</span>
+      <h2>Web + panel de gestión</h2>
+      <ul>
+        <li>Tienda online propia con catálogo, cupones y "seguí tu pedido"</li>
+        <li>Bandeja de pedidos y consultas con avisos al instante</li>
+        <li>Etiqueta imprimible con cupón para la próxima compra</li>
+        <li>Stock de insumos y productos, con descuento automático por receta</li>
+        <li>Historial por día, semana, mes y año</li>
+        <li>Dashboard con métricas y descargas</li>
+      </ul>
+      <div class="price">≈ USD 25 / mes <small>en servicios</small></div>
+      <a class="btn" href="esquema-A-simple.html">Probar el Esquema A →</a>
+    </div>
+    <div class="card">
+      <span class="tag" style="background:var(--terra-l);color:var(--terra-d)">ESQUEMA B · INTEGRAL</span>
+      <h2>Todo lo de A + CRM e IA</h2>
+      <ul>
+        <li>WhatsApp oficial e Instagram en una sola bandeja</li>
+        <li>Asistente con IA que responde 24/7 y deriva a una persona</li>
+        <li>Embudo de clientes: consulta → cotizado → seña → entregado</li>
+        <li>Seguimientos automáticos y campañas por edad del bebé</li>
+        <li>Producción del taller por etapas</li>
+      </ul>
+      <div class="price">≈ USD 60–120 / mes <small>en servicios</small></div>
+      <a class="btn dk" href="esquema-B-integral.html">Probar el Esquema B →</a>
+    </div>
+  </div>
+
+  <div class="sec">
+    <h2>Cómo probar el Esquema A en 3 minutos</h2>
+    <div class="steps">
+      <div><b>1. Hacé un pedido como clienta</b>En la pestaña Web abrí la guirnalda, escribí un nombre, agregá unos portachupetes y enviá el pedido con el código BIENVENIDA.</div>
+      <div><b>2. Gestionalo como NIDO</b>Andá a Pedidos: tocá las tarjetas para filtrar, confirmá el pago, imprimí la etiqueta y pasalo a producción.</div>
+      <div><b>3. Mirá el stock y los números</b>En Stock vas a ver qué insumos se descontaron. Registrá una compra. Después recorré el Historial y el Dashboard.</div>
+    </div>
+  </div>
+
+  <div class="sec">
+    <h2>Costos mensuales estimados</h2>
+    <table>
+      <tr><th>Servicio</th><th>Esquema A</th><th>Esquema B</th></tr>
+      <tr><td>Dominio nidobebe.com.ar</td><td>~USD 7 por año</td><td>~USD 7 por año</td></tr>
+      <tr><td>Hosting de la web y el panel</td><td>USD 0</td><td>USD 0</td></tr>
+      <tr><td>Base de datos con respaldo diario</td><td>USD 25</td><td>USD 25</td></tr>
+      <tr><td>Emails automáticos</td><td>USD 0</td><td>USD 0</td></tr>
+      <tr><td>WhatsApp</td><td>App Business (gratis)</td><td>API oficial: USD 10–40</td></tr>
+      <tr><td>Automatizaciones</td><td>Incluidas</td><td>USD 6–12</td></tr>
+      <tr><td>Asistente con IA</td><td>–</td><td>USD 15–40</td></tr>
+      <tr><td><b>Total aproximado</b></td><td><b>USD 25 / mes</b></td><td><b>USD 60–120 / mes</b></td></tr>
+    </table>
+    <p class="note">No incluye el desarrollo. Valores aproximados en dólares, a confirmar al contratar.</p>
+  </div>
+
+  <div class="sec">
+    <h2>Cómo seguiríamos</h2>
+    <div class="phases">
+      <div><span>FASE 1</span><b>Datos</b>Cargar los productos, precios, variantes y recetas reales.</div>
+      <div><span>FASE 2</span><b>Web</b>Publicar la tienda con fotos profesionales y dominio propio.</div>
+      <div><span>FASE 3</span><b>Panel</b>Pedidos, stock, etiquetas, historial y dashboard.</div>
+      <div><span>FASE 4</span><b>Esquema B</b>Cuando haga falta: WhatsApp oficial, IA y CRM.</div>
+    </div>
+  </div>
+  <footer>Demo de propuesta · los datos, clientes y números son de ejemplo</footer>
+</div>
+</body>
+</html>
