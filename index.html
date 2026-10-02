@@ -3,121 +3,1299 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Nido Bebé · Propuesta</title>
-<meta name="robots" content="noindex">
+<title>Nido Bebé · Esquema Simple</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
-:root{--cream:#faf6f0;--paper:#fffdf9;--ink:#3b3330;--ink2:#5d544f;--muted:#8a7f78;--line:#ebe3d8;--sage:#5f7a5b;--sage-l:#e8efe4;--terra:#c98b6b;--terra-d:#a86a4b;--terra-l:#f6e7de}
+:root{
+  --cream:#faf6f0; --paper:#fffdf9; --ink:#3b3330; --ink2:#5d544f; --muted:#8a7f78; --line:#ebe3d8;
+  --sage:#8fa58a; --sage-d:#5f7a5b; --sage-l:#e8efe4; --terra:#c98b6b; --terra-d:#a86a4b; --terra-l:#f6e7de; --sand:#efe5d6;
+  --red:#b9483d; --red-l:#fbe6e3; --amber-l:#fbf1dc; --blue-l:#e4edf6;
+  /* paleta de gráficos (validada para daltonismo) */
+  --s1:#2a78d6; --s2:#eb6834; --prev:#a8a29c; --grid:#efe9e1;
+}
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:"DM Sans",system-ui,sans-serif;background:var(--cream);color:var(--ink);line-height:1.5}
+body{font-family:"DM Sans",system-ui,sans-serif;background:var(--cream);color:var(--ink);font-size:15px}
 h1,h2,h3{font-family:"Fraunces",serif;font-weight:500}
-.wrap{max-width:1040px;margin:0 auto;padding:0 16px}
-header{padding:56px 0 30px;text-align:center}
-.logo{font-family:"Fraunces";font-size:34px;letter-spacing:8px;color:var(--terra-d)}
-header h1{font-size:40px;margin:14px 0 10px;line-height:1.1}
-header p{color:var(--ink2);max-width:620px;margin:0 auto}
-.cards{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:30px 0}
-.card{background:var(--paper);border:1px solid var(--line);border-radius:22px;padding:28px;display:flex;flex-direction:column;gap:12px}
-.card .tag{align-self:flex-start;font-size:12px;font-weight:700;padding:4px 10px;border-radius:99px}
-.card h2{font-size:28px}
-.card ul{padding-left:18px;color:var(--ink2);font-size:15px}
-.card li{margin:4px 0}
-.card .price{font-family:"Fraunces";font-size:22px}
-.card .price small{font-family:"DM Sans";font-size:13px;color:var(--muted)}
-.btn{display:inline-block;text-align:center;background:var(--terra);color:#fff;text-decoration:none;border-radius:99px;padding:13px 20px;font-weight:500;margin-top:auto}
+button{font-family:inherit;cursor:pointer}
+input,select,textarea{font-family:inherit;font-size:14px}
+.btn{background:var(--terra);color:#fff;border:0;border-radius:99px;padding:10px 18px;font-size:14px;font-weight:500}
 .btn:hover{background:var(--terra-d)}
-.btn.dk{background:var(--ink)}
-.sec{background:var(--paper);border:1px solid var(--line);border-radius:22px;padding:28px;margin-bottom:18px}
-.sec h2{font-size:26px;margin-bottom:12px}
-.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.steps div{background:var(--cream);border-radius:14px;padding:16px;font-size:14px;color:var(--ink2)}
-.steps b{display:block;color:var(--ink);margin-bottom:4px}
-table{width:100%;border-collapse:collapse;font-size:14px}
-th,td{text-align:left;padding:10px;border-bottom:1px solid var(--line);vertical-align:top}
-th{color:var(--muted);font-weight:500;font-size:13px}
-.note{font-size:13px;color:var(--muted);margin-top:10px}
-.phases{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
-.phases div{border:1px solid var(--line);border-radius:14px;padding:14px;font-size:14px}
-.phases b{display:block;font-family:"Fraunces";font-weight:500;font-size:18px}
-.phases span{font-size:12px;color:var(--muted)}
-footer{text-align:center;color:var(--muted);font-size:13px;padding:30px 0 50px}
-@media (max-width:760px){.cards,.steps,.phases{grid-template-columns:1fr}header h1{font-size:30px}}
+.btn.dk{background:var(--ink)}.btn.sg{background:var(--sage-d)}.btn.wa{background:#1fa855}
+.btn.gh{background:#fff;color:var(--ink);border:1px solid var(--line)}.btn.gh:hover{background:var(--cream)}
+.btn:disabled{opacity:.4;cursor:not-allowed}
+.btn.sm{padding:7px 12px;font-size:13px}
+
+.demobar{position:sticky;top:0;z-index:50;background:#2b2523;color:#fff;display:flex;align-items:center;gap:14px;padding:9px 16px;flex-wrap:wrap}
+.demobar b{font-family:"Fraunces";font-weight:500;font-size:17px}
+.demobar .tag{background:var(--sage);padding:3px 10px;border-radius:99px;font-size:12px}
+.tabs{display:flex;gap:4px;margin-left:auto;flex-wrap:wrap}
+.tabs button{background:transparent;color:#cfc6bf;border:1px solid #4a413d;padding:7px 12px;border-radius:8px;font-size:13px}
+.tabs button.on{background:#fff;color:#2b2523;border-color:#fff}
+.nb{background:var(--terra);color:#fff;border-radius:99px;font-size:11px;padding:1px 7px;margin-left:4px}
+.nb.zero{display:none}
+.view{display:none}.view.on{display:block}
+.wrap{max-width:1240px;margin:0 auto;padding:0 16px}
+.hint{background:#fff7e6;border:1px dashed #d9a441;color:#7a5a18;padding:10px 14px;border-radius:10px;font-size:13px;margin:16px 0}
+.pagehead{display:flex;justify-content:space-between;align-items:flex-end;gap:12px;flex-wrap:wrap;margin:6px 0 14px}
+.pagehead h2{font-size:28px}
+.pagehead p{color:var(--muted);font-size:13px}
+.panel{background:var(--paper);border:1px solid var(--line);border-radius:16px}
+.toast{position:fixed;left:50%;bottom:26px;transform:translateX(-50%) translateY(140px);background:#2b2523;color:#fff;padding:12px 18px;border-radius:12px;font-size:14px;z-index:120;transition:.3s;max-width:92%}
+.toast.on{transform:translateX(-50%) translateY(0)}
+#notifs{position:fixed;top:62px;right:16px;z-index:110;display:flex;flex-direction:column;gap:8px;max-width:330px}
+.nt{background:#fff;border-radius:14px;box-shadow:0 10px 30px rgba(0,0,0,.18);padding:12px 14px;font-size:13px;display:flex;gap:10px;animation:nin .3s ease}
+.nt .ic{width:34px;height:34px;border-radius:9px;display:grid;place-items:center;font-size:17px;flex-shrink:0}
+.nt small{color:var(--muted);display:block;font-size:11px;margin-top:2px}
+@keyframes nin{from{opacity:0;transform:translateX(30px)}to{opacity:1;transform:none}}
+.modal{position:fixed;inset:0;background:rgba(43,37,35,.5);display:none;place-items:center;z-index:100;padding:16px}
+.modal.on{display:grid}
+.modal .box{background:var(--paper);border-radius:20px;max-width:880px;width:100%;max-height:90vh;overflow:auto;position:relative}
+.modal .x{position:absolute;top:10px;right:12px;background:#fff;border:1px solid var(--line);border-radius:50%;width:34px;height:34px;font-size:18px;z-index:2}
+#tip{position:fixed;pointer-events:none;background:#2b2523;color:#fff;font-size:12px;padding:7px 10px;border-radius:8px;z-index:130;display:none;max-width:260px;line-height:1.45;box-shadow:0 6px 18px rgba(0,0,0,.2)}
+
+/* ============ WEB ============ */
+.annc{background:var(--sage-d);color:#fff;text-align:center;font-size:13px;padding:8px 16px}
+.annc.off{display:none}
+.shead{background:var(--paper);border-bottom:1px solid var(--line);position:sticky;top:50px;z-index:20}
+.shead .wrap{display:flex;align-items:center;gap:18px;padding-top:12px;padding-bottom:12px}
+.logo{font-family:"Fraunces";font-size:26px;letter-spacing:6px;color:var(--terra-d);white-space:nowrap}
+.search{flex:1;max-width:380px;position:relative}
+.search input{width:100%;border:1px solid var(--line);border-radius:99px;padding:9px 14px 9px 36px;background:var(--cream)}
+.search:before{content:"🔎";position:absolute;left:12px;top:8px;font-size:13px}
+.shead nav{display:flex;gap:16px;font-size:14px;color:var(--ink2)}
+.shead nav a{cursor:pointer}
+.shead nav a:hover{color:var(--terra-d)}
+.cartbtn{margin-left:auto;background:var(--ink);color:#fff;border:0;border-radius:99px;padding:9px 16px;font-size:14px;white-space:nowrap}
+.hero{margin:20px auto}
+.hero-in{background:linear-gradient(120deg,#efe5d6,#e3ead9);border-radius:24px;padding:52px 44px;display:grid;grid-template-columns:1.3fr 1fr;gap:24px;align-items:center}
+.hero small{letter-spacing:3px;font-size:12px;color:var(--sage-d);font-weight:700}
+.hero h1{font-size:48px;line-height:1.05;margin:10px 0 14px}
+.hero p{color:var(--ink2);max-width:450px;margin-bottom:22px}
+.hero .ctas{display:flex;gap:10px;flex-wrap:wrap}
+.hero-art{font-size:120px;text-align:center;line-height:1.1}
+.trust{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:34px}
+.trust>div{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:12px 14px;font-size:13px;color:var(--muted);display:flex;gap:10px;align-items:center}
+.trust i{font-style:normal;font-size:22px}
+.trust b{display:block;color:var(--ink);font-size:14px}
+.sec-t{display:flex;justify-content:space-between;align-items:flex-end;margin:0 0 14px;gap:10px;flex-wrap:wrap}
+.sec-t h2{font-size:30px}
+.sec-t p{color:var(--muted);font-size:14px}
+.ages{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:40px}
+.age{border-radius:18px;padding:22px;cursor:pointer;border:2px solid transparent;transition:.15s}
+.age:hover{transform:translateY(-2px)}
+.age.on{border-color:var(--ink)}
+.age i{font-style:normal;font-size:40px;display:block;margin-bottom:8px}
+.age b{font-family:"Fraunces";font-weight:500;font-size:20px;display:block}
+.age span{font-size:13px;color:var(--ink2)}
+.filters{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:16px}
+.chip{border:1px solid var(--line);background:var(--paper);border-radius:99px;padding:7px 14px;font-size:13px;color:var(--ink)}
+.chip.on{background:var(--sage-d);color:#fff;border-color:var(--sage-d)}
+.filters select{border:1px solid var(--line);border-radius:99px;padding:7px 12px;background:var(--paper);margin-left:auto}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px;margin-bottom:56px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:18px;overflow:hidden;display:flex;flex-direction:column;cursor:pointer;transition:.15s}
+.card:hover{box-shadow:0 10px 26px rgba(80,60,40,.10);transform:translateY(-2px)}
+.thumb{aspect-ratio:1/1;display:grid;place-items:center;font-size:66px;position:relative}
+.badges{position:absolute;top:10px;left:10px;display:flex;flex-direction:column;gap:4px;align-items:flex-start}
+.badge{background:#fff;border-radius:99px;font-size:11px;padding:3px 9px;color:var(--terra-d);font-weight:500}
+.badge.g{color:var(--sage-d)}
+.card .info{padding:12px 14px 14px;display:flex;flex-direction:column;gap:3px;flex:1}
+.card h3{font-size:15px;font-family:"DM Sans";font-weight:500}
+.card .meta{font-size:12px;color:var(--muted)}
+.price{font-size:19px;font-weight:700}
+.price small{font-size:11px;font-weight:500;color:var(--sage-d);background:var(--sage-l);padding:2px 6px;border-radius:6px;margin-left:4px;vertical-align:middle}
+.cuotas{font-size:12px;color:var(--muted)}
+.card .btn{margin-top:auto;padding:9px;font-size:13px}
+.card .info .cuotas{margin-bottom:8px}
+.empty{grid-column:1/-1;text-align:center;padding:40px;color:var(--muted)}
+.why{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:50px}
+.why div{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:20px}
+.why i{font-style:normal;font-size:30px}
+.why b{display:block;font-family:"Fraunces";font-weight:500;font-size:18px;margin:8px 0 4px}
+.why p{font-size:13px;color:var(--ink2)}
+.how{background:var(--sand);border-radius:24px;padding:34px;margin-bottom:50px}
+.how .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:18px}
+.how .st{display:flex;gap:14px}
+.how .n{width:40px;height:40px;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center;font-weight:700;flex-shrink:0}
+.how b{display:block;margin-bottom:3px}
+.how p{font-size:14px;color:var(--ink2)}
+.revs{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:50px}
+.rev{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:20px;font-size:14px}
+.rev .stars{color:#c48a1c;letter-spacing:2px;margin-bottom:8px}
+.rev p{color:var(--ink2);margin-bottom:12px;line-height:1.5}
+.rev b{font-size:13px}
+.ig{display:grid;grid-template-columns:repeat(6,1fr);gap:8px;margin-bottom:50px}
+.ig div{aspect-ratio:1/1;border-radius:14px;display:grid;place-items:center;font-size:42px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:50px}
+.faq details{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:14px 16px;margin-bottom:8px}
+.faq summary{cursor:pointer;font-weight:500;list-style:none;display:flex;justify-content:space-between}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary:after{content:"+";color:var(--muted);font-size:18px}
+.faq details[open] summary:after{content:"–"}
+.faq p{font-size:14px;color:var(--ink2);margin-top:8px;line-height:1.5}
+.boxc{background:var(--paper);border:1px solid var(--line);border-radius:20px;padding:24px}
+.boxc h3{font-size:24px;margin-bottom:6px}
+.boxc p{color:var(--ink2);font-size:14px;margin-bottom:14px}
+.boxc form{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.boxc input,.boxc textarea{border:1px solid var(--line);border-radius:10px;padding:10px;background:#fff}
+.boxc textarea{grid-column:1/-1;min-height:70px;resize:vertical}
+.boxc .full{grid-column:1/-1}
+.news{background:linear-gradient(120deg,#e3ead9,#efe5d6)}
+.track-res{margin-top:12px;font-size:14px}
+.tsteps{display:flex;gap:6px;margin:10px 0}
+.tsteps div{flex:1;text-align:center;font-size:11px;color:var(--muted)}
+.tsteps div i{display:block;height:6px;border-radius:9px;background:var(--line);margin-bottom:5px}
+.tsteps div.on i{background:var(--sage-d)}
+.tsteps div.on{color:var(--ink)}
+footer.sf{background:#2b2523;color:#cfc6bf;padding:40px 0 30px;font-size:14px}
+footer.sf .wrap{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:20px}
+footer.sf b{color:#fff;display:block;margin-bottom:8px}
+footer.sf p{margin-bottom:5px}
+.waf{position:fixed;right:20px;bottom:20px;background:#25d366;color:#fff;border-radius:99px;padding:12px 18px;font-weight:700;box-shadow:0 6px 20px rgba(0,0,0,.18);z-index:30;font-size:14px}
+.pm{display:grid;grid-template-columns:1fr 1fr}
+.pm .img{display:grid;place-items:center;font-size:150px;min-height:420px;border-radius:20px 0 0 20px}
+.pm .det{padding:28px}
+.pm h2{font-size:30px;margin:6px 0 8px}
+.pm .desc{color:var(--ink2);font-size:14px;line-height:1.55;margin:12px 0}
+.pm .facts{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:12px 0}
+.pm .facts div{background:var(--cream);border-radius:10px;padding:8px 10px;font-size:12px;color:var(--muted)}
+.pm .facts b{display:block;color:var(--ink);font-size:13px}
+.pm label{font-size:13px;font-weight:500;display:block;margin:10px 0 5px}
+.pm select,.pm input[type=text]{width:100%;border:1px solid var(--line);border-radius:10px;padding:10px;background:#fff}
+.qty{display:flex;align-items:center;border:1px solid var(--line);border-radius:99px;overflow:hidden;background:#fff}
+.qty button{border:0;background:none;width:38px;height:40px;font-size:18px}
+.qty span{width:30px;text-align:center}
+.pm .addrow{display:flex;gap:10px;margin-top:16px}
+.pm .addrow .btn{flex:1}
+.rel{display:flex;gap:8px;margin-top:8px}
+.rel div{flex:1;background:var(--cream);border-radius:12px;padding:10px;font-size:12px;text-align:center;cursor:pointer}
+.rel div i{font-style:normal;font-size:30px;display:block}
+.drawer{position:fixed;top:0;right:-440px;width:420px;max-width:100%;height:100%;background:var(--paper);z-index:90;box-shadow:-10px 0 30px rgba(0,0,0,.15);transition:right .25s;display:flex;flex-direction:column}
+.drawer.on{right:0}
+.drawer header{padding:16px 18px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center}
+.drawer .items{overflow:auto;padding:6px 18px;max-height:34vh}
+.ci{display:flex;gap:10px;align-items:center;padding:10px 0;border-bottom:1px solid var(--line)}
+.ci .e{font-size:28px;width:46px;height:46px;border-radius:10px;display:grid;place-items:center;flex-shrink:0}
+.ci .n{flex:1;font-size:14px}
+.ci .n small{color:var(--muted);display:block;font-size:12px}
+.drawer .form{padding:12px 18px;display:flex;flex-direction:column;gap:8px;overflow:auto;flex:1;border-top:1px solid var(--line)}
+.drawer input[type=text]{border:1px solid var(--line);border-radius:10px;padding:9px;width:100%;background:#fff}
+.opts{display:flex;gap:6px}
+.opts label{flex:1;border:1px solid var(--line);border-radius:10px;padding:8px;font-size:12px;cursor:pointer;background:#fff}
+.opts label:has(input:checked){border-color:var(--sage-d);background:var(--sage-l)}
+.opts input{margin-right:4px}
+.coupon{display:flex;gap:6px}
+.tot{display:flex;justify-content:space-between;font-size:14px}
+.tot.big{font-size:18px;font-weight:700}
+.xb{background:none;border:0;font-size:22px;color:var(--muted)}
+
+/* ============ PEDIDOS ============ */
+.cards5{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-bottom:12px}
+.kc{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:14px;cursor:pointer;text-align:left;transition:.15s;font:inherit;color:inherit}
+.kc:hover{border-color:var(--terra)}
+.kc.on{border:2px solid var(--ink);padding:13px;background:#fff}
+.kc span{font-size:12px;color:var(--muted);display:block}
+.kc b{display:block;font-family:"Fraunces";font-weight:500;font-size:30px;margin:2px 0}
+.kc em{font-style:normal;font-size:12px;color:var(--ink2)}
+.kc em.w{color:var(--red);font-weight:500}
+.kc .hint2{font-size:10px;color:var(--muted);margin-top:4px;display:block}
+.toolbar{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:12px}
+.toolbar input,.toolbar select{border:1px solid var(--line);border-radius:10px;padding:8px 10px;background:var(--paper)}
+.toolbar input{flex:1;min-width:200px}
+.wgrid{display:grid;grid-template-columns:1.25fr 1fr;gap:14px;align-items:start;margin-bottom:40px}
+.lhead{display:flex;justify-content:space-between;align-items:center;padding:12px 14px;border-bottom:1px solid var(--line);font-size:13px;color:var(--muted)}
+.lhead b{color:var(--ink);font-size:15px}
+.wlist{max-height:640px;overflow:auto}
+.orow{display:flex;gap:12px;padding:12px 14px;border-bottom:1px solid var(--line);cursor:pointer;align-items:center}
+.orow:hover{background:#faf6f0}
+.orow.sel{background:var(--terra-l)}
+.orow.new{box-shadow:inset 4px 0 0 var(--terra)}
+.orow .who{flex:1;min-width:0}
+.orow .who b{display:block;font-size:14px}
+.orow .who span.it{font-size:12px;color:var(--muted);display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.orow .r{text-align:right;font-size:12px;color:var(--muted);white-space:nowrap}
+.orow .r b{display:block;color:var(--ink);font-size:14px}
+.est{display:inline-block;font-size:11px;padding:2px 8px;border-radius:99px;font-weight:500;margin-top:3px;white-space:nowrap}
+.e0{background:var(--terra-l);color:#9a5636}.e1{background:var(--amber-l);color:#87600f}.e2{background:var(--blue-l);color:#3d6896}.e3{background:#ece4f6;color:#6a4b98}.e4{background:#e0f1ec;color:#1f6f57}.e5{background:var(--sage-l);color:#4d6a49}.e6{background:#eee;color:#777}
+.late{background:var(--red-l);color:var(--red)}
+.chan{font-size:10px;font-weight:700;padding:2px 6px;border-radius:5px;color:#fff;margin-right:4px;vertical-align:1px}
+.c-web{background:#7a6a62}.c-whatsapp{background:#1d8f4a}.c-instagram{background:#b02d74}.c-local{background:#8a7f78}
+.dpanel{position:sticky;top:110px}
+.dd{padding:20px}
+.dd h3{font-size:22px;margin:4px 0 2px}
+.dd .sub{color:var(--muted);font-size:13px}
+.prog{display:flex;gap:4px;margin:12px 0 4px}
+.prog i{flex:1;height:6px;border-radius:9px;background:var(--line)}
+.prog i.on{background:var(--sage-d)}
+.proglbl{display:flex;justify-content:space-between;font-size:10px;color:var(--muted);margin-bottom:6px}
+.blk{border-top:1px solid var(--line);padding:12px 0;font-size:14px}
+.blk h4{font-size:11px;color:var(--muted);font-weight:700;margin-bottom:6px;text-transform:uppercase;letter-spacing:.6px}
+.ln{display:flex;justify-content:space-between;padding:3px 0;gap:10px}
+.ln small{color:var(--muted)}
+.note{background:#fff7e6;border-radius:8px;padding:8px 10px;margin-top:6px;font-size:13px}
+.acts{display:flex;gap:8px;flex-wrap:wrap}
+.tl div{font-size:12px;color:var(--muted);padding:3px 0 3px 12px;border-left:2px solid var(--line);margin-left:4px}
+.tl div b{color:var(--ink2);font-weight:500}
+.crow{padding:12px 14px;border-bottom:1px solid var(--line);font-size:13px}
+.crow b{font-size:14px}
+.crow p{margin:5px 0 8px;line-height:1.45}
+
+/* ============ HISTORIAL ============ */
+.pbar{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:14px}
+.seg{display:flex;background:var(--paper);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.seg button{border:0;background:none;padding:8px 14px;font-size:13px;color:var(--ink2)}
+.seg button.on{background:var(--ink);color:#fff}
+.pnav{display:flex;align-items:center;gap:6px}
+.pnav button{border:1px solid var(--line);background:var(--paper);border-radius:8px;width:34px;height:34px;font-size:16px}
+.pnav b{font-family:"Fraunces";font-weight:500;font-size:19px;min-width:260px;text-align:center}
+.mgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:14px}
+.mt{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:14px}
+.mt span{font-size:12px;color:var(--muted);display:block}
+.mt b{display:block;font-family:"Fraunces";font-weight:500;font-size:26px;margin:2px 0;font-variant-numeric:tabular-nums}
+.mt em{font-style:normal;font-size:12px;color:var(--muted)}
+.up{color:#2d7a4f!important}.dn{color:var(--red)!important}
+.tbl{width:100%;border-collapse:collapse;font-size:13px}
+.tbl th{font-weight:500;color:var(--muted);font-size:12px;text-align:left;padding:9px 10px;border-bottom:1px solid var(--line);background:#fbf8f3;position:sticky;top:0}
+.tbl td{padding:9px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+.tbl td.n,.tbl th.n{text-align:right;font-variant-numeric:tabular-nums}
+.tbl tr.tot td{font-weight:700;background:#fbf8f3}
+.tscroll{max-height:460px;overflow:auto}
+.ph{display:flex;justify-content:space-between;align-items:center;padding:14px 16px;border-bottom:1px solid var(--line);gap:10px;flex-wrap:wrap}
+.ph h3{font-size:18px}
+.ph small{color:var(--muted);font-size:12px;font-family:"DM Sans"}
+.pb{padding:14px 16px}
+
+/* ============ DASHBOARD ============ */
+.dfil{display:flex;gap:8px;flex-wrap:wrap;align-items:center;background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:10px 12px;margin-bottom:14px}
+.dfil label{font-size:12px;color:var(--muted)}
+.dfil select{border:1px solid var(--line);border-radius:8px;padding:7px 10px;background:#fff}
+.dfil .sp{flex:1}
+.kgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:14px}
+.kt{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:14px 16px}
+.kt span{font-size:12px;color:var(--muted)}
+.kt b{display:block;font-family:"Fraunces";font-weight:500;font-size:27px;margin:4px 0 2px;font-variant-numeric:tabular-nums}
+.kt em{font-style:normal;font-size:12px;color:var(--muted)}
+.dg{display:grid;gap:14px;margin-bottom:14px}
+.g21{grid-template-columns:2fr 1fr}.g11{grid-template-columns:1fr 1fr}.g111{grid-template-columns:1fr 1fr 1fr}.g12{grid-template-columns:1fr 1.3fr}
+.legend{display:flex;gap:14px;font-size:12px;color:var(--ink2);flex-wrap:wrap;align-items:center}
+.legend i{display:inline-block;width:14px;height:3px;border-radius:2px;margin-right:5px;vertical-align:middle}
+.legend i.sq{width:10px;height:10px;border-radius:3px}
+.legend i.dash{background:repeating-linear-gradient(90deg,var(--prev) 0 4px,transparent 4px 7px)!important}
+svg text{font-family:"DM Sans";font-size:11px;fill:var(--muted)}
+svg text.v{fill:var(--ink);font-weight:500}
+.hero-n{font-family:"Fraunces";font-size:38px;font-weight:500;font-variant-numeric:tabular-nums}
+.pbar2{height:10px;background:var(--grid);border-radius:9px;margin:10px 0 6px;position:relative}
+.pbar2 i{display:block;height:100%;background:var(--s1);border-radius:9px}
+.pbar2 u{position:absolute;top:-4px;bottom:-4px;width:2px;background:var(--ink)}
+.ins{font-size:13px;line-height:1.5}
+.ins div{padding:9px 12px;border-radius:10px;background:var(--cream);margin-bottom:8px;border-left:3px solid var(--sage-d)}
+.ins div.w{border-left-color:var(--red)}
+.abc{display:inline-block;width:20px;height:20px;border-radius:6px;text-align:center;font-size:11px;font-weight:700;line-height:20px}
+.abc.A{background:var(--sage-l);color:#3f5e3b}.abc.B{background:var(--amber-l);color:#87600f}.abc.C{background:#eee;color:#777}
+.statl{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--line);font-size:13px;gap:8px}
+.statl b{font-variant-numeric:tabular-nums}
+.funnel .fr{display:grid;grid-template-columns:100px 1fr 76px;gap:10px;align-items:center;margin-bottom:9px;font-size:13px}
+.funnel .fr div{height:28px;border-radius:0 6px 6px 0}
+.funnel .fr span:last-child{text-align:right;color:var(--ink2);font-size:12px}
+
+/* ============ STOCK ============ */
+.subtabs{display:flex;gap:4px;border-bottom:1px solid var(--line);padding:0 10px;flex-wrap:wrap}
+.subtabs button{border:0;background:none;padding:12px 14px;font-size:14px;color:var(--muted);border-bottom:2px solid transparent}
+.subtabs button.on{color:var(--ink);border-bottom-color:var(--terra);font-weight:500}
+td[contenteditable]{background:#fffbe6;outline:none}
+td[contenteditable]:focus{box-shadow:inset 0 0 0 2px var(--terra)}
+.st-ok{background:var(--sage-l);color:#4d6a49}.st-low{background:var(--amber-l);color:#87600f}.st-crit{background:var(--red-l);color:var(--red)}
+.promo-form{display:grid;grid-template-columns:1fr 1fr;gap:12px;max-width:760px}
+.promo-form label{font-size:13px;font-weight:500;display:flex;flex-direction:column;gap:5px}
+.promo-form input,.promo-form textarea,.promo-form select{border:1px solid var(--line);border-radius:10px;padding:9px;background:#fff}
+.promo-form .full{grid-column:1/-1}
+
+/* ============ AUTOMATIZACIONES ============ */
+.flow{display:flex;align-items:center;min-width:860px;padding:26px 10px}
+.node{display:flex;flex-direction:column;align-items:center;width:126px;text-align:center;gap:7px}
+.node .c{width:70px;height:70px;border-radius:50%;display:grid;place-items:center;font-size:28px;color:#fff;box-shadow:0 4px 12px rgba(0,0,0,.12);transition:.2s}
+.node .c.pulse{transform:scale(1.15)}
+.node small{font-size:12px;color:var(--ink2);line-height:1.3}
+.node b{font-size:12px}
+.link{flex:1;min-width:22px;height:3px;background:repeating-linear-gradient(90deg,#cbbfb2 0 6px,transparent 6px 11px)}
+.run{display:flex;gap:12px;padding:9px 16px;border-bottom:1px solid var(--line);font-size:13px;align-items:center}
+.run time{color:var(--muted);width:46px}
+.scen{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:12px;margin:14px 0 40px}
+.scen div{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:14px;font-size:13px;line-height:1.45}
+.scen b{display:block;font-size:14px;margin-bottom:4px}
+.pill{float:right;background:var(--sage-l);color:var(--sage-d);font-size:11px;padding:2px 8px;border-radius:99px}
+
+/* ============ ETIQUETA ============ */
+.lblwrap{display:flex;gap:20px;flex-wrap:wrap;justify-content:center;padding:24px;background:#eee8df;border-radius:14px}
+.label{width:100mm;min-height:150mm;background:#fff;border:1px solid #222;padding:5mm;color:#111;display:flex;flex-direction:column;gap:3mm}
+.label .lh{display:flex;justify-content:space-between;align-items:center;border-bottom:2px solid #111;padding-bottom:3mm}
+.label .lh .lg{font-family:"Fraunces";font-size:20px;letter-spacing:4px}
+.label .lh .nro{text-align:right;font-size:11px}
+.label .lh .nro b{display:block;font-size:22px}
+.label .row{display:flex;justify-content:space-between;align-items:center;font-size:11px;gap:6px}
+.label .bx{border:1px solid #111;border-radius:2mm;padding:2.5mm;font-size:12px;line-height:1.4}
+.label .bx h5{font-size:9px;letter-spacing:1px;text-transform:uppercase;margin-bottom:1mm;color:#444}
+.label .bx b{font-size:16px}
+.label .paid{display:inline-block;border:2px solid #111;padding:1mm 3mm;font-weight:700;font-size:13px;letter-spacing:1px;transform:rotate(-4deg)}
+.label .items div{font-size:11px;border-bottom:1px dashed #bbb;padding:1mm 0}
+.label .bar{margin-top:auto;text-align:center;font-size:10px;letter-spacing:2px}
+.label .frag{background:#111;color:#fff;text-align:center;font-size:11px;font-weight:700;padding:1.5mm;letter-spacing:1px}
+.thx{width:100mm;min-height:150mm;background:linear-gradient(160deg,#faf6f0,#efe5d6);border:1px solid #cbbfb2;padding:9mm 7mm;display:flex;flex-direction:column;align-items:center;text-align:center;gap:4mm;color:#3b3330}
+.thx .lg{font-family:"Fraunces";font-size:24px;letter-spacing:6px;color:#a86a4b}
+.thx h4{font-family:"Fraunces";font-weight:500;font-size:22px}
+.thx p{font-size:12px;line-height:1.5}
+.thx .cp{border:2px dashed #a86a4b;border-radius:3mm;padding:4mm 6mm;margin-top:2mm}
+.thx .cp b{display:block;font-family:"Fraunces";font-size:34px;color:#a86a4b}
+.thx .cp code{font-size:15px;font-weight:700;letter-spacing:2px}
+.thx small{font-size:10px;color:#8a7f78;margin-top:auto}
+@media print{
+  @page{margin:6mm}
+  body{background:#fff}
+  body[data-print=label] > *:not(#modal){display:none!important}
+  body[data-print=label] #modal{position:static;background:none;display:block;padding:0}
+  body[data-print=label] #modal .box{max-height:none;overflow:visible;background:none}
+  body[data-print=label] .noprint{display:none!important}
+  body[data-print=label] .lblwrap{background:none;padding:0;display:block}
+  body[data-print=label] .label,body[data-print=label] .thx{page-break-after:always;margin:0 auto}
+  body[data-print=dash] .demobar,body[data-print=dash] .view:not(#v-dash),body[data-print=dash] .noprint,body[data-print=dash] #notifs,body[data-print=dash] .modal{display:none!important}
+  body[data-print=dash] .panel,body[data-print=dash] .kt{break-inside:avoid}
+}
+
+@media (max-width:980px){
+  .cards5{grid-template-columns:repeat(3,1fr)}.wgrid,.dg,.g21,.g11,.g111,.g12,.two{grid-template-columns:1fr}
+  .kgrid,.mgrid{grid-template-columns:repeat(2,1fr)}.dpanel{position:static}
+  .why,.ages,.trust{grid-template-columns:repeat(2,1fr)}.revs,.how .steps{grid-template-columns:1fr}.ig{grid-template-columns:repeat(3,1fr)}
+  .pm{grid-template-columns:1fr}.pm .img{min-height:220px;font-size:100px;border-radius:20px 20px 0 0}
+  footer.sf .wrap{grid-template-columns:1fr 1fr}
+}
+@media (max-width:700px){
+  .hero-in{grid-template-columns:1fr;padding:30px 22px}.hero h1{font-size:34px}.hero-art{font-size:80px}
+  .shead nav,.search{display:none}.shead{top:94px}.cards5{grid-template-columns:repeat(2,1fr)}
+  .boxc form{grid-template-columns:1fr}.promo-form{grid-template-columns:1fr}.pnav b{min-width:0;font-size:16px}
+}
 </style>
 </head>
 <body>
-<div class="wrap">
-  <header>
-    <div class="logo">nidobebé</div>
-    <h1>Web propia + sistema de gestión</h1>
-    <p>Dos propuestas para ordenar pedidos, stock, producción y clientes en un solo lugar. Son demos para tocar y probar: los datos son de ejemplo y se reinician al recargar la página.</p>
-  </header>
 
-  <div class="cards">
-    <div class="card">
-      <span class="tag" style="background:var(--sage-l);color:var(--sage)">ESQUEMA A · PARA EMPEZAR</span>
-      <h2>Web + panel de gestión</h2>
-      <ul>
-        <li>Tienda online propia con catálogo, cupones y "seguí tu pedido"</li>
-        <li>Bandeja de pedidos y consultas con avisos al instante</li>
-        <li>Etiqueta imprimible con cupón para la próxima compra</li>
-        <li>Stock de insumos y productos, con descuento automático por receta</li>
-        <li>Historial por día, semana, mes y año</li>
-        <li>Dashboard con métricas y descargas</li>
-      </ul>
-      <div class="price">≈ USD 25 / mes <small>en servicios</small></div>
-      <a class="btn" href="esquema-A-simple.html">Probar el Esquema A →</a>
-    </div>
-    <div class="card">
-      <span class="tag" style="background:var(--terra-l);color:var(--terra-d)">ESQUEMA B · INTEGRAL</span>
-      <h2>Todo lo de A + CRM e IA</h2>
-      <ul>
-        <li>WhatsApp oficial e Instagram en una sola bandeja</li>
-        <li>Asistente con IA que responde 24/7 y deriva a una persona</li>
-        <li>Embudo de clientes: consulta → cotizado → seña → entregado</li>
-        <li>Seguimientos automáticos y campañas por edad del bebé</li>
-        <li>Producción del taller por etapas</li>
-      </ul>
-      <div class="price">≈ USD 60–120 / mes <small>en servicios</small></div>
-      <a class="btn dk" href="esquema-B-integral.html">Probar el Esquema B →</a>
-    </div>
+<div class="demobar">
+  <b>NIDO BEBÉ</b><span class="tag">Demo · Web propia + Panel de gestión</span>
+  <div class="tabs">
+    <button class="on" data-v="web">🛍️ Web</button>
+    <button data-v="work">📥 Pedidos <span class="nb" id="nb"></span></button>
+    <button data-v="hist">🗂️ Historial</button>
+    <button data-v="dash">📊 Dashboard</button>
+    <button data-v="stock">🗄️ Stock, recetas y promos</button>
+    <button data-v="auto">⚙️ Automatizaciones</button>
   </div>
-
-  <div class="sec">
-    <h2>Cómo probar el Esquema A en 3 minutos</h2>
-    <div class="steps">
-      <div><b>1. Hacé un pedido como clienta</b>En la pestaña Web abrí la guirnalda, escribí un nombre, agregá unos portachupetes y enviá el pedido con el código BIENVENIDA.</div>
-      <div><b>2. Gestionalo como NIDO</b>Andá a Pedidos: tocá las tarjetas para filtrar, confirmá el pago, imprimí la etiqueta y pasalo a producción.</div>
-      <div><b>3. Mirá el stock y los números</b>En Stock vas a ver qué insumos se descontaron. Registrá una compra. Después recorré el Historial y el Dashboard.</div>
-    </div>
-  </div>
-
-  <div class="sec">
-    <h2>Costos mensuales estimados</h2>
-    <table>
-      <tr><th>Servicio</th><th>Esquema A</th><th>Esquema B</th></tr>
-      <tr><td>Dominio nidobebe.com.ar</td><td>~USD 7 por año</td><td>~USD 7 por año</td></tr>
-      <tr><td>Hosting de la web y el panel</td><td>USD 0</td><td>USD 0</td></tr>
-      <tr><td>Base de datos con respaldo diario</td><td>USD 25</td><td>USD 25</td></tr>
-      <tr><td>Emails automáticos</td><td>USD 0</td><td>USD 0</td></tr>
-      <tr><td>WhatsApp</td><td>App Business (gratis)</td><td>API oficial: USD 10–40</td></tr>
-      <tr><td>Automatizaciones</td><td>Incluidas</td><td>USD 6–12</td></tr>
-      <tr><td>Asistente con IA</td><td>–</td><td>USD 15–40</td></tr>
-      <tr><td><b>Total aproximado</b></td><td><b>USD 25 / mes</b></td><td><b>USD 60–120 / mes</b></td></tr>
-    </table>
-    <p class="note">No incluye el desarrollo. Valores aproximados en dólares, a confirmar al contratar.</p>
-  </div>
-
-  <div class="sec">
-    <h2>Cómo seguiríamos</h2>
-    <div class="phases">
-      <div><span>FASE 1</span><b>Datos</b>Cargar los productos, precios, variantes y recetas reales.</div>
-      <div><span>FASE 2</span><b>Web</b>Publicar la tienda con fotos profesionales y dominio propio.</div>
-      <div><span>FASE 3</span><b>Panel</b>Pedidos, stock, etiquetas, historial y dashboard.</div>
-      <div><span>FASE 4</span><b>Esquema B</b>Cuando haga falta: WhatsApp oficial, IA y CRM.</div>
-    </div>
-  </div>
-  <footer>Demo de propuesta · los datos, clientes y números son de ejemplo</footer>
 </div>
+
+<!-- ======================= WEB ======================= -->
+<section class="view on" id="v-web">
+  <div class="annc" id="annc"></div>
+  <div class="shead"><div class="wrap">
+    <div class="logo">nidobebé</div>
+    <div class="search"><input id="wq" placeholder="Buscar: cocina, toallón, velador…" oninput="wf.q=this.value;renderGrid()"></div>
+    <nav><a onclick="goSec('catalogo')">Catálogo</a><a onclick="setAge('boxs')">Regalos</a><a onclick="goSec('como')">Cómo comprar</a><a onclick="goSec('seguir')">Seguí tu pedido</a></nav>
+    <button class="cartbtn" onclick="openCart()">🛒 <span id="cc">0</span></button>
+  </div></div>
+
+  <div class="wrap">
+    <div class="hint">💡 <b>Probá:</b> tocá un producto para ver el detalle, elegí la variante o la personalización y enviá el pedido. Después andá a <b>📥 Pedidos</b>: aparece al instante.</div>
+    <div class="hero"><div class="hero-in">
+      <div>
+        <small>HECHO A MANO EN ROSARIO</small>
+        <h1>Infancias sin prisa,<br>con materiales nobles.</h1>
+        <p>Juguetes de madera con pinturas atóxicas, textiles suaves y regalos que emocionan. Cada pieza se hace a mano y se puede personalizar.</p>
+        <div class="ctas"><button class="btn" onclick="goSec('catalogo')">Ver catálogo</button><button class="btn gh" onclick="setAge('boxs')">🎁 Ideas para regalar</button></div>
+      </div>
+      <div class="hero-art">🧸🚂<br>🍳🪺</div>
+    </div></div>
+    <div class="trust">
+      <div><i>✋</i><div><b>Hecho a mano</b>en nuestro taller</div></div>
+      <div><i>🌿</i><div><b>Atóxico</b>pinturas e hilos seguros</div></div>
+      <div><i>💳</i><div><b>3 cuotas sin interés</b>o precio por transferencia</div></div>
+      <div><i>📦</i><div><b>Retiro o envío</b>a todo el país</div></div>
+    </div>
+
+    <div class="sec-t"><div><h2>Comprá por edad</h2><p>Lo justo para cada etapa</p></div></div>
+    <div class="ages" id="ages"></div>
+
+    <div id="catalogo" class="sec-t"><div><h2>Catálogo</h2><p id="ccount"></p></div></div>
+    <div class="filters" id="filters"></div>
+    <div class="grid" id="grid"></div>
+
+    <div class="sec-t"><div><h2>¿Por qué NIDO?</h2></div></div>
+    <div class="why">
+      <div><i>🪵</i><b>Materiales nobles</b><p>Fibrofácil y pino lijados a mano, con terminaciones suaves y duraderas.</p></div>
+      <div><i>🎨</i><b>Pinturas atóxicas</b><p>Pintamos y barnizamos con productos aptos para los más peques.</p></div>
+      <div><i>🧶</i><b>Hilos hipoalergénicos</b><p>Textiles y tejidos suaves, seguros para la piel sensible.</p></div>
+      <div><i>✨</i><b>Personalizables</b><p>Nombres, colores y detalles para que cada pieza sea única.</p></div>
+    </div>
+
+    <div class="how" id="como">
+      <h2 style="font-size:28px">Cómo comprar</h2>
+      <div class="steps">
+        <div class="st"><div class="n">1</div><div><b>Elegí y enviá tu pedido</b><p>Armá el carrito y elegí cómo pagar y recibir. No necesitás crear una cuenta.</p></div></div>
+        <div class="st"><div class="n">2</div><div><b>Confirmamos y pagás</b><p>Te escribimos por WhatsApp. Transferís al alias o coordinamos las cuotas.</p></div></div>
+        <div class="st"><div class="n">3</div><div><b>Lo hacemos a mano</b><p>Te avisamos cuando está listo para retirar o lo enviamos. Seguilo desde la web.</p></div></div>
+      </div>
+    </div>
+
+    <div class="sec-t"><div><h2>Lo que dicen las familias</h2><p>★ 4,9 de 5 · 180 reseñas</p></div></div>
+    <div class="revs">
+      <div class="rev"><div class="stars">★★★★★</div><p>“La cocina es una obra de arte. Mi hija juega todos los días y la calidad se nota en cada detalle.”</p><b>Lucía P. · Rosario</b></div>
+      <div class="rev"><div class="stars">★★★★★</div><p>“Regalé la Box Primer Nido en un baby shower y fue el regalo más comentado. Hermoso packaging.”</p><b>Martina G. · Funes</b></div>
+      <div class="rev"><div class="stars">★★★★★</div><p>“Pedí la guirnalda con el nombre de mi bebé y quedó divina. Súper atentas por WhatsApp.”</p><b>Carla R. · Córdoba</b></div>
+    </div>
+
+    <div class="sec-t"><div><h2>@nidobebe.ros</h2><p>Seguinos en Instagram</p></div><a class="btn gh sm">Ver Instagram</a></div>
+    <div class="ig"><div style="background:#f3e6d8">🍳</div><div style="background:#e6ede2">🪺</div><div style="background:#f1e3e0">🦁</div><div style="background:#e9e4f1">🎁</div><div style="background:#e2ecef">🎨</div><div style="background:#f3e6d8">🚂</div></div>
+
+    <div class="two">
+      <div class="faq"><h2 style="font-size:28px;margin-bottom:12px">Preguntas frecuentes</h2>
+        <details open><summary>¿Cuánto tarda mi pedido?</summary><p>Cada producto muestra sus días de fabricación (entre 1 y 7 días hábiles). Los personalizados pueden sumar 1 o 2 días.</p></details>
+        <details><summary>¿Hacen envíos?</summary><p>Sí, a todo el país. Coordinamos el envío por WhatsApp según tu dirección. En Rosario podés retirar sin cargo.</p></details>
+        <details><summary>¿Cómo pago en cuotas?</summary><p>Elegí “3 cuotas” al enviar tu pedido y te escribimos para coordinar el pago con tarjeta. Por transferencia tenés precio especial.</p></details>
+        <details><summary>¿Puedo personalizar?</summary><p>Guirnaldas, toallones, cuadros y Cumpis se personalizan con nombres, colores o datos de nacimiento. Escribilo al agregar el producto.</p></details>
+        <details><summary>¿Son seguros para bebés?</summary><p>Usamos pinturas y barnices atóxicos e hilos hipoalergénicos. Cada producto indica la edad recomendada.</p></details>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:18px">
+        <div class="boxc" id="seguir"><h3>📦 Seguí tu pedido</h3><p>Ingresá tu número de pedido para ver en qué etapa está.</p>
+          <form onsubmit="event.preventDefault();track()"><input id="trk" placeholder="N° de pedido, ej: 2100"><button class="btn sg">Buscar</button></form>
+          <div class="track-res" id="trkres"></div></div>
+        <div class="boxc news"><h3>Sumate a la familia NIDO</h3><p id="newsTxt"></p>
+          <form onsubmit="event.preventDefault();subscribe(this)"><input name="e" placeholder="Tu email" value="sofi.mama@gmail.com" required><button class="btn dk">Quiero mi cupón</button></form></div>
+      </div>
+    </div>
+
+    <div class="boxc" style="margin-bottom:60px"><div class="two" style="margin:0;align-items:center">
+      <div><h3>¿Tenés una consulta?</h3><p style="margin:0">Personalizados, medidas, regalos… te respondemos por WhatsApp en el día.</p></div>
+      <form onsubmit="event.preventDefault();sendConsulta(this)">
+        <input name="n" placeholder="Nombre" value="Camila Ríos" required>
+        <input name="t" placeholder="WhatsApp" value="341 622-8890" required>
+        <textarea name="m" required>Hola! ¿Hacen la guirnalda con el nombre MATEO en tonos azules? ¿Cuánto tardan?</textarea>
+        <button class="btn full">Enviar consulta</button>
+      </form>
+    </div></div>
+  </div>
+  <footer class="sf"><div class="wrap">
+    <div><div class="logo" style="color:#fff;margin-bottom:10px">nidobebé</div><p>Juguetes y objetos para la infancia, hechos a mano con mucho amor.</p></div>
+    <div><b>Tienda</b><p>Juegos</p><p>Baby</p><p>Deco</p><p>Boxs</p></div>
+    <div><b>Ayuda</b><p>Cómo comprar</p><p>Envíos</p><p>Seguí tu pedido</p><p>Preguntas frecuentes</p></div>
+    <div><b>Contacto</b><p>💬 WhatsApp</p><p>📷 @nidobebe.ros</p><p>📍 Rosario, Santa Fe</p></div>
+  </div></footer>
+  <div class="waf">💬 WhatsApp</div>
+</section>
+
+<div class="drawer" id="drawer">
+  <header><h3>Tu pedido</h3><button class="xb" onclick="closeCart()">×</button></header>
+  <div class="items" id="items"></div>
+  <div class="form">
+    <div class="coupon"><input type="text" id="cpn" placeholder="Código de descuento (probá BIENVENIDA)"><button class="btn gh sm" onclick="applyCoupon()">Aplicar</button></div>
+    <div class="opts">
+      <label><input type="radio" name="pay" value="trf" checked onchange="updCart()">Transferencia<br><b>precio especial</b></label>
+      <label><input type="radio" name="pay" value="cuotas" onchange="updCart()">3 cuotas sin interés<br><b>te escribimos</b></label>
+    </div>
+    <div class="opts">
+      <label><input type="radio" name="ent" value="retiro" checked onchange="document.getElementById('cdir').style.display='none'">🏠 Retiro en Rosario</label>
+      <label><input type="radio" name="ent" value="envio" onchange="document.getElementById('cdir').style.display='block'">🚚 Envío a coordinar</label>
+    </div>
+    <input type="text" id="cdir" placeholder="Dirección y ciudad" style="display:none" value="Bv. Oroño 1234, Rosario">
+    <input type="text" id="cname" placeholder="Nombre y apellido" value="Sofía Martínez">
+    <input type="text" id="cphone" placeholder="WhatsApp" value="341 555-1234">
+    <label style="font-size:13px"><input type="checkbox" id="cgift"> 🎁 Es para regalo (envoltorio + tarjeta sin cargo)</label>
+    <div class="tot"><span>Subtotal</span><span id="tsub">$0</span></div>
+    <div class="tot" id="tdiscrow" style="display:none;color:var(--sage-d)"><span id="tdisclbl">Descuento</span><span id="tdisc"></span></div>
+    <div class="tot big"><span>Total</span><span id="ttot">$0</span></div>
+    <button class="btn" onclick="checkout()">Enviar pedido</button>
+    <small style="color:var(--muted);font-size:12px">No hace falta crear cuenta. Te llega un email con el número de pedido y te escribimos por WhatsApp para confirmar.</small>
+  </div>
+</div>
+
+<!-- ======================= PEDIDOS ======================= -->
+<section class="view" id="v-work"><div class="wrap">
+  <div class="hint">💡 <b>Vista de trabajo del día.</b> Tocá cualquier tarjeta de arriba para filtrar la lista (tocala de nuevo para ver todo). Cuando un pedido está pago, se habilita <b>🏷️ Imprimir etiqueta</b>, que incluye la tarjeta con cupón para la próxima compra.</div>
+  <div class="pagehead"><div><h2>📥 Pedidos y consultas</h2><p id="workSub"></p></div>
+    <div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn gh sm" onclick="simulateOrder()">⚡ Simular pedido web</button><button class="btn dk sm" onclick="manualOrder()">+ Cargar pedido de WhatsApp/IG</button></div></div>
+  <div class="cards5" id="kcards"></div>
+  <div class="toolbar">
+    <input id="wsq" placeholder="Buscar por cliente, N° de pedido o producto…" oninput="ws.q=this.value;renderWork()">
+    <select onchange="ws.canal=this.value;renderWork()"><option value="">Todos los canales</option><option value="web">Web</option><option value="whatsapp">WhatsApp</option><option value="instagram">Instagram</option><option value="local">Local / feria</option></select>
+    <select onchange="ws.ent=this.value;renderWork()"><option value="">Retiro y envío</option><option value="retiro">Solo retiro</option><option value="envio">Solo envío</option></select>
+    <select onchange="ws.sort=this.value;renderWork()"><option value="prio">Ordenar: prioridad</option><option value="new">Más nuevos</option><option value="due">Fecha de entrega</option><option value="amount">Mayor monto</option></select>
+  </div>
+  <div class="wgrid">
+    <div class="panel" style="overflow:hidden"><div class="lhead" id="lhead"></div><div id="wlist" class="wlist"></div></div>
+    <div class="panel dpanel" id="wdet"></div>
+  </div>
+</div></section>
+
+<!-- ======================= HISTORIAL ======================= -->
+<section class="view" id="v-hist"><div class="wrap">
+  <div class="hint">💡 <b>Todo queda guardado.</b> Elegí día, semana, mes o año y movete con las flechas: qué entró, qué se respondió, qué esperó pago, qué se cobró y qué se entregó.</div>
+  <div class="pagehead"><div><h2>🗂️ Historial</h2><p>Registro de toda la actividad de pedidos y consultas</p></div></div>
+  <div class="pbar">
+    <div class="seg" id="hseg"><button data-p="day">Día</button><button data-p="week" class="on">Semana</button><button data-p="month">Mes</button><button data-p="year">Año</button></div>
+    <div class="pnav"><button onclick="hNav(-1)" aria-label="Anterior">‹</button><b id="hlbl"></b><button onclick="hNav(1)" aria-label="Siguiente">›</button></div>
+    <button class="btn gh sm" onclick="hs.anchor=new Date(+TODAY);renderHist()">Hoy</button>
+  </div>
+  <div class="mgrid" id="hm"></div>
+  <div class="dg g12">
+    <div class="panel"><div class="ph"><h3>Ingresados vs. pagados <small id="hchartsub"></small></h3><div class="legend"><span><i class="sq" style="background:var(--s1)"></i>Ingresados</span><span><i class="sq" style="background:var(--s2)"></i>Pagados</span></div></div><div class="pb" id="hchart"></div></div>
+    <div class="panel"><div class="ph"><h3>Detalle por <span id="hbk"></span></h3></div><div class="tscroll" id="htable" style="max-height:330px"></div></div>
+  </div>
+  <div class="panel" style="margin-bottom:40px">
+    <div class="ph"><h3>Pedidos del período <small id="hocount"></small></h3>
+      <div class="toolbar" style="margin:0">
+        <input placeholder="Buscar…" oninput="hs.q=this.value;renderHistOrders()" style="min-width:160px">
+        <select onchange="hs.est=this.value;renderHistOrders()" id="hest"></select>
+        <select onchange="hs.canal=this.value;renderHistOrders()"><option value="">Todos los canales</option><option value="web">Web</option><option value="whatsapp">WhatsApp</option><option value="instagram">Instagram</option><option value="local">Local</option></select>
+        <button class="btn gh sm" onclick="exportHist()">⬇ Descargar CSV</button>
+      </div></div>
+    <div class="tscroll" id="horders"></div>
+  </div>
+</div></section>
+
+<!-- ======================= DASHBOARD ======================= -->
+<section class="view" id="v-dash"><div class="wrap">
+  <div class="pagehead"><div><h2>📊 Dashboard de decisiones</h2><p id="dsub"></p></div></div>
+  <div class="dfil noprint">
+    <label>Período</label><select onchange="ds.per=this.value;renderDash()"><option value="7">Últimos 7 días</option><option value="30" selected>Últimos 30 días</option><option value="90">Últimos 90 días</option><option value="ytd">Este año</option><option value="365">Últimos 12 meses</option></select>
+    <label>Canal</label><select onchange="ds.canal=this.value;renderDash()"><option value="">Todos</option><option value="web">Web</option><option value="whatsapp">WhatsApp</option><option value="instagram">Instagram</option><option value="local">Local</option></select>
+    <label>Línea</label><select onchange="ds.line=this.value;renderDash()" id="dline"></select>
+    <span class="sp"></span>
+    <button class="btn gh sm" onclick="exportDash()">⬇ CSV de ventas</button>
+    <button class="btn gh sm" onclick="exportProducts()">⬇ CSV de productos</button>
+    <button class="btn dk sm" onclick="doPrint('dash')">🖨️ Descargar PDF</button>
+  </div>
+  <div class="kgrid" id="dk"></div>
+  <div class="dg g21">
+    <div class="panel"><div class="ph"><h3>Facturación <small id="trsub"></small></h3><div class="legend"><span><i style="background:var(--s1)"></i>Período actual</span><span><i class="dash"></i>Período anterior</span></div></div><div class="pb" id="dtrend"></div></div>
+    <div class="panel"><div class="ph"><h3>Proyección del mes</h3></div><div class="pb" id="dproj"></div></div>
+  </div>
+  <div class="dg g111">
+    <div class="panel"><div class="ph"><h3>Facturación por línea</h3></div><div class="pb" id="dlines"></div></div>
+    <div class="panel"><div class="ph"><h3>Pedidos por canal</h3></div><div class="pb" id="dchan"></div></div>
+    <div class="panel"><div class="ph"><h3>Cómo pagan y reciben</h3></div><div class="pb" id="dmix"></div></div>
+  </div>
+  <div class="dg g21">
+    <div class="panel"><div class="ph"><h3>Productos: ranking y rentabilidad <small>clasificación ABC por facturación</small></h3></div><div class="tscroll" id="dprod" style="max-height:420px"></div></div>
+    <div class="panel"><div class="ph"><h3>Embudo de pedidos</h3></div><div class="pb funnel" id="dfun"></div></div>
+  </div>
+  <div class="dg g11">
+    <div class="panel"><div class="ph"><h3>¿Cuándo entran los pedidos? <small>día y hora</small></h3></div><div class="pb" id="dheat"></div></div>
+    <div class="panel"><div class="ph"><h3>Mejores clientes</h3></div><div class="tscroll" id="dcli" style="max-height:330px"></div></div>
+  </div>
+  <div class="dg g111">
+    <div class="panel"><div class="ph"><h3>Producción y entregas</h3></div><div class="pb" id="dprodn"></div></div>
+    <div class="panel"><div class="ph"><h3>Inventario de insumos</h3></div><div class="pb" id="dinv"></div></div>
+    <div class="panel"><div class="ph"><h3>🧠 Qué haría con estos datos</h3></div><div class="pb ins" id="dins"></div></div>
+  </div>
+  <div class="panel" style="margin-bottom:40px"><div class="ph"><h3>Estacionalidad <small>facturación mensual, últimos 12 meses</small></h3></div><div class="pb" id="dseason"></div></div>
+</div></section>
+
+<!-- ======================= STOCK / PROMOS ======================= -->
+<section class="view" id="v-stock"><div class="wrap">
+  <div class="hint">💡 <b>El stock nunca se escribe a mano.</b> Suma con <b>compras</b>, <b>producción para stock</b> y <b>conteos</b>. Resta solo cuando un pedido se paga (si ya estaba hecho) o pasa a producción (por receta). Cada movimiento queda guardado en <b>Movimientos</b>.</div>
+  <div class="pagehead"><div><h2>🗄️ Stock, recetas y promociones</h2><p>Insumos, producto terminado, movimientos, recetas, márgenes y promociones</p></div>
+    <div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn sm" onclick="compraModal()">＋ Registrar compra</button><button class="btn sg sm" onclick="produceModal()">🔨 Producir para stock</button><button class="btn gh sm" onclick="conteoModal()">📋 Conteo / ajuste</button><button class="btn dk sm" onclick="sugeridaModal()">🧾 Lista de compra sugerida</button></div></div>
+  <div class="mgrid" id="skpi"></div>
+  <div class="panel" style="margin-bottom:40px;overflow:hidden">
+    <div class="subtabs" id="stabs"><button data-s="ins" class="on">Insumos</button><button data-s="fg">Producto terminado</button><button data-s="mov">🔁 Movimientos</button><button data-s="rec">Recetas</button><button data-s="prod">Productos y márgenes</button><button data-s="promo">🎁 Promociones</button></div>
+    <div id="sbody"></div>
+  </div>
+</div></section>
+
+<!-- ======================= AUTOMATIZACIONES ======================= -->
+<section class="view" id="v-auto"><div class="wrap">
+  <div class="pagehead"><div><h2>⚙️ Automatizaciones</h2><p>Tareas que el sistema hace solo, sin que nadie tenga que acordarse</p></div>
+    <button class="btn dk sm" onclick="simulateOrder()">▶ Probar con un pedido</button></div>
+  <div class="panel" style="overflow:auto"><div class="flow">
+    <div class="node"><div class="c" style="background:var(--terra)">🛍️</div><b>Web NIDO</b><small>Pedido o consulta</small></div><div class="link"></div>
+    <div class="node"><div class="c" style="background:var(--sage-d)">🗄️</div><b>Base de datos</b><small>Guarda pedido y cliente</small></div><div class="link"></div>
+    <div class="node"><div class="c" style="background:#c98b2b">🔔</div><b>Avisos</b><small>Panel + email + Telegram</small></div><div class="link"></div>
+    <div class="node"><div class="c" style="background:#5b84b1">✉️</div><b>Email al cliente</b><small>N° de pedido y alias</small></div><div class="link"></div>
+    <div class="node"><div class="c" style="background:#7a6a62">🔨</div><b>Al pasar a producción</b><small>Descuenta insumos</small></div><div class="link"></div>
+    <div class="node"><div class="c" style="background:var(--red)">🚨</div><b>Stock bajo</b><small>Alerta para reponer</small></div>
+  </div></div>
+  <div class="panel" style="margin-top:14px"><div class="ph"><h3>Últimas ejecuciones</h3></div><div id="runs"></div></div>
+  <div class="scen">
+    <div><span class="pill">ON</span><b>💳 Pedido sin pago</b>A las 24 h en “Esperando pago” se envía un recordatorio por email y te avisa para escribirle por WhatsApp.</div>
+    <div><span class="pill">ON</span><b>📧 Email en cada etapa</b>Pago recibido, en producción, listo para retirar o enviado: el cliente se entera solo.</div>
+    <div><span class="pill">ON</span><b>⏰ Pedido atrasado</b>Todos los días a las 9:00 revisa las fechas comprometidas y avisa qué pedidos están en riesgo.</div>
+    <div><span class="pill">ON</span><b>⭐ Reseña y cupón</b>A los 7 días de entregado pide una reseña y recuerda el cupón para la próxima compra.</div>
+    <div><span class="pill">ON</span><b>📅 Resumen semanal</b>Los lunes a las 8:00 manda un email con ventas, lo más vendido, lo pendiente y la lista de compra.</div>
+    <div><span class="pill">ON</span><b>🔐 Respaldo diario</b>Copia de seguridad automática de toda la base, guardada 7 días.</div>
+  </div>
+</div></section>
+
+<div class="modal" id="modal" onclick="if(event.target===this)closeModal()"><div class="box" id="mbox"></div></div>
+<div class="toast" id="toast"></div>
+<div id="notifs"></div>
+<div id="tip"></div>
+
+<script>
+/* =====================================================================
+   DATOS
+   ===================================================================== */
+const TODAY=new Date(2026,9,2,11,30), T0=Date.now(), DAY=864e5;
+const nowT=()=>new Date(+TODAY+(Date.now()-T0));
+const fmt=n=>"$"+Math.round(n).toLocaleString("es-AR");
+const fmtK=n=>n>=1e6?"$"+(n/1e6).toLocaleString("es-AR",{maximumFractionDigits:1})+"M":n>=1e4?"$"+Math.round(n/1e3)+"k":fmt(n);
+const pct=(a,b)=>b?Math.round(a/b*100):0;
+const sod=d=>new Date(d.getFullYear(),d.getMonth(),d.getDate());
+const addD=(d,n)=>new Date(+d+n*DAY);
+const hm=d=>d.toTimeString().slice(0,5);
+const fD=d=>d.toLocaleDateString("es-AR",{day:"2-digit",month:"2-digit"});
+const fDT=d=>d?fD(d)+" "+hm(d):"–";
+const MES=["Ene","Feb","Mar","Abr","May","Jun","Jul","Ago","Sep","Oct","Nov","Dic"];
+const MESL=["enero","febrero","marzo","abril","mayo","junio","julio","agosto","septiembre","octubre","noviembre","diciembre"];
+const DIA=["Dom","Lun","Mar","Mié","Jue","Vie","Sáb"];
+const ago=d=>{const m=(nowT()-d)/6e4;return m<60?`hace ${Math.max(1,Math.round(m))} min`:m<1440?`hace ${Math.round(m/60)} h`:`hace ${Math.round(m/1440)} d`};
+const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const CH={web:"la web",whatsapp:"WhatsApp",instagram:"Instagram",local:"local / feria"};
+const CHN={web:"Web",whatsapp:"WhatsApp",instagram:"Instagram",local:"Local"};
+const EST=["Nuevo","Esperando pago","Pago confirmado","En producción","Listo para entregar","Entregado","Cancelado"];
+
+const LINES={juegos:{n:"Juegos",bg:"#f3e6d8"},baby:{n:"Baby",bg:"#e6ede2"},deco:{n:"Deco",bg:"#f1e3e0"},boxs:{n:"Boxs",bg:"#e9e4f1"},crea:{n:"Crea",bg:"#e2ecef"}};
+const AGES={"0-12m":{n:"0 a 12 meses",e:"👶",bg:"#e6ede2",s:"Nidos, mantas, gimnasios"},"1-3":{n:"1 a 3 años",e:"🧩",bg:"#f3e6d8",s:"Encastres, caminador, apilables"},"3+":{n:"3 años o más",e:"🍳",bg:"#f1e3e0",s:"Cocina, herramientas, juego simbólico"},"boxs":{n:"Regalos y Boxs",e:"🎁",bg:"#e9e4f1",s:"Listos para regalar"}};
+const INS={
+ F9:{n:"Fibrofácil 9 mm",u:"plancha",s:7,m:5,c:38000},F3:{n:"Fibrofácil 3 mm",u:"plancha",s:4,m:2,c:16000},
+ PN:{n:"Madera pino",u:"m",s:9,m:4,c:6500},PI:{n:"Pintura atóxica",u:"L",s:3.2,m:2,c:21000},
+ BA:{n:"Barniz al agua",u:"L",s:1.6,m:1,c:18000},IM:{n:"Imanes",u:"u",s:40,m:20,c:300},
+ TU:{n:"Tusor de algodón",u:"m",s:14,m:10,c:7800},TF:{n:"Toalla doble felpa",u:"m",s:5,m:4,c:9500},
+ CO:{n:"Corderito soft",u:"m",s:6,m:4,c:8900},GU:{n:"Guata",u:"m",s:8,m:5,c:3200},
+ VE:{n:"Vellón siliconado",u:"kg",s:3,m:2,c:7400},HI:{n:"Hilo algodón crochet",u:"ovillo",s:22,m:15,c:2900},
+ BR:{n:"Broche Madison",u:"u",s:35,m:30,c:450},PA:{n:"Pima (ajuar)",u:"m",s:6,m:4,c:11000},EM:{n:"Caja y packaging",u:"u",s:24,m:20,c:1500},
+};
+const W=(w,x={})=>({F9:w,PI:+(w*.35).toFixed(2),BA:+(w*.2).toFixed(2),EM:1,...x});
+const T=(x)=>({EM:1,...x});
+const P=[
+ ["PPV","Pata Pata Vespa","juegos","🛵",129000,167700,"1-3",5,"45 × 50 × 5 cm",W(1.2),{w:3,b:"Clásico",d:"Un clásico que invita a moverse, imaginar y descubrir el mundo a su ritmo. Estimula la coordinación y la motricidad."}],
+ ["CAM","Caminador NIDO","juegos","🚶",125000,159000,"0-12m",5,"30 × 33 × 55 cm",W(1),{w:3,d:"Acompaña los primeros pasitos de forma segura. Incluye camino con fichas y 3 bloques para encastrar."}],
+ ["HEL","Super carrito de helados","juegos","🍦",109000,138900,"3+",4,"25 × 42 × 46 cm",W(.9,{IM:6}),{w:3,d:"Con tres helados de bocha imantados, tres paletas, una cuchara con imán y cucuruchos. Juego simbólico puro."}],
+ ["TRE","Tren de encastre","juegos","🚂",119000,145400,"1-3",4,"1,20 m de largo",W(.6),{w:5,d:"Locomotora y cuatro vagones con piezas geométricas para apilar, encastrar y transportar."}],
+ ["PIN","Pinball retro","juegos","🎯",66000,83900,"3+",3,"34 × 50 × 15 cm",W(.5),{w:2,d:"Reversión del clásico de los 90 con base perforada para mover los pines y armar recorridos."}],
+ ["CUB","Cubo encastrable","juegos","🧊",55000,69700,"1-3",2,"20 × 20 × 19 cm",W(.25),{w:5,d:"13 bloques con distintas formas y colores para explorar, encastrar y reconocer figuras."}],
+ ["APG","Apilable figuras geométricas","juegos","🔺",32000,40000,"1-3",2,"6 × 20 × 20 cm",W(.15),{w:3,d:"16 piezas que estimulan la coordinación, la motricidad fina y la concentración."}],
+ ["APP","Apilable pez","juegos","🐟",32000,40000,"1-3",2,"4 × 17 × 26 cm",W(.15),{w:2,d:"8 piezas con distintas formas geométricas y tamaños."}],
+ ["TAB","Tablero números, vocales y ábaco","juegos","🔢",39000,49400,"3+",2,"32 × 32 cm",W(.2),{w:2,d:"Combina números, vocales y un pequeño ábaco para aprender jugando."}],
+ ["NOT","Notebook didáctica","juegos","💻",39000,50700,"3+",2,"30 × 20 × 3 cm",W(.2),{w:2,d:"Su pantalla funciona como pizarra blanca. Incluye teclado con letras y números."}],
+ ["AVI","Avión de madera","juegos","✈️",50000,63500,"1-3",3,"Madera de pino",T({PN:.6,PI:.05,BA:.05}),{w:2,d:"Avión de pino macizo con rueditas móviles para arrastrar."}],
+ ["BAN","Banco de herramientas","juegos","🔨",169000,199700,"3+",6,"65 × 45 × 20 cm",W(1.4),{w:2,d:"Panel para colgar herramientas y bandeja inferior. Incluye morsita, pizarra, serrucho, martillo y más."}],
+ ["CHE","Caja de herramientas","juegos","🧰",42000,54400,"3+",2,"15 × 15 × 20 cm",W(.25),{w:2,d:"Martillo, llave, destornillador, serrucho, tornillo y tuerca pensados para manos pequeñas."}],
+ ["COC","Super Cocina NIDO","juegos","🍳",289000,363700,"3+",7,"80 × 35 × 115 cm",W(2,{F3:.5}),{w:6,b:"Más vendido",d:"Horno, bajo mesada, bacha, microondas y estante. Las perillas giran y las puertas se abren."}],
+ ["REG","Caja registradora","juegos","🧾",49000,63700,"3+",3,"23 × 22 × 5 cm",W(.25),{w:2,d:"Cajón para el dinero, visor giratorio, teclado y tarjeta de crédito de juguete."}],
+ ["CAF","Cafetera express","juegos","☕",49000,63400,"3+",3,"18 × 13 × 18 cm",W(.2),{w:3,d:"Perillas que giran, porta tamiz móvil, dos vasos y tres “granos de café”."}],
+ ["BAT","Batidora de madera","juegos","🥣",43000,54700,"3+",3,"20 × 12 × 17 cm",W(.2),{w:2,d:"Con accesorios para jugar a preparar recetas como pequeños chefs."}],
+ ["SCO","Set de cocina","juegos","🥄",49000,59600,"3+",3,"Set de utensilios",W(.25),{w:2,d:"Utensilios y accesorios para inventar recetas y disfrutar del juego libre."}],
+ ["CBB","Cuna para bebote","juegos","🛏️",49000,59700,"3+",3,"22 × 37 × 43 cm",W(.4),{w:2,d:"Invita a cuidar, arrullar e imaginar con un diseño simple y delicado."}],
+ ["PIZ","Pizarra infantil NIDO","crea","🎨",100000,128000,"3+",4,"50 × 40 × 120 cm",W(.8),{w:3,d:"Pizarra con portalápices, soporte para rollo de papel de 30 m y pizarra blanca."}],
+ ["VEL","Velador animalito","deco","🦁",58500,75900,"todas",3,"Madera, luz cálida",W(.3),{w:5,v:["León","Gatito","Perezoso","Jirafa"],d:"Iluminan con suavidad y acompañan el descanso. Elegí tu animalito."}],
+ ["MES","Mesa cuadrada + 2 sillas","deco","🪑",149500,194000,"1-3",6,"Mesa y dos sillas",W(1.8),{w:2,d:"El rincón perfecto para dibujar, merendar, leer o inventar mundos nuevos."}],
+ ["GUI","Guirnalda con nombre (por letra)","deco","🧶",9000,11500,"todas",4,"Letras al crochet",{HI:.5},{w:6,pers:"Nombre y colores",unit:"letra",d:"Tejida a mano al crochet. Personalizala con nombres, apodos o palabras. El precio es por letra."}],
+ ["CUA","Cuadro personalizado de nacimiento","deco","🖼️",19900,25870,"todas",5,"Con datos de nacimiento",T({}),{w:4,pers:"Nombre, fecha, peso y talla",d:"Un recuerdo único con nombre, fecha, hora, peso, talla y una frase especial."}],
+ ["BPN","Box “Primer Nido”","boxs","🎁",79000,100500,"0-12m",2,"Ajuar + accesorios",T({PA:.6,TU:.3,HI:2,BR:2}),{w:7,b:"Ideal regalo",d:"Ajuar de algodón pima, dos portachupetes, un Nido Compis y sonajero."}],
+ ["BMN","Box “Mimos Nido”","boxs","💝",69000,88300,"0-12m",2,"Toallón + accesorios",T({TF:.8,TU:.3,HI:2,BR:1}),{w:5,d:"Toalla de doble felpa con capucha y orejitas, un Nido Compis y portachupete."}],
+ ["BRN","Box “Regalito Nido”","boxs","🎀",39000,49900,"0-12m",2,"Babero + manta + mordillo",T({TU:1.3,HI:1,BR:2}),{w:5,d:"Babero, manta de gasa tusor de 1 × 1 m, mordillo y 2 portachupetes."}],
+ ["NID","Nido de contención","baby","🪺",83900,101200,"0-12m",3,"85 × 55 cm",T({TU:2,VE:1,GU:1}),{w:5,d:"Simula la contención del útero. Funda desmontable de gasa 100% algodón."}],
+ ["MAG","Manta de gasa tusor","baby","🌫️",16000,21000,"0-12m",1,"100 × 100 cm",T({TU:1}),{w:4,d:"Suave, liviana y respirable. Perfecta para cochecito, cuna o salidas."}],
+ ["POR","Porta enfant NIDO","baby","👶",58500,75900,"0-12m",3,"80 × 50 cm",T({TU:.9,CO:.9,GU:.5}),{w:3,d:"Tusor por fuera y corderito soft por dentro. Compatible con coche y huevito."}],
+ ["COL","Colchoncito para coche y huevito","baby","🛒",31900,41470,"0-12m",2,"Universal",T({TU:.6,GU:.8}),{w:2,d:"Máximo confort en los paseos diarios. Modelo universal."}],
+ ["RED","Reductor universal","baby","🫶",41500,53900,"0-12m",2,"Dos piezas",T({TU:.6,VE:.4}),{w:2,d:"Soporte, estabilidad y suavidad para los primeros meses."}],
+ ["MCO","Manta de corderito","baby","🐑",22500,28080,"0-12m",1,"75 cm × 1 m",T({TU:.8,CO:.8}),{w:3,d:"Tusor de un lado y corderito bifaz del otro."}],
+ ["BAB","Babero bandana","baby","🧣",7500,9750,"0-12m",1,"Tusor + felpa",{TU:.15,TF:.1},{w:4,d:"Suave y absorbente, protege la ropa de babitas."}],
+ ["PCH","Portachupetes","baby","🍼",7500,9750,"0-12m",1,"Broche Madison",{TU:.1,BR:1},{w:9,d:"Tusor de color con broche Madison que no daña la ropa."}],
+ ["SBP","Set babero + portachupete","baby","🤍",14000,18200,"0-12m",1,"Gasa y broderie",T({TU:.3,BR:1}),{w:3,d:"Babero de gasa tusor con portachupete de broderie."}],
+ ["TOA","Toallón NIDO","baby","🛁",22000,28600,"0-12m",1,"75 × 75 cm",T({TF:.8,TU:.3}),{w:5,d:"Doble felpa blanca con capucha de tusor de color."}],
+ ["TOP","Toallón personalizado","baby","🛁",29000,37700,"0-12m",2,"75 × 75 cm",T({TF:.8,TU:.3}),{w:5,pers:"Nombre bordado",d:"Toallón con el nombre de tu peque bordado."}],
+ ["CMB","Cambiador","baby","🧷",19000,23400,"0-12m",1,"69 × 40 cm",T({TU:.7}),{w:3,d:"Práctico y seguro para cambiar al bebé en cualquier lugar."}],
+ ["BBT","Babitas (pack x2)","baby","💧",12000,15600,"0-12m",1,"20 × 30 cm",{TU:.3},{w:3,d:"Súper absorbentes, ideales para tomas y saliditas."}],
+ ["BOL","Bolsa de dormir","baby","😴",42000,50700,"0-12m",2,"74 × 34 × 50 cm",T({TU:1.2,CO:1}),{w:3,v:["Algodón con tusor","Rústico con polar","Corderito con tusor"],d:"Abrigo y libertad de movimiento. Cierre de 180° para cambiar sin despertar."}],
+ ["PLA","Playmat","baby","🟢",42000,50700,"0-12m",2,"1 m de diámetro",T({TU:1.5,GU:1}),{w:2,d:"Relleno de guata y base impermeable. Se pliega y se transporta."}],
+ ["GIM","Gimnasio Montessori","baby","🌈",49500,64350,"0-12m",3,"Madera + tejidos",T({PN:1.2,HI:4}),{w:3,d:"Cuatro juegos de hilos hipoalergénicos y trabas de seguridad."}],
+ ["MUN","Muñeco de apego","baby","🐰",36000,46800,"0-12m",3,"Crochet",T({HI:3}),{w:5,d:"Tejido al crochet con hilos hipoalergénicos. Contención y compañía."}],
+ ["MUC","Muñeco de apego chico","baby","🐻",11000,14300,"0-12m",2,"Crochet",{HI:1},{w:3,d:"Versión pequeña, liviana y fácil de agarrar."}],
+ ["MOR","Mordillo con portachupetes","baby","🦷",12000,14000,"0-12m",1,"Crochet",{HI:.5,BR:1},{w:3,d:"Mordillo y portachupetes en uno, ideal para la dentición."}],
+ ["AJU","Ajuar algodón pima (3 piezas)","baby","👕",29000,37700,"0-12m",2,"Ranita, body y gorrito",T({PA:.6}),{w:4,d:"Ranita, body cruzado y gorrito regulable en algodón pima."}],
+].map(([id,n,l,e,t,c,age,d,med,r,x])=>{const rc=Object.entries(r).reduce((a,[k,q])=>a+q*INS[k].c,0);return{id,n,l,e,t,c,age,d,med,r,w:x.w||2,b:x.b,desc:x.d,v:x.v,pers:x.pers,unit:x.unit,cost:Math.round(rc+t*.16)}});
+const PBY=Object.fromEntries(P.map(p=>[p.id,p]));
+/* ---------- stock: proveedores, producto terminado y movimientos ---------- */
+const PROV=[{n:"Maderera San Martín",lead:3,ins:["F9","F3","PN"]},{n:"Pinturería Rosario",lead:2,ins:["PI","BA"]},{n:"Textil Oroño",lead:4,ins:["TU","TF","CO","GU","VE","PA"]},{n:"Mercería Lola",lead:5,ins:["HI","BR","IM"]},{n:"Cartonera del Sur",lead:2,ins:["EM"]}];
+const provOf=k=>PROV.find(p=>p.ins.includes(k));
+// productos que conviene tener ya fabricados (el resto se hace a pedido)
+const FG={PCH:{s:12,m:10},BAB:{s:6,m:6},BBT:{s:5,m:4},MAG:{s:3,m:3},TOA:{s:2,m:3},MUC:{s:4,m:3},MOR:{s:5,m:4},SBP:{s:3,m:2},CUB:{s:2,m:2},APG:{s:1,m:2},BPN:{s:3,m:2},BRN:{s:2,m:2}};
+const MOVS=[];let movN=40;
+const MT={inicial:["Inventario inicial","e2"],compra:["Compra","e5"],produccion:["Producción para stock","e3"],venta:["Venta de stock","e1"],consumo:["Consumo por pedido","e0"],ajuste:["Ajuste por conteo","e6"],devolucion:["Devolución","e4"]};
+let PROMO={banner:true,text:"🎁 10% OFF en tu primera compra con el código BIENVENIDA · Retiro gratis en Rosario · Envíos a todo el país",welcome:10,next:10,days:60,msg:"Gracias por elegir NIDO 💛 Cada pieza fue hecha a mano pensando en tu peque."};
+
+/* ---------- historia simulada de 13 meses (en producción viene de la base) ---------- */
+let seed=20261002;const rnd=()=>{seed|=0;seed=seed+0x6D2B79F5|0;let t=Math.imul(seed^seed>>>15,1|seed);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296};
+const pick=a=>a[Math.floor(rnd()*a.length)];
+const pois=l=>{let L=Math.exp(-l),k=0,p=1;do{k++;p*=rnd()}while(p>L);return k-1};
+const wpick=(arr,wf)=>{const tot=arr.reduce((a,x)=>a+wf(x),0);let r=rnd()*tot;for(const x of arr){r-=wf(x);if(r<=0)return x}return arr[0]};
+const FN=["Sofía","Martina","Lucía","Valentina","Camila","Julieta","Florencia","Agustina","Carla","Paula","Belén","Romina","Micaela","Antonella","Victoria","Josefina","Milagros","Daniela","Natalia","Carolina","Juan","Matías","Nicolás","Lautaro","Tomás","Gonzalo","Lorena","Jimena","Rocío","Celeste","Pilar","Guadalupe","Melina","Ailén","Sabrina","Vanesa","Mariana","Laura","Eugenia","Soledad"];
+const LN=["González","Rodríguez","Fernández","López","Martínez","Gómez","Pérez","Sánchez","Romero","Sosa","Torres","Álvarez","Ruiz","Ramírez","Flores","Acosta","Benítez","Medina","Herrera","Aguirre","Pereyra","Giménez","Molina","Castro","Ortiz","Silva","Rossi","Ferrari","Bianchi","Colombo"];
+const CITY=["Rosario","Rosario","Rosario","Rosario","Rosario","Funes","Roldán","Granadero Baigorria","Villa Gobernador Gálvez","CABA","Córdoba","Santa Fe","San Lorenzo"];
+const NAMES=["EMMA","MATEO","OLIVIA","BENJA","MIA","FELIPE","ALMA","JOAQUÍN","LOLA","SANTI","CATA","BAUTI","EMILIA","VALEN"];
+const CONS_T=["¿El caminador sirve para un bebé de 10 meses?","¿Hacen envíos a Funes?","¿Tienen la cocina en otros colores?","¿Cuánto tarda la guirnalda con 6 letras?","¿Hacen factura?","¿Puedo retirar el sábado?","¿El nido de contención se puede lavar en lavarropas?","¿Qué me recomiendan para un bebé de 1 año?","¿Hacen boxs personalizadas para empresas?","¿Tienen stock del tren o hay que esperar?","¿Las pinturas son atóxicas?","¿Puedo pagar la mitad ahora y la otra al retirar?"];
+const customers=[],orders=[],consultas=[],runs=[],subs=[];
+const SEAS=[.8,.75,.9,.95,1,1.05,1.1,1.4,1.1,1.35,1.15,1.6],WD=[.7,1.1,1.05,1.05,1.1,1.0,.8];
+const HRS=[[9,3],[10,5],[11,6],[12,5],[13,6],[14,5],[15,5],[16,5],[17,6],[18,7],[19,8],[20,9],[21,11],[22,10],[23,6]];
+function newCustomer(){const n=pick(FN)+" "+pick(LN);const c={id:customers.length+1,n,tel:`341 ${100+Math.floor(rnd()*899)}-${1000+Math.floor(rnd()*8999)}`,city:pick(CITY)};customers.push(c);return c}
+function makeItems(){const k=rnd()<.8?1:rnd()<.85?2:3,its=[];for(let i=0;i<k;i++){const p=wpick(P,x=>x.w);if(its.some(x=>x.p===p))continue;const it={p,q:p.unit?(4+Math.floor(rnd()*4)):(p.t<15000&&rnd()<.35?2:1)};
+  if(p.v)it.v=pick(p.v);if(p.pers)it.pers=p.id=="CUA"?pick(NAMES)+" · 3,2 kg · 48 cm":pick(NAMES)+(p.id=="GUI"?" · tonos "+pick(["verdes","beige","rosa viejo","azules","arena"]):"");its.push(it)}return its}
+const priceOf=(it,pay)=>(pay=="trf"?it.p.t:it.p.c)*it.q;
+function finalize(o){o.sub=o.items.reduce((a,i)=>a+priceOf(i,o.pay),0);o.disc=o.coupon?Math.round(o.sub*o.coupon.pct/100):0;o.total=o.sub-o.disc;o.cost=o.items.reduce((a,i)=>a+i.p.cost*i.q,0);o.maxD=Math.max(...o.items.map(i=>i.p.d))}
+(function generate(){
+  const start=addD(sod(TODAY),-400);
+  for(let d=0;d<=400;d++){
+    const day=addD(start,d),prog=d/400;
+    const n=pois((1.25+2.3*prog)*SEAS[day.getMonth()]*WD[day.getDay()]);
+    for(let i=0;i<n;i++){
+      const [h]=wpick(HRS,x=>x[1]);const created=new Date(+day+h*36e5+Math.floor(rnd()*60)*6e4);
+      if(created>TODAY)continue;
+      const r=rnd(),canal=r<.48+.12*prog?"web":r<.8?"whatsapp":r<.95?"instagram":"local";
+      const cli=(rnd()<.24&&customers.length>30)?pick(customers):newCustomer();
+      const o={created,canal,cli,items:makeItems(),pay:rnd()<.63?"trf":"cuotas",ent:rnd()<.46?"envio":"retiro",gift:rnd()<.22,coupon:rnd()<.09?{code:rnd()<.5?"BIENVENIDA":"VUELVE",pct:10}:null,t:{},log:[]};
+      if(o.ent=="envio")o.dir=`${pick(["Bv. Oroño","Córdoba","San Martín","Pellegrini","Mendoza","Corrientes","Salta"])} ${100+Math.floor(rnd()*3000)}, ${o.cli.city}`;
+      finalize(o);
+      let resp=canal=="local"?0:Math.exp(2.6+rnd()*2.6);if(created.getHours()>=22)resp+=600;
+      o.t.resp=new Date(+created+resp*6e4);
+      if(rnd()<.07){o.t.canc=addD(o.t.resp,2+rnd()*2)}else{
+        o.t.paid=new Date(+o.t.resp+(canal=="local"?0:(.05+rnd()*1.8)*DAY));
+        o.due=addD(sod(o.t.paid),o.maxD+2);
+        o.t.prod=new Date(+o.t.paid+rnd()*.8*DAY);
+        o.t.ready=new Date(+o.t.prod+o.maxD*(.75+rnd()*.7)*DAY);
+        o.t.deliv=new Date(+o.t.ready+(.3+rnd()*2.5)*DAY);
+      }
+      for(const k in o.t)if(o.t[k]>TODAY)delete o.t[k];
+      if(!o.t.paid)delete o.due;
+      orders.push(o);
+    }
+    const nc=pois(1+1.4*prog);
+    for(let i=0;i<nc;i++){const created=new Date(+day+(9+Math.floor(rnd()*14))*36e5+Math.floor(rnd()*60)*6e4);if(created>TODAY)continue;const c={id:consultas.length+1,created,n:pick(FN)+" "+pick(LN)[0]+".",tel:`341 ${100+Math.floor(rnd()*899)}-${1000+Math.floor(rnd()*8999)}`,m:pick(CONS_T)};const rr=new Date(+created+Math.exp(2.4+rnd()*2.4)*6e4);if(rr<=TODAY)c.resp=rr;consultas.push(c)}
+  }
+  orders.sort((a,b)=>a.created-b.created).forEach((o,i)=>{o.nro=1001+i;const L=o.log;L.push([o.created,`Pedido recibido por ${CH[o.canal]}`]);if(o.t.resp)L.push([o.t.resp,"Respondido · esperando pago"]);if(o.t.paid)L.push([o.t.paid,"Pago confirmado"]);if(o.t.prod)L.push([o.t.prod,"Pasó a producción"]);if(o.t.ready)L.push([o.t.ready,"Listo para entregar"]);if(o.t.deliv)L.push([o.t.deliv,"Entregado"]);if(o.t.canc)L.push([o.t.canc,"Cancelado: no se concretó el pago"])});
+  const mk=(name,items,canal,pay,ent,minsAgo,nota)=>{const c=newCustomer();c.n=name;const o={nro:orders.length+1001,created:new Date(+TODAY-minsAgo*6e4),canal,cli:c,items,pay,ent,gift:!!nota,coupon:null,t:{},log:[],nota};if(ent=="envio")o.dir="Av. Pellegrini 1450, "+c.city;finalize(o);o.log.push([o.created,`Pedido recibido por ${CH[canal]}`]);orders.push(o)};
+  mk("Martina Gómez",[{p:PBY.COC,q:1}],"web","trf","envio",38,"");
+  mk("Belén Sosa",[{p:PBY.BPN,q:1},{p:PBY.GUI,q:4,pers:"ALMA · tonos arena"}],"web","cuotas","retiro",95,"Es para un baby shower el sábado, ¿llega?");
+  consultas.push({id:consultas.length+1,created:new Date(+TODAY-22*6e4),n:"Sol Aguirre",tel:"341 700-1122",m:"¿El caminador sirve para un bebé de 10 meses? ¿Tienen para entregar esta semana?"},{id:consultas.length+2,created:new Date(+TODAY-75*6e4),n:"Romina Vera",tel:"341 455-9087",m:"Hola! ¿Hacen envíos a Funes? Quiero la Box Primer Nido para regalar."});
+})();
+const estI=(o,at=nowT())=>{const t=o.t,r=k=>t[k]&&t[k]<=at;return r("canc")?6:r("deliv")?5:r("ready")?4:r("prod")?3:r("paid")?2:r("resp")?1:0};
+const estN=o=>EST[estI(o)];
+const isLate=o=>{const i=estI(o);return !!o.due&&i>=2&&i<4&&o.due<sod(nowT())};
+const itemsTxt=o=>o.items.map(i=>`${i.q}× ${i.p.n}${i.v?" ("+i.v+")":""}`).join(", ");
+const byNro=n=>orders[n-1001];
+
+/* ---------- motor de stock ---------- */
+function recipeLines(items,sign=-1){const acc={};items.forEach(it=>Object.entries(it.p.r).forEach(([k,q])=>{acc[k]=(acc[k]||0)+q*it.q}));return Object.entries(acc).map(([k,q])=>({k,q:+(sign*q).toFixed(2)}))}
+const lowSet=()=>new Set(Object.keys(INS).filter(k=>INS[k].s<INS[k].m));
+function stockMove(tipo,lines,ref,nota){
+  const before=lowSet();
+  lines=lines.filter(l=>l.q);
+  lines.forEach(l=>{if(l.k)INS[l.k].s=Math.max(0,+(INS[l.k].s+l.q).toFixed(2));else FG[l.p].s=Math.max(0,FG[l.p].s+l.q)});
+  MOVS.unshift({id:++movN,d:nowT(),tipo,ref,lines,nota,user:"Gianna"});
+  const after=lowSet();
+  after.forEach(k=>{if(!before.has(k)){const s=INS[k];log(false,`🚨 <b>${s.n}</b> bajó a ${s.s} ${s.u} (mínimo ${s.m}) · alerta enviada`);notify("🚨","#fbe6e3",`Stock bajo: ${s.n}`,`Quedan ${s.s} ${s.u} · mínimo ${s.m}`)}});
+  before.forEach(k=>{if(!after.has(k))log(true,`✓ <b>${INS[k].n}</b> volvió a estar sobre el mínimo · alerta cerrada`)});
+  log(true,`📦 ${MT[tipo][0]} · ${ref} · ${lines.length} ítems`);
+  return lines}
+const lineName=l=>l.k?INS[l.k].n:PBY[l.p].n+" (terminado)";
+const lineUnit=l=>l.k?INS[l.k].u:"u";
+function reserved(k){let r=0;orders.forEach(o=>{if(estI(o)==2)o.items.forEach(it=>{if(!it.fs&&it.p.r[k])r+=it.p.r[k]*it.q})});return +r.toFixed(2)}
+(function seedMovs(){
+  const push=(d,tipo,ref,lines,nota,user="Gianna")=>MOVS.push({id:MOVS.length+1,d,tipo,ref,lines,nota,user});
+  push(new Date(2026,8,1,9,0),"inicial","Inventario inicial",Object.keys(INS).map(k=>({k,q:+(INS[k].s*1.8+INS[k].m).toFixed(1)})).concat(Object.keys(FG).map(p=>({p,q:FG[p].s+3}))),"Conteo completo del taller");
+  push(new Date(2026,8,10,11,20),"compra","Compra #12 · Maderera San Martín",[{k:"F9",q:8},{k:"F3",q:3}],"Factura A 0003-0001842","Gianna");
+  push(new Date(2026,8,18,16,5),"produccion","Stock-OP-31",[{k:"TU",q:-1.2},{k:"BR",q:-12},{p:"PCH",q:12}],"12 portachupetes para stock","Ana (taller)");
+  push(new Date(2026,8,22,10,40),"compra","Compra #13 · Textil Oroño",[{k:"TU",q:15},{k:"TF",q:6},{k:"GU",q:6}],"Remito 5521");
+  push(new Date(2026,8,30,18,0),"ajuste","Conteo mensual",[{k:"PI",q:-.3},{k:"HI",q:-2}],"Diferencia de conteo: merma de pintura y ovillos usados en muestras");
+  orders.filter(o=>o.t.prod&&o.t.prod>addD(TODAY,-14)).forEach(o=>push(o.t.prod,"consumo","Pedido #"+o.nro,recipeLines(o.items),"Descuento automático por receta","Sistema"));
+  orders.filter(o=>o.t.paid&&o.t.paid>addD(TODAY,-14)&&o.items.some(i=>FG[i.p.id])).slice(0,6).forEach(o=>push(o.t.paid,"venta","Pedido #"+o.nro,o.items.filter(i=>FG[i.p.id]).map(i=>({p:i.p.id,q:-i.q})),"Sale de producto terminado","Sistema"));
+  MOVS.sort((a,b)=>b.d-a.d);
+})();
+
+/* =====================================================================
+   NAVEGACIÓN / UTILIDADES
+   ===================================================================== */
+const $=id=>document.getElementById(id);
+document.querySelectorAll(".tabs button").forEach(b=>b.onclick=()=>go(b.dataset.v));
+function go(v){document.querySelectorAll(".tabs button").forEach(x=>x.classList.toggle("on",x.dataset.v===v));document.querySelectorAll(".view").forEach(x=>x.classList.toggle("on",x.id==="v-"+v));
+  ({work:renderWork,hist:renderHist,dash:renderDash,stock:renderStock,auto:renderRuns})[v]?.();window.scrollTo(0,0)}
+function toast(m){const t=$("toast");t.innerHTML=m;t.classList.add("on");clearTimeout(t._h);t._h=setTimeout(()=>t.classList.remove("on"),4200)}
+function notify(ic,bg,t,b){const n=document.createElement("div");n.className="nt";n.innerHTML=`<div class="ic" style="background:${bg}">${ic}</div><div><b>${t}</b><br>${b}<small>🔔 Panel · Email · Telegram · ahora</small></div>`;$("notifs").prepend(n);setTimeout(()=>n.remove(),6500)}
+function openModal(h){$("mbox").innerHTML=`<button class="x noprint" onclick="closeModal()">×</button>`+h;$("modal").classList.add("on")}
+function closeModal(){$("modal").classList.remove("on")}
+function log(ok,msg){runs.unshift({t:hm(nowT()),ok,msg})}
+function updBadge(){const n=orders.filter(o=>estI(o)==0).length+consultas.filter(c=>!c.resp).length;$("nb").textContent=n||"";$("nb").classList.toggle("zero",!n)}
+function csv(name,rows){const s=rows.map(r=>r.map(v=>{v=String(v??"");return /[",;\n]/.test(v)?'"'+v.replace(/"/g,'""')+'"':v}).join(",")).join("\n");const a=document.createElement("a");a.href=URL.createObjectURL(new Blob(["﻿"+s],{type:"text/csv;charset=utf-8"}));a.download=name;a.click();toast("⬇ Descargando "+name)}
+function doPrint(mode){document.body.dataset.print=mode;window.print();setTimeout(()=>delete document.body.dataset.print,500)}
+const tip=$("tip");
+document.addEventListener("mousemove",e=>{if(e.target.closest?.("[data-line]"))return;const t=e.target.closest?.("[data-tip]");if(t){tip.innerHTML=t.dataset.tip;tip.style.display="block";placeTip(e)}else tip.style.display="none"});
+function placeTip(e){const w=tip.offsetWidth,h=tip.offsetHeight;let x=e.clientX+14,y=e.clientY-h-10;if(x+w>innerWidth-8)x=e.clientX-w-14;if(y<8)y=e.clientY+16;tip.style.left=x+"px";tip.style.top=y+"px"}
+
+/* =====================================================================
+   WEB
+   ===================================================================== */
+const wf={line:"all",age:"all",sort:"dest",q:"",pers:false};
+let cart=[],coupon=null,curP=null,curQ=1;
+function renderAnnc(){$("annc").textContent=PROMO.text;$("annc").classList.toggle("off",!PROMO.banner);$("newsTxt").innerHTML=`Dejanos tu email y te regalamos <b>${PROMO.welcome}% OFF</b> en tu primera compra. Novedades y lanzamientos, sin spam.`}
+function renderAges(){$("ages").innerHTML=Object.entries(AGES).map(([k,a])=>`<div class="age ${(wf.age==k||(k=="boxs"&&wf.line=="boxs"))?"on":""}" style="background:${a.bg}" onclick="setAge('${k}')"><i>${a.e}</i><b>${a.n}</b><span>${a.s}</span></div>`).join("")}
+function setAge(k){if(k=="boxs"){wf.line=wf.line=="boxs"?"all":"boxs";wf.age="all"}else{wf.age=wf.age==k?"all":k;wf.line="all"}renderAges();renderFilters();renderGrid();goSec("catalogo")}
+function goSec(id){const el=$(id);if(el)window.scrollTo({top:el.getBoundingClientRect().top+scrollY-120,behavior:"smooth"})}
+function setLine(k){wf.line=k;renderFilters();renderGrid();renderAges()}
+function renderFilters(){
+  $("filters").innerHTML=`<button class="chip ${wf.line=="all"?"on":""}" onclick="setLine('all')">Todo</button>`+Object.entries(LINES).map(([k,v])=>`<button class="chip ${wf.line==k?"on":""}" onclick="setLine('${k}')">${v.n}</button>`).join("")+
+  `<button class="chip ${wf.pers?"on":""}" onclick="wf.pers=!wf.pers;renderFilters();renderGrid()">✨ Personalizables</button>
+  <select onchange="wf.sort=this.value;renderGrid()"><option value="dest" ${wf.sort=="dest"?"selected":""}>Destacados</option><option value="asc" ${wf.sort=="asc"?"selected":""}>Menor precio</option><option value="desc" ${wf.sort=="desc"?"selected":""}>Mayor precio</option><option value="fast" ${wf.sort=="fast"?"selected":""}>Más rápidos de hacer</option></select>`;
+}
+function renderGrid(){
+  const q=wf.q.toLowerCase();
+  let L=P.filter(p=>(wf.line=="all"||p.l==wf.line)&&(wf.age=="all"||p.age==wf.age||p.age=="todas")&&(!wf.pers||p.pers)&&(!q||(p.n+" "+p.desc+" "+LINES[p.l].n).toLowerCase().includes(q)));
+  L=L.sort({dest:(a,b)=>b.w-a.w,asc:(a,b)=>a.t-b.t,desc:(a,b)=>b.t-a.t,fast:(a,b)=>a.d-b.d}[wf.sort]);
+  $("ccount").textContent=`${L.length} productos${wf.age!="all"?" · "+AGES[wf.age].n:""}`;
+  $("grid").innerHTML=L.map(p=>{const opt=p.v||p.pers||p.unit;return`<div class="card" onclick="openProduct('${p.id}')"><div class="thumb" style="background:${LINES[p.l].bg}"><div class="badges">${p.b?`<span class="badge">${p.b}</span>`:""}${p.pers?`<span class="badge g">✨ Personalizable</span>`:""}</div>${p.e}</div>
+   <div class="info"><h3>${p.n}</h3><div class="meta">${FG[p.id]?.s>0?`<b style="color:var(--sage-d)">✅ En stock · entrega inmediata</b>`:`Listo en ${p.d} día${p.d>1?"s":""} hábil${p.d>1?"es":""}`} · ${LINES[p.l].n}</div>
+   <div class="price">${fmt(p.t)}${p.unit?`<span style="font-size:12px;font-weight:500"> / ${p.unit}</span>`:""}<small>transferencia</small></div>
+   <div class="cuotas">o 3 cuotas sin interés de ${fmt(p.c/3)}</div>
+   <button class="btn" onclick="event.stopPropagation();${opt?`openProduct('${p.id}')`:`addCart('${p.id}',1)`}">${opt?"Elegir opciones":"Agregar al carrito"}</button></div></div>`}).join("")||`<div class="empty">No encontramos productos con esos filtros 🌿</div>`;
+}
+function setQ(v){curQ=Math.max(1,v);$("pq").textContent=curQ}
+function persInput(el){if(curP.id=="GUI")setQ(el.value.split("·")[0].replace(/[^A-Za-zÁÉÍÓÚÑáéíóúñ]/g,"").length)}
+function openProduct(id){curP=PBY[id];curQ=curP.unit?5:1;const p=curP;
+  const rel=P.filter(x=>x.l==p.l&&x.id!=p.id).sort((a,b)=>b.w-a.w).slice(0,3);
+  openModal(`<div class="pm"><div class="img" style="background:${LINES[p.l].bg}">${p.e}</div><div class="det">
+   <span class="badge" style="background:var(--sage-l);color:var(--sage-d)">${LINES[p.l].n}</span>
+   <h2>${p.n}</h2><div class="price" style="font-size:24px">${fmt(p.t)}${p.unit?` <span style="font-size:13px;font-weight:500">por ${p.unit}</span>`:""}<small>transferencia</small></div><div class="cuotas">o 3 cuotas sin interés de ${fmt(p.c/3)}</div>
+   <p class="desc">${p.desc}</p>
+   <div class="facts"><div>Medidas<b>${p.med}</b></div><div>${FG[p.id]?.s>0?`Disponibilidad<b>✅ En stock · entrega inmediata</b>`:`Tiempo de fabricación<b>${p.d} día${p.d>1?"s":""} hábil${p.d>1?"es":""}</b>`}</div><div>Edad sugerida<b>${p.age=="todas"?"Todas las edades":AGES[p.age].n}</b></div><div>Materiales<b>${p.l=="baby"||p.l=="boxs"?"Algodón e hilos hipoalergénicos":"Madera con pintura atóxica"}</b></div></div>
+   ${p.v?`<label>Elegí una opción</label><select id="pv">${p.v.map(v=>`<option>${v}</option>`).join("")}</select>`:""}
+   ${p.pers?`<label>Personalización: ${p.pers}</label><input type="text" id="ppers" placeholder="${p.id=="GUI"?"Ej: EMMA · tonos verdes":p.id=="CUA"?"Ej: Benjamín · 14/08 · 3,2 kg · 48 cm":"Ej: LOLA"}" oninput="persInput(this)">`:""}
+   <div class="addrow"><div class="qty"><button onclick="setQ(curQ-1)">–</button><span id="pq">${curQ}</span><button onclick="setQ(curQ+1)">+</button></div>
+   <button class="btn" onclick="addCart('${p.id}',curQ,document.getElementById('pv')?.value,document.getElementById('ppers')?.value);closeModal()">Agregar al carrito</button></div>
+   ${p.unit?`<small style="color:var(--muted)">La cantidad se calcula sola con las letras del nombre.</small>`:""}
+   <div style="font-size:13px;color:var(--muted);margin-top:14px">✋ Hecho a mano · 🌿 Atóxico · 🏠 Retiro gratis en Rosario</div>
+   <h4 style="margin-top:18px;font-size:13px">También te puede gustar</h4>
+   <div class="rel">${rel.map(r=>`<div onclick="openProduct('${r.id}')"><i>${r.e}</i>${r.n}<br><b>${fmt(r.t)}</b></div>`).join("")}</div>
+  </div></div>`)}
+function addCart(id,q,v,pers){const p=PBY[id];const k=id+"|"+(v||"")+"|"+(pers||"");const it=cart.find(i=>i.k==k);it?it.q+=q:cart.push({k,p,q,v,pers});updCart();toast(`🛒 Agregaste ${p.n}`)}
+function applyCoupon(){const c=$("cpn").value.trim().toUpperCase();if(c=="BIENVENIDA")coupon={code:c,pct:PROMO.welcome};else if(/^VUELVE-\d+$/.test(c))coupon={code:c,pct:PROMO.next};else{coupon=null;toast("Ese código no es válido")}updCart();if(coupon)toast(`✅ Cupón ${c} aplicado: ${coupon.pct}% OFF`)}
+function updCart(){
+  const pay=document.querySelector("input[name=pay]:checked")?.value||"trf";
+  $("cc").textContent=cart.reduce((a,i)=>a+i.q,0);
+  $("items").innerHTML=cart.length?cart.map((i,k)=>`<div class="ci"><div class="e" style="background:${LINES[i.p.l].bg}">${i.p.e}</div><div class="n">${i.p.n}${i.v?`<small>${i.v}</small>`:""}${i.pers?`<small>✨ ${esc(i.pers)}</small>`:""}<small>${i.q} × ${fmt(pay=="trf"?i.p.t:i.p.c)}</small></div><button class="xb" onclick="cart.splice(${k},1);updCart()">×</button></div>`).join(""):`<p style="color:var(--muted);padding:18px 0">Tu carrito está vacío.</p>`;
+  const sub=cart.reduce((a,i)=>a+priceOf(i,pay),0),disc=coupon?Math.round(sub*coupon.pct/100):0;
+  $("tsub").textContent=fmt(sub);$("tdiscrow").style.display=disc?"flex":"none";$("tdisclbl").textContent=`Cupón ${coupon?.code||""}`;$("tdisc").textContent="−"+fmt(disc);$("ttot").textContent=fmt(sub-disc);
+}
+const openCart=()=>{$("drawer").classList.add("on");updCart()};
+const closeCart=()=>$("drawer").classList.remove("on");
+function checkout(){
+  if(!cart.length)return toast("Agregá algún producto primero");
+  const c=newCustomer();c.n=$("cname").value||"Cliente web";c.tel=$("cphone").value;
+  const o={nro:orders.length+1001,created:nowT(),canal:"web",cli:c,items:cart.map(i=>({p:i.p,q:i.q,v:i.v,pers:i.pers})),pay:document.querySelector("input[name=pay]:checked").value,ent:document.querySelector("input[name=ent]:checked").value,gift:$("cgift").checked,coupon,t:{},log:[]};
+  if(o.ent=="envio")o.dir=$("cdir").value;
+  finalize(o);o.log.push([o.created,"Pedido recibido por la web"],[o.created,"Email al cliente con N° de pedido"]);orders.push(o);
+  cart=[];coupon=null;$("cpn").value="";updCart();closeCart();onNewOrder(o);
+  openModal(`<div style="padding:34px;text-align:center"><div style="font-size:60px">🎉</div><h2 style="font-size:30px;margin:8px 0">¡Gracias, ${esc(c.n.split(" ")[0])}!</h2><p style="color:var(--ink2)">Recibimos tu pedido <b>#${o.nro}</b> por <b>${fmt(o.total)}</b>.</p>
+   <div style="background:var(--cream);border-radius:14px;padding:16px;margin:18px auto;max-width:440px;text-align:left;font-size:14px;line-height:1.7">${o.pay=="trf"?`💳 Transferí al alias <b>nido.bebe.ros</b> y mandanos el comprobante por WhatsApp.`:"💳 Te escribimos por WhatsApp para coordinar el pago en 3 cuotas."}<br>📲 Te contactamos hoy por WhatsApp al ${esc(c.tel)}.<br>📦 Podés seguir tu pedido desde la web con el número <b>#${o.nro}</b>.</div>
+   <button class="btn" onclick="closeModal()">Seguir mirando</button> <button class="btn gh" onclick="closeModal();go('work')">Ver cómo le llega a NIDO →</button></div>`);
+}
+function onNewOrder(o){notify("🛍️","#f6e7de",`Nuevo pedido #${o.nro}`,`${esc(o.cli.n)} · ${itemsTxt(o)} · ${fmt(o.total)}`);log(true,`Pedido <b>#${o.nro}</b> (${esc(o.cli.n)}) guardado · aviso enviado · email al cliente`);updBadge();if($("v-work").classList.contains("on"))renderWork()}
+function simulateOrder(){const c=newCustomer();const o={nro:orders.length+1001,created:nowT(),canal:"web",cli:c,items:makeItems(),pay:rnd()<.6?"trf":"cuotas",ent:rnd()<.5?"envio":"retiro",gift:false,coupon:null,t:{},log:[]};if(o.ent=="envio")o.dir="Mendoza 2200, "+c.city;finalize(o);o.log.push([o.created,"Pedido recibido por la web"]);orders.push(o);onNewOrder(o);document.querySelectorAll(".node .c").forEach((c,i)=>setTimeout(()=>{c.classList.add("pulse");setTimeout(()=>c.classList.remove("pulse"),350)},i*200));if($("v-auto").classList.contains("on"))renderRuns()}
+function sendConsulta(f){const c={id:consultas.length+1,created:nowT(),n:f.n.value,tel:f.t.value,m:f.m.value};consultas.push(c);notify("💬","#e4edf6",`Nueva consulta de ${esc(c.n)}`,esc(c.m.slice(0,70))+"…");log(true,`Consulta de <b>${esc(c.n)}</b> guardada · aviso enviado`);updBadge();toast("✅ ¡Gracias! Te respondemos hoy por WhatsApp.")}
+function subscribe(f){subs.push({e:f.e.value,d:nowT()});notify("💌","#e8efe4","Nueva suscripción",esc(f.e.value));toast(`💌 ¡Listo! Tu código es <b>BIENVENIDA</b> (${PROMO.welcome}% OFF). También te lo mandamos por email.`)}
+function track(){const n=+$("trk").value.replace(/\D/g,"");const o=byNro(n);if(!o){$("trkres").innerHTML="No encontramos ese pedido. Revisá el número 🙏";return}
+  const i=estI(o),S=["Recibido","Confirmado","Pagado","En taller","Listo","Entregado"];
+  $("trkres").innerHTML=i==6?`El pedido #${n} figura como cancelado. Escribinos por WhatsApp.`:`<b>Pedido #${n}</b> · ${esc(o.cli.n.split(" ")[0])}<div class="tsteps">${S.map((s,k)=>`<div class="${k<=i?"on":""}"><i></i>${s}</div>`).join("")}</div>${i>=2&&i<4&&o.due?`Fecha estimada: <b>${fD(o.due)}</b>`:i==4?"¡Está listo! Te escribimos para coordinar la entrega.":""}`}
+
+/* =====================================================================
+   PEDIDOS · vista de trabajo
+   ===================================================================== */
+const ws={card:"activos",q:"",canal:"",ent:"",sort:"prio",sel:null};
+const CARDS=[
+ ["nuevo","🆕 Nuevos sin responder",o=>estI(o)==0],
+ ["pago","💳 Esperando pago",o=>estI(o)==1],
+ ["prod","🔨 Pagados / en producción",o=>[2,3].includes(estI(o))],
+ ["entregar","📦 Listos para entregar",o=>estI(o)==4],
+ ["consultas","💬 Consultas sin responder",null],
+];
+function pickCard(k){ws.card=ws.card==k?"activos":k;ws.sel=null;renderWork()}
+function renderWork(){
+  const act=orders.filter(o=>estI(o)<5),late=act.filter(isLate).length;
+  $("workSub").textContent=`${act.length} pedidos activos · ${consultas.filter(c=>!c.resp).length} consultas sin responder · hoy entraron ${orders.filter(o=>o.created>=sod(nowT())).length} pedidos`;
+  $("kcards").innerHTML=CARDS.map(([k,l,f])=>{let n,sub;
+    if(k=="consultas"){n=consultas.filter(c=>!c.resp).length;sub="respondé por WhatsApp"}
+    else{const L=act.filter(f);n=L.length;const tot=L.reduce((a,o)=>a+o.total,0);
+      sub=k=="nuevo"?(L.length?`el más viejo ${ago(L.reduce((a,o)=>o.created<a.created?o:a).created)}`:"todo respondido ✓"):k=="pago"?`${fmt(tot)} por cobrar`:k=="prod"?(late?`⚠ ${late} atrasado${late>1?"s":""}`:"todo en fecha"):`${L.filter(o=>o.ent=="envio").length} envíos · ${L.filter(o=>o.ent=="retiro").length} retiros`}
+    return`<button class="kc ${ws.card==k?"on":""}" onclick="pickCard('${k}')"><span>${l}</span><b>${n}</b><em class="${k=="prod"&&late?"w":""}">${sub}</em><span class="hint2">${ws.card==k?"✓ filtrando · tocá para quitar":"tocá para filtrar"}</span></button>`}).join("");
+  if(ws.card=="consultas")return renderConsultas();
+  const f=CARDS.find(c=>c[0]==ws.card)?.[2]||(()=>true);
+  const q=ws.q.toLowerCase();
+  let L=act.filter(f).filter(o=>(!ws.canal||o.canal==ws.canal)&&(!ws.ent||o.ent==ws.ent)&&(!q||(`#${o.nro} ${o.nro} ${o.cli.n} ${itemsTxt(o)}`).toLowerCase().includes(q)));
+  L.sort({prio:(a,b)=>(isLate(b)-isLate(a))||(estI(a)-estI(b))||(b.created-a.created),new:(a,b)=>b.created-a.created,due:(a,b)=>(a.due||9e15)-(b.due||9e15),amount:(a,b)=>b.total-a.total}[ws.sort]);
+  const title={activos:"Todos los pedidos activos",nuevo:"Nuevos sin responder",pago:"Esperando pago",prod:"Pagados y en producción",entregar:"Listos para entregar"}[ws.card];
+  $("lhead").innerHTML=`<b>${title}</b><span>${L.length} pedidos ${ws.card!="activos"?`· <a style="cursor:pointer;text-decoration:underline" onclick="pickCard('${ws.card}')">ver todos</a>`:""}</span>`;
+  if(!ws.sel||!L.includes(ws.sel))ws.sel=L[0]||null;
+  $("wlist").innerHTML=L.map(o=>{const i=estI(o);return`<div class="orow ${i==0?"new":""} ${o===ws.sel?"sel":""}" onclick="ws.sel=byNro(${o.nro});renderWork()"><div class="who"><b><span class="chan c-${o.canal}">${CHN[o.canal].toUpperCase()}</span>#${o.nro} · ${esc(o.cli.n)}</b><span class="it">${itemsTxt(o)}</span><span class="est e${i}">${EST[i]}</span> ${isLate(o)?'<span class="est late">⚠ Atrasado</span>':""} ${o.items.some(x=>x.pers)?'<span class="est" style="background:#f3eee8;color:var(--ink2)">✨ Personalizado</span>':""}</div><div class="r"><b>${fmt(o.total)}</b>${ago(o.created)}<br>${o.ent=="envio"?"🚚 envío":"🏠 retiro"}</div></div>`}).join("")||`<p style="padding:30px;text-align:center;color:var(--muted)">Nada pendiente acá ✓</p>`;
+  renderDetail();
+}
+function renderConsultas(){
+  const L=consultas.filter(c=>!c.resp).sort((a,b)=>b.created-a.created),R=consultas.filter(c=>c.resp).sort((a,b)=>b.resp-a.resp).slice(0,6);
+  $("lhead").innerHTML=`<b>Consultas sin responder</b><span>${L.length} · <a style="cursor:pointer;text-decoration:underline" onclick="pickCard('consultas')">ver pedidos</a></span>`;
+  $("wlist").innerHTML=L.map(c=>`<div class="crow"><b>🔵 ${esc(c.n)}</b> <span style="color:var(--muted);font-size:12px">· ${esc(c.tel)} · ${ago(c.created)}</span><p>${esc(c.m)}</p><button class="btn wa sm" onclick="answer(${c.id})">💬 Responder por WhatsApp</button> <button class="btn gh sm" onclick="answer(${c.id},true)">Marcar respondida</button></div>`).join("")||`<p style="padding:30px;text-align:center;color:var(--muted)">Todas las consultas respondidas ✓</p>`;
+  $("wdet").innerHTML=`<div class="dd"><h3>Respondidas recientemente</h3><div class="sub">Quedan guardadas en el historial</div>${R.map(c=>`<div class="blk"><b>${esc(c.n)}</b> <small style="color:var(--muted)">· respondida ${ago(c.resp)}</small><div style="font-size:13px;color:var(--ink2);margin-top:3px">${esc(c.m)}</div></div>`).join("")}</div>`;
+}
+function answer(id,silent){const c=consultas.find(x=>x.id==id);c.resp=nowT();updBadge();renderWork();toast(silent?"✓ Consulta marcada como respondida":`💬 Se abriría WhatsApp con ${esc(c.n)} (${esc(c.tel)}) y la consulta citada`)}
+function renderDetail(){
+  const o=ws.sel,d=$("wdet");
+  if(!o){d.innerHTML=`<div class="dd" style="color:var(--muted);text-align:center;padding:50px">Elegí un pedido para ver el detalle</div>`;return}
+  const i=estI(o),nOrd=orders.filter(x=>x.cli===o.cli).length;
+  const NEXT=["💬 Marcar como respondido","💳 Confirmar pago recibido","🔨 Pasar a producción","📦 Marcar listo para entregar","✅ Marcar como entregado"];
+  const canLabel=i>=2&&i<=5;
+  d.innerHTML=`<div class="dd"><span class="est e${i}">${EST[i]}</span> ${isLate(o)?'<span class="est late">⚠ Atrasado</span>':""}
+   <h3>Pedido #${o.nro}</h3><div class="sub"><span class="chan c-${o.canal}">${CHN[o.canal].toUpperCase()}</span> ${fDT(o.created)} · ${ago(o.created)}</div>
+   <div class="prog">${[0,1,2,3,4,5].map(k=>`<i class="${k<=i&&i<6?"on":""}"></i>`).join("")}</div>
+   <div class="proglbl"><span>Nuevo</span><span>Respondido</span><span>Pagado</span><span>Taller</span><span>Listo</span><span>Entregado</span></div>
+   <div class="blk"><h4>Cliente</h4><b>${esc(o.cli.n)}</b> <small style="color:var(--muted)">· ${o.cli.city}</small><br>📱 ${esc(o.cli.tel)}<br>${o.ent=="envio"?`🚚 Envío a: ${esc(o.dir||"a coordinar")}`:"🏠 Retira en Rosario"}${o.gift?"<br>🎁 Es para regalo: envoltorio + tarjeta":""}
+     ${nOrd>1?`<br><span class="est e5">⭐ Clienta recurrente · ${nOrd} pedidos</span>`:""}</div>
+   <div class="blk"><h4>Productos</h4>${o.items.map(it=>`<div class="ln"><span>${it.q}× ${it.p.n}${it.v?`<br><small>Opción: ${it.v}</small>`:""}${it.pers?`<br><small>✨ ${esc(it.pers)}</small>`:""}${it.fs?`<br><small>📦 Sale de stock terminado</small>`:FG[it.p.id]&&i<2?`<br><small>📦 Hay ${FG[it.p.id].s} hechos en stock</small>`:i<3?`<br><small>🔨 Se fabrica a pedido · ${it.p.d} días</small>`:""}</span><span>${fmt(priceOf(it,o.pay))}</span></div>`).join("")}
+     ${o.disc?`<div class="ln" style="color:var(--sage-d)"><span>Cupón ${o.coupon.code}</span><span>−${fmt(o.disc)}</span></div>`:""}
+     <div class="ln" style="font-weight:700;margin-top:4px"><span>Total · ${o.pay=="trf"?"Transferencia":"3 cuotas"}</span><span>${fmt(o.total)}</span></div>
+     ${o.nota?`<div class="note">📝 ${esc(o.nota)}</div>`:""}
+     ${o.due&&i<5?`<div class="ln"><small>Entrega comprometida</small><small><b style="color:${isLate(o)?"var(--red)":"var(--ink)"}">${fD(o.due)}</b></small></div>`:""}</div>
+   <div class="blk"><h4>Acciones</h4><div class="acts">
+     ${i<5?`<button class="btn sm" onclick="advance(${o.nro})">${NEXT[i]}</button>`:""}
+     <button class="btn wa sm" onclick="toast('💬 Se abriría WhatsApp con el cliente y el resumen del pedido #${o.nro}')">💬 WhatsApp</button>
+     <button class="btn gh sm" ${canLabel?"":"disabled"} title="${canLabel?"Etiqueta + tarjeta con cupón":"Se habilita cuando el pedido está pago"}" onclick="printLabel(${o.nro})">🏷️ Imprimir etiqueta</button>
+     ${i<2?`<button class="btn gh sm" onclick="cancelOrder(${o.nro})">Cancelar</button>`:""}</div>
+     ${!canLabel?`<small style="color:var(--muted);font-size:12px;display:block;margin-top:6px">La etiqueta se habilita cuando se confirma el pago.</small>`:""}</div>
+   <div class="blk"><h4>Historial del pedido</h4><div class="tl">${o.log.map(l=>`<div>${fDT(l[0])} · <b>${l[1]}</b></div>`).join("")}</div></div></div>`;
+}
+function advance(nro){const o=byNro(nro),i=estI(o),n=nowT();
+  const key=["resp","paid","prod","ready","deliv"][i];o.t[key]=n;
+  const msg=["Respondido · esperando pago","Pago confirmado · email: “¡Recibimos tu pago!”","En producción · insumos descontados · email: “Estamos haciendo tu pedido 🛠️”","Listo para entregar · email: “¡Tu pedido está listo!”","Entregado · en 7 días se pide reseña y se recuerda el cupón"][i];
+  if(key=="paid"){o.due=addD(sod(n),o.maxD+2);
+    const fs=o.items.filter(it=>FG[it.p.id]&&FG[it.p.id].s>=it.q);fs.forEach(it=>it.fs=true);
+    if(fs.length){stockMove("venta",fs.map(it=>({p:it.p.id,q:-it.q})),"Pedido #"+nro,"Sale de producto ya fabricado");o.log.push([n,`📦 ${fs.map(it=>it.p.n).join(", ")}: sale de stock terminado`])}}
+  if(key=="prod"){const its=o.items.filter(it=>!it.fs);if(its.length){const L=stockMove("consumo",recipeLines(its),"Pedido #"+nro,"Descuento automático por receta");o.log.push([n,"Insumos descontados: "+L.map(l=>`${-l.q} ${lineUnit(l)} ${lineName(l)}`).join(", ")])}}
+  o.log.push([n,msg.split(" · ")[0]]);log(true,`#${nro} → ${msg}`);toast("✅ "+msg);updBadge();renderWork();
+  if(key=="paid")setTimeout(()=>toast("🏷️ Ya podés imprimir la etiqueta del pedido #"+nro),1800)}
+function cancelOrder(nro){const o=byNro(nro);o.t.canc=nowT();o.log.push([o.t.canc,"Cancelado"]);toast("Pedido #"+nro+" cancelado");updBadge();renderWork()}
+function manualOrder(){openModal(`<div style="padding:26px"><h2 style="font-size:24px;margin-bottom:4px">Cargar pedido de WhatsApp / Instagram</h2><p style="color:var(--muted);font-size:13px;margin-bottom:14px">Así todo queda en el mismo lugar, aunque no entre por la web.</p>
+  <div class="promo-form">
+   <label>Canal<select id="mo-c"><option value="whatsapp">WhatsApp</option><option value="instagram">Instagram</option><option value="local">Local / feria</option></select></label>
+   <label>Cliente<input id="mo-n" value="Lorena Benítez"></label>
+   <label>WhatsApp<input id="mo-t" value="341 488-1020"></label>
+   <label>Producto<select id="mo-p">${P.map(p=>`<option value="${p.id}">${p.n} · ${fmt(p.t)}</option>`).join("")}</select></label>
+   <label>Cantidad<input id="mo-q" type="number" value="1" min="1"></label>
+   <label>Pago<select id="mo-pay"><option value="trf">Transferencia</option><option value="cuotas">3 cuotas</option></select></label>
+   <label class="full">Nota / personalización<input id="mo-x" placeholder="Ej: nombre EMMA, color verde"></label>
+  </div><div style="margin-top:16px;display:flex;gap:8px;justify-content:flex-end"><button class="btn gh" onclick="closeModal()">Cancelar</button><button class="btn dk" onclick="saveManual()">Guardar pedido</button></div></div>`)}
+function saveManual(){const c=newCustomer();c.n=$("mo-n").value;c.tel=$("mo-t").value;const p=PBY[$("mo-p").value];const n=nowT(),canal=$("mo-c").value;
+  const o={nro:orders.length+1001,created:n,canal,cli:c,items:[{p,q:+$("mo-q").value||1,pers:$("mo-x").value||undefined}],pay:$("mo-pay").value,ent:"retiro",gift:false,coupon:null,t:{resp:n},log:[[n,`Pedido cargado desde ${CH[canal]}`]]};
+  finalize(o);orders.push(o);closeModal();ws.card="activos";ws.sel=o;renderWork();toast(`✅ Pedido #${o.nro} cargado · queda esperando pago`)}
+
+/* ---------- etiqueta ---------- */
+function barcode(n){let x=0,s="";const bits="101"+String(n).padStart(6,"0").split("").map(d=>(+d).toString(2).padStart(4,"0")).join("")+"101";for(const b of bits){const w=b=="1"?2.4:1.2;if(b=="1")s+=`<rect x="${x}" y="0" width="${w}" height="40" fill="#111"/>`;x+=w+1.2}return`<svg width="${x}" height="40" viewBox="0 0 ${x} 40">${s}</svg>`}
+function printLabel(nro){const o=byNro(nro);const code=`VUELVE-${o.nro}`;const exp=addD(nowT(),PROMO.days);
+  openModal(`<div class="noprint" style="padding:20px 60px 0 24px;display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap"><div><h2 style="font-size:22px">🏷️ Etiqueta del pedido #${o.nro}</h2><p style="color:var(--muted);font-size:13px">Etiqueta de 10 × 15 cm (impresora térmica o A4) + tarjeta con cupón para meter en la caja</p></div><button class="btn dk" onclick="doPrint('label')">🖨️ Imprimir</button></div>
+  <div style="padding:18px 24px 24px"><div class="lblwrap">
+   <div class="label">
+     <div class="lh"><div class="lg">NIDOBEBÉ</div><div class="nro">PEDIDO<b>#${o.nro}</b>${o.created.toLocaleDateString("es-AR")}</div></div>
+     <div class="row"><span>Origen: <b>${CHN[o.canal].toUpperCase()}</b></span><span>Pago: <b>${o.pay=="trf"?"Transferencia":"3 cuotas"}</b></span><span class="paid">✓ PAGADO</span></div>
+     <div class="bx"><h5>${o.ent=="envio"?"Destinatario · ENVÍO":"Cliente · RETIRA EN ROSARIO"}</h5><b>${esc(o.cli.n)}</b><br>📱 ${esc(o.cli.tel)}${o.ent=="envio"?`<br>📍 ${esc(o.dir||o.cli.city)}`:""}</div>
+     <div class="bx items"><h5>Contenido</h5>${o.items.map(it=>`<div>${it.q}× ${it.p.n}${it.v?" · "+it.v:""}${it.pers?" · ✨ "+esc(it.pers):""}</div>`).join("")}</div>
+     ${o.gift?`<div class="bx" style="font-size:11px">🎁 <b style="font-size:12px">ES PARA REGALO</b> · no incluir precio</div>`:""}
+     ${o.nota?`<div class="bx" style="font-size:11px">📝 ${esc(o.nota)}</div>`:""}
+     <div class="frag">FRÁGIL · HECHO A MANO · CUIDAR</div>
+     <div class="bar">${barcode(o.nro)}<br>NIDO-${o.nro}</div>
+     <div class="row" style="font-size:9px;color:#555"><span>nidobebe.com.ar</span><span>@nidobebe.ros</span><span>Rosario, Santa Fe</span></div>
+   </div>
+   <div class="thx">
+     <div class="lg">nidobebé</div>
+     <h4>¡Gracias, ${esc(o.cli.n.split(" ")[0])}!</h4>
+     <p>${esc(PROMO.msg)}</p>
+     <div class="cp"><p style="font-size:11px;letter-spacing:2px">TU PRÓXIMA COMPRA</p><b>${PROMO.next}% OFF</b><code>${code}</code></div>
+     <p>Usalo en <b>nidobebe.com.ar</b> o mencionalo por WhatsApp.<br>Válido hasta el ${exp.toLocaleDateString("es-AR")}.</p>
+     <p style="font-size:11px">📷 Compartí una foto con tu NIDO y etiquetanos en <b>@nidobebe.ros</b></p>
+     <small>Pedido #${o.nro} · limpiar con paño húmedo, sin productos abrasivos.</small>
+   </div>
+  </div></div>`)}
+
+/* =====================================================================
+   HISTORIAL
+   ===================================================================== */
+const hs={p:"week",anchor:new Date(+TODAY),q:"",est:"",canal:""};
+document.querySelectorAll("#hseg button").forEach(b=>b.onclick=()=>{hs.p=b.dataset.p;document.querySelectorAll("#hseg button").forEach(x=>x.classList.toggle("on",x===b));renderHist()});
+function range(p,a){a=sod(a);if(p=="day")return[a,addD(a,1)];if(p=="week"){const s=addD(a,-((a.getDay()+6)%7));return[s,addD(s,7)]}if(p=="month")return[new Date(a.getFullYear(),a.getMonth(),1),new Date(a.getFullYear(),a.getMonth()+1,1)];return[new Date(a.getFullYear(),0,1),new Date(a.getFullYear()+1,0,1)]}
+function hNav(d){const a=hs.anchor;const nx=hs.p=="day"?addD(a,d):hs.p=="week"?addD(a,7*d):hs.p=="month"?new Date(a.getFullYear(),a.getMonth()+d,15):new Date(a.getFullYear()+d,5,15);if(range(hs.p,nx)[0]>nowT())return toast("Todavía no llegamos a ese período 🙂");hs.anchor=nx;renderHist()}
+const inR=(d,s,e)=>!!d&&d>=s&&d<e;
+function metrics(s,e){
+  const end=e>nowT()?nowT():e;
+  const M={ing:0,resp:0,wait:0,conf:0,toDel:0,del:0,canc:0,fact:0,cons:0,consR:0,rt:[]};
+  for(const o of orders){
+    if(inR(o.created,s,e))M.ing++;
+    if(inR(o.t.resp,s,e)){M.resp++;if(o.canal!="local")M.rt.push((o.t.resp-o.created)/6e4)}
+    if(inR(o.t.paid,s,e)){M.conf++;M.fact+=o.total}
+    if(inR(o.t.deliv,s,e))M.del++;
+    if(inR(o.t.canc,s,e))M.canc++;
+    if(o.created<end){const r=k=>o.t[k]&&o.t[k]<end;if(r("resp")&&!r("paid")&&!r("canc"))M.wait++;if(r("ready")&&!r("deliv"))M.toDel++}
+  }
+  for(const c of consultas){if(inR(c.created,s,e))M.cons++;if(inR(c.resp,s,e)){M.consR++;M.rt.push((c.resp-c.created)/6e4)}}
+  M.avgRt=M.rt.length?M.rt.reduce((a,b)=>a+b,0)/M.rt.length:0;return M}
+const fRt=m=>m<60?Math.round(m)+" min":(m/60).toFixed(1).replace(".",",")+" h";
+function delta(a,b,inv){if(!b)return`<em>sin datos del período anterior</em>`;const d=Math.round((a-b)/b*100);const good=inv?d<=0:d>=0;return`<em class="${d==0?"":good?"up":"dn"}">${d>0?"▲":d<0?"▼":"="} ${Math.abs(d)}% vs. período anterior</em>`}
+function plabel(p,s){const e=addD(range(p,s)[1],-1);return p=="day"?s.toLocaleDateString("es-AR",{weekday:"long",day:"numeric",month:"long",year:"numeric"}):p=="week"?`Semana del ${fD(s)} al ${fD(e)}`:p=="month"?MESL[s.getMonth()][0].toUpperCase()+MESL[s.getMonth()].slice(1)+" "+s.getFullYear():"Año "+s.getFullYear()}
+function renderHist(){
+  const[s,e]=range(hs.p,hs.anchor);const ps=hs.p=="month"?new Date(s.getFullYear(),s.getMonth()-1,1):hs.p=="year"?new Date(s.getFullYear()-1,0,1):new Date(+s-(e-s));
+  const M=metrics(s,e),Pm=metrics(ps,s);
+  $("hlbl").textContent=plabel(hs.p,s);
+  const tiles=[["📥 Pedidos ingresados",M.ing,Pm.ing],["💬 Respondidos",M.resp,Pm.resp,`tiempo medio de respuesta ${fRt(M.avgRt)}`],["💳 Esperando pago al cierre",M.wait,null,"respondidos que todavía no pagaron"],["✅ Confirmados (pagados)",M.conf,Pm.conf],
+   ["📦 Por entregar al cierre",M.toDel,null,"listos, todavía sin entregar"],["🏠 Entregados",M.del,Pm.del],["✖ Cancelados",M.canc,Pm.canc,null,true],["💰 Facturación cobrada",fmt(M.fact),Pm.fact,null,false,M.fact]];
+  $("hm").innerHTML=tiles.map(([l,v,pv,sub,inv,raw])=>`<div class="mt"><span>${l}</span><b>${v}</b>${sub?`<em>${sub}</em>`:pv!=null?delta(raw??v,pv,inv):""}</div>`).join("")+
+   `<div class="mt" style="grid-column:span 2"><span>💬 Consultas desde la web</span><b>${M.cons}</b><em>${M.consR} respondidas · ${pct(M.consR,M.cons)}% de respuesta</em></div><div class="mt" style="grid-column:span 2"><span>📈 Conversión de pedido a pago</span><b>${pct(M.conf,M.ing)}%</b><em>de cada 10 pedidos que entran, se cobran ${Math.round(M.conf/(M.ing||1)*10)}</em></div>`;
+  let B=[];
+  if(hs.p=="day"){for(let h=8;h<24;h++){const bs=new Date(+s+h*36e5);B.push([String(h).padStart(2,"0")+" h",bs,new Date(+bs+36e5)])}}
+  else if(hs.p=="week"||hs.p=="month"){for(let d=new Date(s);d<e;d=addD(d,1))B.push([hs.p=="week"?DIA[d.getDay()]+" "+d.getDate():String(d.getDate()),d,addD(d,1)])}
+  else for(let m=0;m<12;m++)B.push([MES[m],new Date(s.getFullYear(),m,1),new Date(s.getFullYear(),m+1,1)]);
+  const BM=B.map(([l,bs,be])=>({l,bs,M:metrics(bs,be)}));
+  const rows=hs.p=="day"?BM.filter(b=>b.M.ing||b.M.resp||b.M.conf||b.M.del||b.M.cons):BM.filter(b=>b.bs<nowT());
+  const bk={day:"hora",week:"día",month:"día",year:"mes"}[hs.p];
+  $("hbk").textContent=bk;$("hchartsub").textContent="por "+bk;
+  groupedBars($("hchart"),BM,b=>b.l,[{n:"Ingresados",c:"var(--s1)",f:b=>b.M.ing},{n:"Pagados",c:"var(--s2)",f:b=>b.M.conf}]);
+  const Tt=rows.reduce((a,b)=>{for(const k of["ing","resp","conf","del","canc","cons","fact"])a[k]=(a[k]||0)+b.M[k];return a},{});
+  $("htable").innerHTML=`<table class="tbl"><thead><tr><th>${bk[0].toUpperCase()+bk.slice(1)}</th><th class="n">Ingres.</th><th class="n">Resp.</th><th class="n">Pagados</th><th class="n">Entreg.</th><th class="n">Cancel.</th><th class="n">Consultas</th><th class="n">Facturación</th></tr></thead><tbody>
+   ${rows.map(b=>`<tr><td>${b.l}</td><td class="n">${b.M.ing}</td><td class="n">${b.M.resp}</td><td class="n">${b.M.conf}</td><td class="n">${b.M.del}</td><td class="n">${b.M.canc}</td><td class="n">${b.M.cons}</td><td class="n">${fmt(b.M.fact)}</td></tr>`).join("")||`<tr><td colspan=8 style="color:var(--muted)">Sin actividad</td></tr>`}
+   <tr class="tot"><td>Total</td><td class="n">${Tt.ing||0}</td><td class="n">${Tt.resp||0}</td><td class="n">${Tt.conf||0}</td><td class="n">${Tt.del||0}</td><td class="n">${Tt.canc||0}</td><td class="n">${Tt.cons||0}</td><td class="n">${fmt(Tt.fact||0)}</td></tr></tbody></table>`;
+  $("hest").innerHTML=`<option value="">Todos los estados</option>`+EST.map((x,k)=>`<option value="${k}" ${hs.est===String(k)?"selected":""}>${x}</option>`).join("");
+  renderHistOrders();
+}
+function histOrders(){const[s,e]=range(hs.p,hs.anchor);const q=hs.q.toLowerCase();return orders.filter(o=>inR(o.created,s,e)&&(hs.est===""||estI(o)==+hs.est)&&(!hs.canal||o.canal==hs.canal)&&(!q||`${o.nro} ${o.cli.n} ${itemsTxt(o)}`.toLowerCase().includes(q))).sort((a,b)=>b.created-a.created)}
+function renderHistOrders(){const L=histOrders();$("hocount").textContent=`${L.length} pedidos · ${fmt(L.filter(o=>o.t.paid).reduce((a,o)=>a+o.total,0))} cobrados`;
+  $("horders").innerHTML=`<table class="tbl"><thead><tr><th>#</th><th>Fecha</th><th>Canal</th><th>Cliente</th><th>Productos</th><th class="n">Total</th><th>Pago</th><th>Entrega</th><th>Estado</th><th class="n">Respuesta</th></tr></thead><tbody>${L.slice(0,150).map(o=>{const i=estI(o);return`<tr><td><a style="cursor:pointer;text-decoration:underline" onclick="openFromHist(${o.nro})">${o.nro}</a></td><td>${fDT(o.created)}</td><td><span class="chan c-${o.canal}">${CHN[o.canal]}</span></td><td>${esc(o.cli.n)}</td><td style="max-width:260px">${itemsTxt(o)}</td><td class="n">${fmt(o.total)}</td><td>${o.pay=="trf"?"Transf.":"Cuotas"}</td><td>${o.ent=="envio"?"Envío":"Retiro"}</td><td><span class="est e${i}">${EST[i]}</span></td><td class="n">${o.t.resp&&o.canal!="local"?fRt((o.t.resp-o.created)/6e4):"–"}</td></tr>`}).join("")||`<tr><td colspan=10 style="color:var(--muted)">No hay pedidos con esos filtros</td></tr>`}</tbody></table>${L.length>150?`<p style="padding:10px 14px;color:var(--muted);font-size:13px">Mostrando 150 de ${L.length}. Descargá el CSV para ver todos.</p>`:""}`}
+function openFromHist(nro){const o=byNro(nro);if(estI(o)<5){ws.card="activos";ws.sel=o;go("work")}else{openModal(`<div style="padding:24px"><h2 style="font-size:24px">Pedido #${o.nro}</h2><p style="color:var(--muted)">${esc(o.cli.n)} · ${CHN[o.canal]} · ${fmt(o.total)} · <span class="est e${estI(o)}">${estN(o)}</span></p><div class="blk"><h4>Productos</h4>${itemsTxt(o)}</div><div class="blk"><h4>Historial</h4><div class="tl">${o.log.map(l=>`<div>${fDT(l[0])} · <b>${l[1]}</b></div>`).join("")}</div></div>${estI(o)==5?`<button class="btn gh" onclick="printLabel(${o.nro})">🏷️ Reimprimir etiqueta</button>`:""}</div>`)}}
+function exportHist(){const L=histOrders();csv(`nido-pedidos-${plabel(hs.p,range(hs.p,hs.anchor)[0]).replace(/[^\wáéíóúñ]+/gi,"-").toLowerCase()}.csv`,[["Pedido","Fecha","Canal","Cliente","Teléfono","Productos","Subtotal","Descuento","Total","Pago","Entrega","Estado","Respondido","Pagado","Entregado"],...L.map(o=>[o.nro,fDT(o.created),CHN[o.canal],o.cli.n,o.cli.tel,itemsTxt(o),o.sub,o.disc,o.total,o.pay=="trf"?"Transferencia":"Cuotas",o.ent,estN(o),fDT(o.t.resp),fDT(o.t.paid),fDT(o.t.deliv)])])}
+
+/* =====================================================================
+   GRÁFICOS
+   ===================================================================== */
+const nice=v=>{if(v<=0)return 1;const p=Math.pow(10,Math.floor(Math.log10(v)));const f=v/p;return(f<=1?1:f<=2?2:f<=2.5?2.5:f<=5?5:10)*p};
+const vpath=(x,y,w,h,r=4)=>{r=Math.min(r,w/2,h);return h<=0?"":`M${x},${y+h}V${y+r}Q${x},${y} ${x+r},${y}H${x+w-r}Q${x+w},${y} ${x+w},${y+r}V${y+h}Z`};
+const hpath=(x,y,w,h,r=4)=>{r=Math.min(r,h/2,w);return w<=0?"":`M${x},${y}H${x+w-r}Q${x+w},${y} ${x+w},${y+r}V${y+h-r}Q${x+w},${y+h} ${x+w-r},${y+h}H${x}Z`};
+function groupedBars(el,data,lab,series,fy=v=>v,tipf){
+  const Wd=640,H=230,pl=44,pr=8,pt=12,pb=26,iw=Wd-pl-pr,ih=H-pt-pb;
+  const mx=nice(Math.max(1,...data.flatMap(d=>series.map(s=>s.f(d)))));const n=data.length,bw=iw/n,gw=Math.min(30,bw*.78),sw=(gw-2*(series.length-1))/series.length;
+  const every=Math.ceil(n/16);
+  let g="";for(let k=0;k<=4;k++){const y=pt+ih-ih*k/4;g+=`<line x1="${pl}" x2="${Wd-pr}" y1="${y}" y2="${y}" stroke="var(--grid)"/><text x="${pl-6}" y="${y+4}" text-anchor="end">${fy(Math.round(mx*k/4))}</text>`}
+  data.forEach((d,i)=>{const x0=pl+i*bw+(bw-gw)/2;series.forEach((s,j)=>{const v=s.f(d),h=ih*v/mx;g+=`<path d="${vpath(x0+j*(sw+2),pt+ih-h,sw,h)}" fill="${s.c}"/>`});
+    g+=`<rect x="${pl+i*bw}" y="${pt}" width="${bw}" height="${ih}" fill="transparent" data-tip="${tipf?tipf(d):`<b>${lab(d)}</b><br>${series.map(s=>`${s.n}: <b>${fy(s.f(d))}</b>`).join("<br>")}`}"/>`;
+    if(i%every==0)g+=`<text x="${pl+i*bw+bw/2}" y="${H-8}" text-anchor="middle">${lab(d)}</text>`});
+  el.innerHTML=`<svg viewBox="0 0 ${Wd} ${H}" width="100%" role="img">${g}</svg>`}
+function lineChart(el,labels,cur,prev,fy){
+  const Wd=680,H=250,pl=50,pr=12,pt=14,pb=28,iw=Wd-pl-pr,ih=H-pt-pb,n=labels.length;
+  const mx=nice(Math.max(1,...cur,...prev));const X=i=>pl+(n<2?iw/2:iw*i/(n-1)),Y=v=>pt+ih-ih*v/mx;
+  let g="";for(let k=0;k<=4;k++){const y=pt+ih-ih*k/4;g+=`<line x1="${pl}" x2="${Wd-pr}" y1="${y}" y2="${y}" stroke="var(--grid)"/><text x="${pl-8}" y="${y+4}" text-anchor="end">${fy(mx*k/4)}</text>`}
+  const every=Math.ceil(n/9);labels.forEach((l,i)=>{if(i%every==0)g+=`<text x="${X(i)}" y="${H-8}" text-anchor="middle">${l}</text>`});
+  const pth=a=>a.map((v,i)=>`${i?"L":"M"}${X(i).toFixed(1)},${Y(v).toFixed(1)}`).join("");
+  g+=`<path d="${pth(cur)} L${X(n-1)},${pt+ih} L${X(0)},${pt+ih}Z" fill="var(--s1)" opacity=".08"/>`;
+  g+=`<path d="${pth(prev)}" fill="none" stroke="var(--prev)" stroke-width="2" stroke-dasharray="5 4"/><path d="${pth(cur)}" fill="none" stroke="var(--s1)" stroke-width="2" stroke-linejoin="round"/>`;
+  g+=`<circle cx="${X(n-1)}" cy="${Y(cur[n-1])}" r="4.5" fill="var(--s1)" stroke="#fff" stroke-width="2"/>`;
+  g+=`<line class="xh" x1="0" x2="0" y1="${pt}" y2="${pt+ih}" stroke="var(--ink2)" stroke-width="1" opacity="0"/><circle class="xd2" r="4" fill="var(--prev)" stroke="#fff" stroke-width="2" opacity="0"/><circle class="xd1" r="5" fill="var(--s1)" stroke="#fff" stroke-width="2" opacity="0"/>`;
+  g+=`<rect data-line="1" x="${pl}" y="${pt}" width="${iw}" height="${ih}" fill="transparent"/>`;
+  el.innerHTML=`<svg viewBox="0 0 ${Wd} ${H}" width="100%" role="img">${g}</svg>`;
+  const svg=el.querySelector("svg"),ov=svg.querySelector("[data-line]"),xh=svg.querySelector(".xh"),d1=svg.querySelector(".xd1"),d2=svg.querySelector(".xd2");
+  ov.onmousemove=e=>{const r=svg.getBoundingClientRect(),x=(e.clientX-r.left)*Wd/r.width;const i=Math.max(0,Math.min(n-1,Math.round((x-pl)/(iw/Math.max(1,n-1)))));
+    xh.setAttribute("x1",X(i));xh.setAttribute("x2",X(i));xh.setAttribute("opacity",.45);
+    d1.setAttribute("cx",X(i));d1.setAttribute("cy",Y(cur[i]));d1.setAttribute("opacity",1);d2.setAttribute("cx",X(i));d2.setAttribute("cy",Y(prev[i]));d2.setAttribute("opacity",1);
+    const d=prev[i]?Math.round((cur[i]-prev[i])/prev[i]*100):null;
+    tip.innerHTML=`<b>${labels[i]}</b><br>Actual: <b>${fmt(cur[i])}</b><br>Período anterior: ${fmt(prev[i])}${d!=null?`<br>${d>=0?"▲":"▼"} ${Math.abs(d)}%`:""}`;tip.style.display="block";placeTip(e)};
+  ov.onmouseleave=()=>{tip.style.display="none";[xh,d1,d2].forEach(s=>s.setAttribute("opacity",0))}}
+function hBars(el,rows,fv){
+  const mx=Math.max(1,...rows.map(r=>r.v));const rh=30,Wd=360,lw=92,H=rows.length*rh+4;
+  el.innerHTML=`<svg viewBox="0 0 ${Wd} ${H}" width="100%">${rows.map((r,i)=>{const w=(Wd-lw-62)*r.v/mx,y=i*rh+4;return`<text x="0" y="${y+15}" style="fill:var(--ink2);font-size:12px">${r.l}</text><path d="${hpath(lw,y+3,Math.max(w,1),16)}" fill="var(--s1)"/><text class="v" x="${lw+w+6}" y="${y+15}">${fv(r.v)}</text><rect x="0" y="${y}" width="${Wd}" height="${rh}" fill="transparent" data-tip="<b>${r.l}</b><br>${r.tip||fv(r.v)}"/>`}).join("")}</svg>`}
+function stack100(rows){return rows.map(r=>{const tot=r.parts.reduce((a,p)=>a+p.v,0)||1;let x=0;return`<div style="margin-bottom:16px"><div style="font-size:12px;color:var(--muted);margin-bottom:6px">${r.l}</div><svg viewBox="0 0 300 24" width="100%" preserveAspectRatio="none" style="height:24px">${r.parts.map((p,i)=>{const w=300*p.v/tot;const s=`<rect x="${x+(i?1:0)}" y="0" width="${Math.max(0,w-(i?1:0)-(i<r.parts.length-1?1:0))}" height="24" rx="4" fill="${p.c}" data-tip="<b>${p.l}</b><br>${p.v} pedidos · ${pct(p.v,tot)}%"/>`;x+=w;return s}).join("")}</svg><div class="legend" style="margin-top:6px">${r.parts.map(p=>`<span><i class="sq" style="background:${p.c}"></i>${p.l} <b>${pct(p.v,tot)}%</b></span>`).join("")}</div></div>`}).join("")}
+
+/* =====================================================================
+   DASHBOARD
+   ===================================================================== */
+const ds={per:"30",canal:"",line:""};
+function dRange(){const e=nowT();const s=ds.per=="ytd"?new Date(e.getFullYear(),0,1):addD(sod(e),-(+ds.per)+1);return{s,e,ps:new Date(+s-(e-s)),pe:s}}
+function oval(o){if(!ds.line)return{rev:o.total,cost:o.cost};const its=o.items.filter(i=>i.p.l==ds.line);const f=o.sub?1-o.disc/o.sub:1;return{rev:its.reduce((a,i)=>a+priceOf(i,o.pay),0)*f,cost:its.reduce((a,i)=>a+i.p.cost*i.q,0)}}
+const okO=o=>(!ds.canal||o.canal==ds.canal)&&(!ds.line||o.items.some(i=>i.p.l==ds.line));
+const sum=(L,f)=>L.reduce((a,o)=>a+f(o),0);
+const avg=a=>a.length?a.reduce((x,y)=>x+y,0)/a.length:0;
+function renderDash(){
+  $("dline").innerHTML=`<option value="">Todas</option>`+Object.entries(LINES).map(([k,v])=>`<option value="${k}" ${ds.line==k?"selected":""}>${v.n}</option>`).join("");
+  const{s,e,ps,pe}=dRange();
+  $("dsub").textContent=`Del ${s.toLocaleDateString("es-AR")} al ${e.toLocaleDateString("es-AR")} · comparado con el período anterior equivalente`;
+  const paid=orders.filter(o=>okO(o)&&inR(o.t.paid,s,e)),ppaid=orders.filter(o=>okO(o)&&inR(o.t.paid,ps,pe));
+  const rev=sum(paid,o=>oval(o).rev),prev=sum(ppaid,o=>oval(o).rev),cost=sum(paid,o=>oval(o).cost),pcost=sum(ppaid,o=>oval(o).cost);
+  const created=orders.filter(o=>okO(o)&&inR(o.created,s,e)),pcreated=orders.filter(o=>okO(o)&&inR(o.created,ps,pe));
+  const rts=created.filter(o=>o.t.resp&&o.canal!="local").map(o=>(o.t.resp-o.created)/6e4),prts=pcreated.filter(o=>o.t.resp&&o.canal!="local").map(o=>(o.t.resp-o.created)/6e4);
+  const firstOrder=new Map();[...orders].sort((a,b)=>a.created-b.created).forEach(o=>{if(!firstOrder.has(o.cli.id))firstOrder.set(o.cli.id,o.created)});
+  const rec=L=>pct(L.filter(o=>firstOrder.get(o.cli.id)<o.created).length,L.length);
+  const pend=orders.filter(o=>okO(o)&&estI(o)<=1),pendV=sum(pend,o=>o.total);
+  const conv=L=>pct(L.filter(o=>o.t.paid).length,L.length);
+  const K=[["💰 Facturación",fmtK(rev),rev,prev],["🧾 Pedidos pagados",paid.length,paid.length,ppaid.length],["🎟️ Ticket promedio",fmt(rev/(paid.length||1)),rev/(paid.length||1),prev/(ppaid.length||1)],["📐 Margen bruto",pct(rev-cost,rev)+"%",pct(rev-cost,rev),pct(prev-pcost,prev)],
+    ["📈 Conversión pedido → pago",conv(created)+"%",conv(created),conv(pcreated)],["⏱️ Tiempo de respuesta",fRt(avg(rts)),avg(rts),avg(prts),true],["⭐ Clientes recurrentes",rec(paid)+"%",rec(paid),rec(ppaid)],["⏳ Pendiente de cobro",fmtK(pendV),null,null,false,`${pend.length} pedidos sin pagar hoy`]];
+  $("dk").innerHTML=K.map(([l,v,a,b,inv,sub])=>`<div class="kt"><span>${l}</span><b>${v}</b>${a!=null?delta(a,b,inv):`<em>${sub}</em>`}</div>`).join("");
+  const days=Math.ceil((e-s)/DAY),bucket=days<=31?1:days<=120?7:30.4,nb=Math.ceil(days/bucket);
+  const cur=Array(nb).fill(0),prv=Array(nb).fill(0),labs=[];
+  for(let i=0;i<nb;i++){const bs=new Date(+s+i*bucket*DAY);labs.push(bucket==1?fD(bs):bucket==7?"Sem "+fD(bs):MES[bs.getMonth()])}
+  paid.forEach(o=>{cur[Math.min(nb-1,Math.floor((o.t.paid-s)/DAY/bucket))]+=oval(o).rev});
+  ppaid.forEach(o=>{const i=Math.min(nb-1,Math.floor((o.t.paid-ps)/DAY/bucket));if(i>=0)prv[i]+=oval(o).rev});
+  $("trsub").textContent=bucket==1?"por día":bucket==7?"por semana":"por mes";
+  lineChart($("dtrend"),labs,cur,prv,fmtK);
+  const ms=new Date(e.getFullYear(),e.getMonth(),1),dim=new Date(e.getFullYear(),e.getMonth()+1,0).getDate(),el=(e-ms)/DAY;
+  const mtd=sum(orders.filter(o=>inR(o.t.paid,ms,e)),o=>o.total),lm=sum(orders.filter(o=>inR(o.t.paid,new Date(e.getFullYear(),e.getMonth()-1,1),ms)),o=>o.total);
+  const proj=mtd/Math.max(el,.5)*dim,goal=Math.max(1,Math.round(lm*1.15/1e5)*1e5);
+  $("dproj").innerHTML=`<div style="font-size:12px;color:var(--muted)">Cobrado en ${MESL[e.getMonth()]} hasta hoy</div><div class="hero-n">${fmt(mtd)}</div>
+   <div class="pbar2"><i style="width:${Math.min(100,mtd/goal*100)}%"></i><u style="left:${Math.min(99,el/dim*100)}%" data-tip="Hoy: día ${Math.ceil(el)} de ${dim}"></u></div>
+   <div style="font-size:12px;color:var(--muted)">${pct(mtd,goal)}% del objetivo · pasó el ${Math.round(el/dim*100)}% del mes</div>
+   <div class="statl" style="margin-top:12px"><span>Proyección a fin de mes</span><b>${fmt(proj)}</b></div>
+   <div class="statl"><span>Objetivo (mes anterior + 15%)</span><b>${fmt(goal)}</b></div>
+   <div class="statl"><span>Mes anterior completo</span><b>${fmt(lm)}</b></div>
+   <div class="statl" style="border:0"><span>Por día para llegar</span><b>${fmt(Math.max(0,(goal-mtd)/Math.max(1,dim-el)))}</b></div>`;
+  const byL={};paid.forEach(o=>{const f=o.sub?1-o.disc/o.sub:1;o.items.forEach(i=>{if(ds.line&&i.p.l!=ds.line)return;byL[i.p.l]=(byL[i.p.l]||0)+priceOf(i,o.pay)*f})});
+  hBars($("dlines"),Object.keys(LINES).map(k=>({l:LINES[k].n,v:byL[k]||0,tip:`${fmt(byL[k]||0)} · ${pct(byL[k]||0,rev)}% del total`})).sort((a,b)=>b.v-a.v),fmtK);
+  const byC={};created.forEach(o=>byC[o.canal]=(byC[o.canal]||0)+1);
+  hBars($("dchan"),Object.keys(CHN).map(k=>({l:CHN[k],v:byC[k]||0,tip:`${byC[k]||0} pedidos · ${pct(byC[k]||0,created.length)}%<br>Se pagan: ${pct(created.filter(o=>o.canal==k&&o.t.paid).length,byC[k]||0)}%`})).sort((a,b)=>b.v-a.v),v=>v);
+  $("dmix").innerHTML=stack100([{l:"Medio de pago",parts:[{l:"Transferencia",v:paid.filter(o=>o.pay=="trf").length,c:"var(--s1)"},{l:"3 cuotas",v:paid.filter(o=>o.pay!="trf").length,c:"var(--s2)"}]},{l:"Entrega",parts:[{l:"Retiro",v:paid.filter(o=>o.ent=="retiro").length,c:"var(--s1)"},{l:"Envío",v:paid.filter(o=>o.ent=="envio").length,c:"var(--s2)"}]},{l:"Uso de cupones",parts:[{l:"Sin cupón",v:paid.filter(o=>!o.coupon).length,c:"var(--s1)"},{l:"Con cupón",v:paid.filter(o=>o.coupon).length,c:"var(--s2)"}]}]);
+  const pr={};paid.forEach(o=>{const f=o.sub?1-o.disc/o.sub:1;o.items.forEach(i=>{if(ds.line&&i.p.l!=ds.line)return;const r=pr[i.p.id]||(pr[i.p.id]={p:i.p,u:0,rev:0,cost:0});r.u+=i.q;r.rev+=priceOf(i,o.pay)*f;r.cost+=i.p.cost*i.q})});
+  const ppr={};ppaid.forEach(o=>o.items.forEach(i=>{ppr[i.p.id]=(ppr[i.p.id]||0)+priceOf(i,o.pay)}));
+  const PR=Object.values(pr).sort((a,b)=>b.rev-a.rev);let acc=0;const totR=PR.reduce((a,r)=>a+r.rev,0)||1;PR.forEach(r=>{const before=acc/totR;acc+=r.rev;r.abc=before<.8?"A":before<.95?"B":"C"});window._PR=PR;
+  $("dprod").innerHTML=`<table class="tbl"><thead><tr><th></th><th>Producto</th><th class="n">Unid.</th><th class="n">Facturación</th><th class="n">vs. ant.</th><th class="n">Margen</th><th class="n">% total</th></tr></thead><tbody>${PR.slice(0,25).map(r=>{const pv=ppr[r.p.id]||0,d=pv?Math.round((r.rev-pv)/pv*100):null;return`<tr><td><span class="abc ${r.abc}" data-tip="Clase ${r.abc}: ${r.abc=="A"?"los que hacen el 80% de la facturación":r.abc=="B"?"el siguiente 15%":"el último 5%"}">${r.abc}</span></td><td>${r.p.e} ${r.p.n}</td><td class="n">${r.u}</td><td class="n">${fmt(r.rev)}</td><td class="n ${d==null?"":d>=0?"up":"dn"}">${d==null?"nuevo":(d>=0?"▲":"▼")+Math.abs(d)+"%"}</td><td class="n">${pct(r.rev-r.cost,r.rev)}%</td><td class="n">${(r.rev/totR*100).toFixed(1).replace(".",",")}%</td></tr>`}).join("")}</tbody></table>`;
+  const F=[["Ingresados",created.length],["Respondidos",created.filter(o=>o.t.resp).length],["Pagados",created.filter(o=>o.t.paid).length],["En producción",created.filter(o=>o.t.prod).length],["Entregados",created.filter(o=>o.t.deliv).length]];
+  const ramp=["#86b6ef","#5598e7","#2a78d6","#1c5cab","#104281"];
+  $("dfun").innerHTML=F.map(([l,v],i)=>`<div class="fr"><span>${l}</span><div style="width:${Math.max(2,v/(F[0][1]||1)*100)}%;background:${ramp[i]}" data-tip="<b>${l}</b><br>${v} pedidos · ${pct(v,F[0][1])}% de los ingresados"></div><span>${v} · ${pct(v,F[0][1])}%</span></div>`).join("")+
+   `<div style="font-size:12px;color:var(--muted);margin-top:10px;line-height:1.5">Entre “respondido” y “pagado” se pierden <b>${F[1][1]-F[2][1]}</b> pedidos. El recordatorio automático a las 24 h apunta a recuperar esos. Los pedidos recientes todavía pueden estar en curso.</div>`;
+  const hrs=[...Array(15)].map((_,i)=>i+9),HM=[...Array(7)].map(()=>Array(15).fill(0));
+  created.forEach(o=>{const h=o.created.getHours();if(h>=9)HM[(o.created.getDay()+6)%7][h-9]++});
+  const hmx=Math.max(1,...HM.flat()),seq=["#f0efec","#cde2fb","#9ec5f4","#6da7ec","#3987e5","#256abf","#184f95"];
+  const cw=34,chh=24,ox=36;let hs2="";HM.forEach((r,d)=>r.forEach((v,h)=>{const c=seq[v?Math.min(6,1+Math.floor(v/hmx*5.99)):0];hs2+=`<rect x="${ox+h*(cw+2)}" y="${d*(chh+2)}" width="${cw}" height="${chh}" rx="4" fill="${c}" data-tip="<b>${["Lunes","Martes","Miércoles","Jueves","Viernes","Sábado","Domingo"][d]} ${hrs[h]}:00</b><br>${v} pedidos"/>`}));
+  ["Lun","Mar","Mié","Jue","Vie","Sáb","Dom"].forEach((l,d)=>hs2+=`<text x="0" y="${d*(chh+2)+16}">${l}</text>`);hrs.forEach((h,i)=>{if(i%2==0)hs2+=`<text x="${ox+i*(cw+2)+cw/2}" y="${7*(chh+2)+12}" text-anchor="middle">${h}h</text>`});
+  const peak=HM.flatMap((r,d)=>r.map((v,h)=>({v,d,h}))).sort((a,b)=>b.v-a.v)[0];
+  $("dheat").innerHTML=`<svg viewBox="0 0 ${ox+15*(cw+2)} ${7*(chh+2)+18}" width="100%">${hs2}</svg><div class="legend" style="margin-top:8px"><span>Menos</span>${seq.slice(1).map(c=>`<i class="sq" style="background:${c};margin:0"></i>`).join("")}<span>Más</span><span style="margin-left:auto">Pico: <b>${["lunes","martes","miércoles","jueves","viernes","sábados","domingos"][peak.d]} a las ${hrs[peak.h]} h</b></span></div>`;
+  const cl={};paid.forEach(o=>{const r=cl[o.cli.id]||(cl[o.cli.id]={c:o.cli,n:0,t:0,last:o.t.paid});r.n++;r.t+=oval(o).rev;if(o.t.paid>r.last)r.last=o.t.paid});
+  const CL=Object.values(cl).sort((a,b)=>b.t-a.t).slice(0,12);
+  $("dcli").innerHTML=`<table class="tbl"><thead><tr><th>Cliente</th><th>Ciudad</th><th class="n">Pedidos</th><th class="n">Total</th><th class="n">Última compra</th></tr></thead><tbody>${CL.map(r=>`<tr><td>${esc(r.c.n)}</td><td>${r.c.city}</td><td class="n">${r.n}</td><td class="n">${fmt(r.t)}</td><td class="n">${ago(r.last)}</td></tr>`).join("")}</tbody></table>`;
+  const done=orders.filter(o=>okO(o)&&inR(o.t.ready,s,e)&&o.t.paid),ontime=done.filter(o=>o.due&&sod(o.t.ready)<=o.due).length;
+  const leadT=avg(done.map(o=>(o.t.ready-o.t.paid)/DAY)),delT=avg(orders.filter(o=>okO(o)&&inR(o.t.deliv,s,e)).map(o=>(o.t.deliv-o.created)/DAY));
+  const act=orders.filter(o=>estI(o)>=2&&estI(o)<=3),lateN=act.filter(isLate).length;
+  $("dprodn").innerHTML=`<div class="hero-n">${pct(ontime,done.length)}%</div><div style="font-size:12px;color:var(--muted);margin-bottom:10px">de los pedidos se terminaron en la fecha comprometida</div>
+   <div class="statl"><span>Días promedio de fabricación</span><b>${leadT.toFixed(1).replace(".",",")} d</b></div>
+   <div class="statl"><span>Del pedido a la entrega</span><b>${delT.toFixed(1).replace(".",",")} d</b></div>
+   <div class="statl"><span>En taller ahora</span><b>${act.length}</b></div>
+   <div class="statl"><span>Atrasados ahora</span><b style="color:${lateN?"var(--red)":"inherit"}">${lateN?"⚠ ":""}${lateN}</b></div>
+   <div class="statl" style="border:0"><span>Listos por entregar</span><b>${orders.filter(o=>estI(o)==4).length}</b></div>`;
+  const invV=Object.values(INS).reduce((a,x)=>a+x.s*x.c,0),low=Object.values(INS).filter(x=>x.s<x.m),buy=low.reduce((a,x)=>a+(x.m*2-x.s)*x.c,0);
+  $("dinv").innerHTML=`<div class="hero-n">${fmtK(invV)}</div><div style="font-size:12px;color:var(--muted);margin-bottom:10px">valor del stock de insumos</div>
+   ${Object.values(INS).sort((a,b)=>a.s/a.m-b.s/b.m).slice(0,5).map(x=>{const r=x.s/x.m,st=r<.5?["Crítico","st-crit","⛔"]:r<1?["Reponer","st-low","⚠"]:["OK","st-ok","✓"];return`<div class="statl"><span>${x.n}</span><span><b>${x.s} ${x.u}</b> <span class="est ${st[1]}">${st[2]} ${st[0]}</span></span></div>`}).join("")}
+   <div class="statl" style="border:0"><span>Compra sugerida</span><b>${fmt(buy)}</b></div>`;
+  const topA=PR.filter(r=>r.abc=="A").length,bestM=[...PR].filter(r=>r.u>=3).sort((a,b)=>(b.rev-b.cost)/b.rev-(a.rev-a.cost)/a.rev)[0];
+  const lost=F[1][1]-F[2][1],cuo=pct(paid.filter(o=>o.pay!="trf").length,paid.length);
+  $("dins").innerHTML=[
+    [0,`🎯 <b>${topA} productos</b> hacen el 80% de la facturación. Nunca les pueden faltar insumos ni buenas fotos.`],
+    bestM?[0,`💰 <b>${bestM.p.n}</b> deja el mejor margen (${pct(bestM.rev-bestM.cost,bestM.rev)}%). Destacalo en la web y en Instagram.`]:null,
+    [0,`⏰ Los pedidos se concentran <b>${["los lunes","los martes","los miércoles","los jueves","los viernes","los sábados","los domingos"][peak.d]} a las ${hrs[peak.h]} h</b>. Es el mejor horario para publicar y estar atentas.`],
+    [1,`💳 Se pierden ${lost} pedidos (${pct(lost,F[1][1])}%) entre la respuesta y el pago. Recordatorio a las 24 h y alias bien visible en el email.`],
+    [0,`🌐 La web trae el ${pct(byC.web||0,created.length)}% de los pedidos y WhatsApp el ${pct(byC.whatsapp||0,created.length)}%. Mandá el link de la web en cada respuesta para que todo quede en el panel.`],
+    [0,`🧾 El ${cuo}% elige cuotas. Revisá que la diferencia de precio cubra el costo financiero.`],
+    low.length?[1,`📦 Hay ${low.length} insumos bajo el mínimo. Compralos antes del pico del Día de la Madre (18/10).`]:null,
+  ].filter(Boolean).map(([w,t])=>`<div class="${w?"w":""}">${t}</div>`).join("");
+  const SM=[];for(let i=11;i>=0;i--){const m0=new Date(e.getFullYear(),e.getMonth()-i,1),m1=new Date(e.getFullYear(),e.getMonth()-i+1,1);const L=orders.filter(o=>okO(o)&&inR(o.t.paid,m0,m1));SM.push({l:MES[m0.getMonth()]+" "+String(m0.getFullYear()).slice(2),v:sum(L,o=>oval(o).rev),n:L.length,part:i==0})}
+  groupedBars($("dseason"),SM,d=>d.l,[{n:"Facturación",c:"var(--s1)",f:d=>Math.round(d.v)}],fmtK,d=>`<b>${d.l}${d.part?" (en curso)":""}</b><br>${fmt(d.v)} · ${d.n} pedidos`);
+}
+function exportDash(){const{s,e}=dRange();const L=orders.filter(o=>okO(o)&&inR(o.t.paid,s,e));csv(`nido-ventas-${s.toISOString().slice(0,10)}-al-${e.toISOString().slice(0,10)}.csv`,[["Pedido","Fecha de pago","Canal","Cliente","Ciudad","Productos","Líneas","Total","Costo","Margen","Pago","Entrega","Cupón"],...L.map(o=>{const v=oval(o);return[o.nro,fDT(o.t.paid),CHN[o.canal],o.cli.n,o.cli.city,itemsTxt(o),[...new Set(o.items.map(i=>LINES[i.p.l].n))].join("/"),Math.round(v.rev),Math.round(v.cost),Math.round(v.rev-v.cost),o.pay=="trf"?"Transferencia":"Cuotas",o.ent,o.coupon?.code||""]})])}
+function exportProducts(){csv("nido-productos.csv",[["Clase ABC","Producto","Línea","Unidades","Facturación","Costo","Margen %"],...(window._PR||[]).map(r=>[r.abc,r.p.n,LINES[r.p.l].n,r.u,Math.round(r.rev),Math.round(r.cost),pct(r.rev-r.cost,r.rev)])])}
+
+/* =====================================================================
+   STOCK / RECETAS / PROMOS
+   ===================================================================== */
+let stab="ins";
+document.querySelectorAll("#stabs button").forEach(b=>b.onclick=()=>{stab=b.dataset.s;document.querySelectorAll("#stabs button").forEach(x=>x.classList.toggle("on",x===b));renderStock()});
+function renderStock(){
+  const B=$("sbody");
+  renderSKpi();
+  const st=x=>{const r=x.s/x.m;return r<.5?["⛔ Crítico","st-crit"]:r<1?["⚠ Reponer","st-low"]:["✓ OK","st-ok"]};
+  if(stab=="ins"){B.innerHTML=`<div class="tscroll" style="max-height:none"><table class="tbl"><thead><tr><th>Insumo</th><th>Proveedor</th><th class="n">Stock</th><th class="n" title="Pedidos pagados que todavía no entraron a producción">Reservado</th><th class="n">Disponible</th><th class="n">Mínimo ✏️</th><th class="n">Costo prom.</th><th class="n">Valor</th><th>Estado</th><th></th></tr></thead><tbody>${Object.entries(INS).map(([k,x])=>{const rs=reserved(k),S=st(x);return`<tr><td><b>${x.n}</b><br><small style="color:var(--muted)">${k} · ${x.u}</small></td><td>${provOf(k)?.n||"–"}</td><td class="n"><b>${x.s}</b></td><td class="n">${rs||"–"}</td><td class="n">${+(x.s-rs).toFixed(2)}</td><td class="n" contenteditable data-k="${k}">${x.m}</td><td class="n">${fmt(x.c)}</td><td class="n">${fmt(x.s*x.c)}</td><td><span class="est ${S[1]}">${S[0]}</span></td><td><a style="cursor:pointer;text-decoration:underline;font-size:12px" onclick="stab='mov';movF.k='${k}';syncSTabs();renderStock()">ver movimientos</a></td></tr>`}).join("")}</tbody></table></div>
+    <p style="padding:10px 16px;font-size:12px;color:var(--muted)">El stock solo cambia con movimientos. Lo único editable a mano es el <b>mínimo</b> (celda amarilla), que define cuándo salta la alerta.</p>`;
+    B.querySelectorAll("[contenteditable]").forEach(td=>td.onblur=()=>{const v=parseFloat(td.textContent.replace(",","."));if(!isNaN(v)&&v!==INS[td.dataset.k].m){INS[td.dataset.k].m=v;log(true,`Mínimo de <b>${INS[td.dataset.k].n}</b> cambiado a ${v}`);renderStock()}})}
+  else if(stab=="fg"){B.innerHTML=`<div class="tscroll" style="max-height:none"><table class="tbl"><thead><tr><th>Producto ya fabricado</th><th class="n">En stock</th><th class="n">Mínimo</th><th>Estado</th><th>En la web</th><th></th></tr></thead><tbody>${Object.entries(FG).map(([k,x])=>{const S=st(x);return`<tr><td>${PBY[k].e} <b>${PBY[k].n}</b></td><td class="n"><b>${x.s}</b></td><td class="n">${x.m}</td><td><span class="est ${S[1]}">${S[0]}</span></td><td>${x.s>0?"✅ Entrega inmediata":"🔨 Se hace a pedido"}</td><td><button class="btn gh sm" onclick="produceModal('${k}')">🔨 Producir</button></td></tr>`}).join("")}</tbody></table></div>
+    <p style="padding:10px 16px;font-size:12px;color:var(--muted)">Solo los productos que conviene tener hechos. El resto (cocina, guirnaldas, cuadros…) se fabrica cuando entra el pedido y descuenta insumos.</p>`}
+  else if(stab=="mov"){const L=MOVS.filter(m=>(!movF.t||m.tipo==movF.t)&&(!movF.k||m.lines.some(l=>l.k==movF.k||l.p==movF.k)));
+    B.innerHTML=`<div class="toolbar" style="padding:12px 14px 0"><select onchange="movF.t=this.value;renderStock()"><option value="">Todos los tipos</option>${Object.entries(MT).map(([k,v])=>`<option value="${k}" ${movF.t==k?"selected":""}>${v[0]}</option>`).join("")}</select><select onchange="movF.k=this.value;renderStock()"><option value="">Todos los insumos y productos</option>${Object.keys(INS).map(k=>`<option value="${k}" ${movF.k==k?"selected":""}>${INS[k].n}</option>`).join("")}${Object.keys(FG).map(k=>`<option value="${k}" ${movF.k==k?"selected":""}>${PBY[k].n} (terminado)</option>`).join("")}</select><span style="flex:1"></span><button class="btn gh sm" onclick="exportMovs()">⬇ CSV</button></div>
+    <div class="tscroll" style="max-height:600px"><table class="tbl"><thead><tr><th>Fecha</th><th>Tipo</th><th>Referencia</th><th>Detalle</th><th>Quién</th><th>Nota</th></tr></thead><tbody>${L.slice(0,120).map(m=>`<tr><td style="white-space:nowrap">${fDT(m.d)}</td><td><span class="est ${MT[m.tipo][1]}">${MT[m.tipo][0]}</span></td><td>${esc(m.ref)}</td><td style="font-size:12px;line-height:1.6">${m.lines.filter(l=>!movF.k||l.k==movF.k||l.p==movF.k).slice(0,movF.k?99:6).map(l=>`<span style="color:${l.q>0?"#2d7a4f":"var(--red)"};font-weight:700">${l.q>0?"+":"−"}${Math.abs(l.q)}</span> ${lineUnit(l)} ${lineName(l)}`).join("<br>")}${!movF.k&&m.lines.length>6?`<br><small style="color:var(--muted)">+${m.lines.length-6} ítems más</small>`:""}</td><td>${m.user}</td><td style="font-size:12px;color:var(--ink2)">${esc(m.nota||"")}</td></tr>`).join("")||`<tr><td colspan=6 style="color:var(--muted)">Sin movimientos con esos filtros</td></tr>`}</tbody></table></div>`}
+  else if(stab=="rec"){B.innerHTML=`<div class="tscroll" style="max-height:600px"><table class="tbl"><thead><tr><th>Producto</th><th>Insumo</th><th class="n">Cantidad</th><th class="n">Costo</th></tr></thead><tbody>${P.flatMap(p=>Object.entries(p.r).filter(([k,q])=>q).map(([k,q],i)=>`<tr><td>${i?"":p.e+" "+p.n}</td><td>${INS[k].n}</td><td class="n">${q} ${INS[k].u}</td><td class="n">${fmt(q*INS[k].c)}</td></tr>`)).join("")}</tbody></table></div>`}
+  else if(stab=="prod"){B.innerHTML=`<div class="tscroll" style="max-height:600px"><table class="tbl"><thead><tr><th>Producto</th><th>Línea</th><th class="n">Transferencia</th><th class="n">3 cuotas</th><th class="n">Costo (insumos + mano de obra)</th><th class="n">Margen</th><th class="n">Días</th></tr></thead><tbody>${P.map(p=>`<tr><td>${p.e} ${p.n}</td><td>${LINES[p.l].n}</td><td class="n">${fmt(p.t)}</td><td class="n">${fmt(p.c)}</td><td class="n">${fmt(p.cost)}</td><td class="n">${pct(p.t-p.cost,p.t)}%</td><td class="n">${p.d}</td></tr>`).join("")}</tbody></table></div>`}
+  else{const s90=addD(nowT(),-90),L=orders.filter(o=>o.coupon&&inR(o.t.paid,s90,nowT()));
+   B.innerHTML=`<div style="padding:20px"><div class="promo-form">
+    <label class="full" style="flex-direction:row;align-items:center;gap:8px"><input type="checkbox" id="pr-b" ${PROMO.banner?"checked":""}> Mostrar banner de promoción arriba de la web</label>
+    <label class="full">Texto del banner<input id="pr-t" value="${esc(PROMO.text)}"></label>
+    <label>% de bienvenida (código BIENVENIDA)<input id="pr-w" type="number" value="${PROMO.welcome}"></label>
+    <label>% para la próxima compra (tarjeta de la etiqueta)<input id="pr-n" type="number" value="${PROMO.next}"></label>
+    <label>Validez del cupón (días)<input id="pr-d" type="number" value="${PROMO.days}"></label>
+    <label class="full">Mensaje de la tarjeta de agradecimiento<textarea id="pr-m" rows="2">${esc(PROMO.msg)}</textarea></label>
+    <div class="full" style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn dk" onclick="savePromo()">Guardar y publicar</button><button class="btn gh" onclick="savePromo();go('web')">Guardar y ver la web</button></div>
+   </div>
+   <div class="panel" style="margin-top:20px;padding:16px;max-width:760px"><b>Rendimiento de cupones (últimos 90 días)</b>
+    <div class="statl"><span>Pedidos con cupón</span><b>${L.length}</b></div><div class="statl"><span>Facturación con cupón</span><b>${fmt(sum(L,o=>o.total))}</b></div><div class="statl"><span>Descuento otorgado</span><b>${fmt(sum(L,o=>o.disc))}</b></div><div class="statl" style="border:0"><span>Recompras con VUELVE-xxxx</span><b>${L.filter(o=>o.coupon.code.startsWith("VUELVE")).length} pedidos</b></div></div></div>`}
+}
+
+const movF={t:"",k:""};
+function syncSTabs(){document.querySelectorAll("#stabs button").forEach(x=>x.classList.toggle("on",x.dataset.s==stab))}
+function renderSKpi(){const low=Object.values(INS).filter(x=>x.s<x.m).length,fgLow=Object.values(FG).filter(x=>x.s<x.m).length,invV=Object.values(INS).reduce((a,x)=>a+x.s*x.c,0),fgV=Object.entries(FG).reduce((a,[k,x])=>a+x.s*PBY[k].cost,0),m30=MOVS.filter(m=>m.d>addD(nowT(),-30));
+  $("skpi").innerHTML=`<div class="mt"><span>💰 Valor de insumos</span><b>${fmtK(invV)}</b><em>a costo promedio</em></div><div class="mt"><span>🧸 Valor de producto terminado</span><b>${fmtK(fgV)}</b><em>${Object.values(FG).reduce((a,x)=>a+x.s,0)} unidades listas</em></div><div class="mt"><span>⚠ Bajo el mínimo</span><b style="color:${low+fgLow?"var(--red)":"inherit"}">${low+fgLow}</b><em>${low} insumos · ${fgLow} productos</em></div><div class="mt"><span>🔁 Movimientos (30 días)</span><b>${m30.length}</b><em>${m30.filter(m=>m.tipo=="compra").length} compras · ${m30.filter(m=>m.tipo=="consumo").length} consumos</em></div>`}
+function exportMovs(){csv("nido-movimientos-stock.csv",[["Fecha","Tipo","Referencia","Insumo / producto","Cantidad","Unidad","Quién","Nota"],...MOVS.flatMap(m=>m.lines.map(l=>[fDT(m.d),MT[m.tipo][0],m.ref,lineName(l),l.q,lineUnit(l),m.user,m.nota||""]))])}
+const sel=(id,opts,v)=>`<select id="${id}">${opts.map(([k,l])=>`<option value="${k}" ${k==v?"selected":""}>${l}</option>`).join("")}</select>`;
+/* --- registrar compra --- */
+let CR=[];
+function compraModal(pref,provI){CR=pref&&pref.length?pref:[{k:"F9",q:1,c:INS.F9.c}];const pv=provI??PROV.findIndex(p=>p.ins.includes(CR[0].k));
+  openModal(`<div style="padding:26px"><h2 style="font-size:24px">＋ Registrar compra de insumos</h2><p style="color:var(--muted);font-size:13px;margin-bottom:14px">Suma al stock y actualiza el costo promedio. Si subió el precio, los márgenes se recalculan solos.</p>
+   <div class="promo-form"><label>Proveedor${sel("cp-pv",PROV.map((p,i)=>[i,p.n]),pv)}</label><label>N° de factura / remito<input id="cp-ref" placeholder="Ej: 0003-0001850"></label></div>
+   <table class="tbl" style="margin-top:14px"><thead><tr><th>Insumo</th><th class="n">Cantidad</th><th class="n">Costo unitario</th><th class="n">Subtotal</th><th></th></tr></thead><tbody id="cp-rows"></tbody></table>
+   <button class="btn gh sm" style="margin-top:8px" onclick="CR.push({k:'TU',q:1,c:INS.TU.c});renderCR()">+ Agregar insumo</button>
+   <div style="display:flex;justify-content:space-between;align-items:center;margin-top:16px;gap:10px;flex-wrap:wrap"><b id="cp-tot"></b><div style="display:flex;gap:8px"><button class="btn gh" onclick="closeModal()">Cancelar</button><button class="btn" onclick="saveCompra()">Guardar compra</button></div></div></div>`);renderCR()}
+function renderCR(){$("cp-rows").innerHTML=CR.map((r,i)=>`<tr><td><select onchange="CR[${i}].k=this.value;CR[${i}].c=INS[this.value].c;renderCR()">${Object.keys(INS).map(k=>`<option value="${k}" ${k==r.k?"selected":""}>${INS[k].n} (${INS[k].u})</option>`).join("")}</select></td><td class="n"><input type="number" step="0.1" min="0" value="${r.q}" style="width:80px;border:1px solid var(--line);border-radius:8px;padding:6px" oninput="CR[${i}].q=+this.value;updCR()"></td><td class="n"><input type="number" value="${r.c}" style="width:110px;border:1px solid var(--line);border-radius:8px;padding:6px" oninput="CR[${i}].c=+this.value;updCR()"></td><td class="n" id="cp-s${i}">${fmt(r.q*r.c)}</td><td><button class="xb" onclick="CR.splice(${i},1);renderCR()">×</button></td></tr>`).join("");updCR()}
+function updCR(){CR.forEach((r,i)=>{const e=$("cp-s"+i);if(e)e.textContent=fmt(r.q*r.c)});$("cp-tot").textContent="Total: "+fmt(CR.reduce((a,r)=>a+r.q*r.c,0))}
+function saveCompra(){const rows=CR.filter(r=>r.q>0);if(!rows.length)return toast("Cargá al menos un insumo");const pv=PROV[$("cp-pv").value],ref=$("cp-ref").value;
+  rows.forEach(r=>{const x=INS[r.k];x.c=Math.round((x.s*x.c+r.q*r.c)/(x.s+r.q))});
+  const n=++movN;stockMove("compra",rows.map(r=>({k:r.k,q:r.q})),`Compra #${n} · ${pv.n}`,ref?`Factura/remito ${ref}`:"");closeModal();stab="mov";movF.t="";movF.k="";syncSTabs();renderStock();toast(`✅ Compra registrada: ${rows.length} insumos · ${fmt(rows.reduce((a,r)=>a+r.q*r.c,0))}`)}
+/* --- producir para stock --- */
+function produceModal(pid){pid=pid||Object.keys(FG).sort((a,b)=>FG[a].s/FG[a].m-FG[b].s/FG[b].m)[0];const x=FG[pid];
+  openModal(`<div style="padding:26px"><h2 style="font-size:24px">🔨 Producir para stock</h2><p style="color:var(--muted);font-size:13px;margin-bottom:14px">Para tener productos ya hechos y entregarlos en el momento. Descuenta los insumos de la receta y suma producto terminado.</p>
+   <div class="promo-form"><label>Producto${sel("pd-p",Object.keys(FG).map(k=>[k,`${PBY[k].n} · hay ${FG[k].s} (mín. ${FG[k].m})`]),pid)}</label><label>Cantidad a fabricar<input id="pd-q" type="number" min="1" value="${Math.max(1,x.m*2-x.s)}"></label><label class="full">Quién lo hace<input id="pd-u" value="Ana (taller)"></label></div>
+   <div id="pd-prev" style="margin-top:14px"></div>
+   <div style="display:flex;justify-content:flex-end;gap:8px;margin-top:16px"><button class="btn gh" onclick="closeModal()">Cancelar</button><button class="btn sg" id="pd-ok" onclick="saveProduce()">Registrar producción</button></div></div>`);
+  $("pd-p").onchange=prevProduce;$("pd-q").oninput=prevProduce;prevProduce()}
+function prevProduce(){const p=PBY[$("pd-p").value],q=+$("pd-q").value||0;const L=recipeLines([{p,q}],1);let ok=true;
+  $("pd-prev").innerHTML=`<table class="tbl"><thead><tr><th>Insumo que se usa</th><th class="n">Necesita</th><th class="n">Hay</th><th class="n">Queda</th></tr></thead><tbody>${L.map(l=>{const x=INS[l.k],rest=+(x.s-l.q).toFixed(2);if(rest<0)ok=false;return`<tr><td>${x.n}</td><td class="n">${l.q} ${x.u}</td><td class="n">${x.s}</td><td class="n" style="color:${rest<0?"var(--red)":rest<x.m?"#87600f":"inherit"};font-weight:700">${rest<0?"⛔ faltan "+(-rest):rest}${rest>=0&&rest<x.m?" ⚠":""}</td></tr>`}).join("")}</tbody></table>${ok?"":`<p style="color:var(--red);font-size:13px;margin-top:8px">No alcanzan los insumos. Registrá una compra primero.</p>`}`;
+  $("pd-ok").disabled=!ok||!q}
+function saveProduce(){const k=$("pd-p").value,p=PBY[k],q=+$("pd-q").value;const n=++movN;
+  const mv=stockMove("produccion",[...recipeLines([{p,q}]),{p:k,q}],`Stock-OP-${n}`,`${q} × ${p.n} para stock`);MOVS[0].user=$("pd-u").value||"Gianna";closeModal();stab="fg";syncSTabs();renderStock();renderGrid();toast(`✅ +${q} ${p.n} en stock · insumos descontados`)}
+/* --- conteo / ajuste --- */
+function conteoModal(){openModal(`<div style="padding:26px"><h2 style="font-size:24px">📋 Conteo / ajuste de stock</h2><p style="color:var(--muted);font-size:13px;margin-bottom:14px">Cargá lo que contaste en el taller. Se registra solo la diferencia, con un motivo, y queda en el historial.</p>
+   <div class="promo-form"><label>Motivo${sel("ct-m",[["Conteo mensual","Conteo mensual"],["Merma / rotura","Merma / rotura"],["Error de carga","Error de carga"],["Uso en muestras","Uso en muestras"]],"Conteo mensual")}</label></div>
+   <div class="tscroll" style="max-height:340px;margin-top:12px"><table class="tbl"><thead><tr><th>Insumo</th><th class="n">Según sistema</th><th class="n">Contado</th><th class="n">Diferencia</th></tr></thead><tbody>${Object.entries(INS).map(([k,x])=>`<tr><td>${x.n}</td><td class="n">${x.s} ${x.u}</td><td class="n"><input type="number" step="0.1" data-k="${k}" value="${x.s}" style="width:90px;border:1px solid var(--line);border-radius:8px;padding:6px" oninput="const d=+(this.value-INS['${k}'].s).toFixed(2);const e=document.getElementById('ct-d-${k}');e.textContent=d?(d>0?'+':'')+d:'–';e.style.color=d<0?'var(--red)':d>0?'#2d7a4f':'inherit'"></td><td class="n" id="ct-d-${k}">–</td></tr>`).join("")}</tbody></table></div>
+   <div style="display:flex;justify-content:flex-end;gap:8px;margin-top:16px"><button class="btn gh" onclick="closeModal()">Cancelar</button><button class="btn dk" onclick="saveConteo()">Guardar ajuste</button></div></div>`)}
+function saveConteo(){const L=[...document.querySelectorAll("#mbox input[data-k]")].map(i=>({k:i.dataset.k,q:+(i.value-INS[i.dataset.k].s).toFixed(2)})).filter(l=>l.q);if(!L.length){closeModal();return toast("No hubo diferencias: el stock coincide ✓")}
+  stockMove("ajuste",L,"Ajuste por conteo",$("ct-m").value);closeModal();stab="mov";movF.t="";movF.k="";syncSTabs();renderStock();toast(`✅ Ajuste guardado: ${L.length} diferencias registradas`)}
+/* --- lista de compra sugerida --- */
+function suggested(){return Object.entries(INS).map(([k,x])=>{const pv=provOf(k);const daily=orders.filter(o=>o.t.prod&&o.t.prod>addD(nowT(),-30)).reduce((a,o)=>a+o.items.reduce((b,it)=>b+(it.p.r[k]||0)*it.q,0),0)/30;const need=Math.max(0,Math.ceil((x.m*1.5+daily*(pv?.lead||3)+reserved(k)-x.s)*10)/10);return{k,x,pv,daily,need}}).filter(r=>r.need>0)}
+function sugeridaModal(){const S=suggested();const byP={};S.forEach(r=>{const i=PROV.indexOf(r.pv);(byP[i]=byP[i]||[]).push(r)});
+  openModal(`<div style="padding:26px"><h2 style="font-size:24px">🧾 Lista de compra sugerida</h2><p style="color:var(--muted);font-size:13px;margin-bottom:14px">Calculada para cubrir el mínimo + 50%, lo reservado por pedidos pagos y el consumo de los días que tarda cada proveedor (según lo que se usó en los últimos 30 días).</p>
+   ${Object.entries(byP).map(([i,L])=>`<div class="panel" style="margin-bottom:12px"><div class="ph"><h3 style="font-size:16px">${PROV[i].n} <small>entrega en ${PROV[i].lead} días</small></h3><button class="btn sm" onclick='compraModal(${JSON.stringify(L.map(r=>({k:r.k,q:r.need,c:r.x.c})))},${i})'>Convertir en compra →</button></div><table class="tbl"><thead><tr><th>Insumo</th><th class="n">Hay</th><th class="n">Mínimo</th><th class="n">Consumo/día</th><th class="n">Comprar</th><th class="n">Costo est.</th></tr></thead><tbody>${L.map(r=>`<tr><td>${r.x.n}</td><td class="n">${r.x.s}</td><td class="n">${r.x.m}</td><td class="n">${r.daily.toFixed(2)}</td><td class="n"><b>${r.need} ${r.x.u}</b></td><td class="n">${fmt(r.need*r.x.c)}</td></tr>`).join("")}</tbody></table></div>`).join("")||"<p>No hace falta comprar nada por ahora ✓</p>"}
+   ${S.length?`<div style="display:flex;justify-content:space-between;align-items:center;margin-top:8px"><b>Total estimado: ${fmt(S.reduce((a,r)=>a+r.need*r.x.c,0))}</b><button class="btn wa sm" onclick="toast('💬 Se abriría WhatsApp con cada proveedor y su pedido armado')">💬 Enviar pedidos por WhatsApp</button></div>`:""}</div>`)}
+function savePromo(){PROMO={banner:$("pr-b").checked,text:$("pr-t").value,welcome:+$("pr-w").value,next:+$("pr-n").value,days:+$("pr-d").value,msg:$("pr-m").value};renderAnnc();log(true,"Promoción actualizada · banner y cupón publicados");toast("✅ Promoción publicada en la web y en las etiquetas")}
+
+/* =====================================================================
+   AUTOMATIZACIONES
+   ===================================================================== */
+runs.push({t:"09:00",ok:true,msg:"Revisión diaria de fechas comprometidas · aviso enviado"},{t:"08:00",ok:true,msg:"Resumen semanal enviado a nido@nidobebe.com.ar"},{t:"03:00",ok:true,msg:"🔐 Respaldo diario de la base de datos completado"});
+function renderRuns(){$("runs").innerHTML=runs.slice(0,14).map(r=>`<div class="run"><time>${r.t}</time><span style="color:${r.ok?"#2d7a4f":"var(--red)"};font-weight:700">${r.ok?"✓":"⚠"}</span><span>${r.msg}</span></div>`).join("")}
+
+renderAnnc();renderAges();renderFilters();renderGrid();updCart();updBadge();
+</script>
 </body>
 </html>
